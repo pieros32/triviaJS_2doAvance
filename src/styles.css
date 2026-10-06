@@ -1,0 +1,660 @@
+:root {
+  --fondo-principal: #0f172a;
+  --fondo-tarjeta: #1e293b;
+  --fondo-entrada: #0f172a;
+  --color-borde: #334155;
+  --borde-claro: #475569;
+  --cta-principal: #ea580c;
+  --cta-principal-hover: #f97316;
+  --acento-insignia: #7c3aed;
+  --superior-insignia: #312e81;
+  --boton-activo: #4f46e5;
+  --boton-activo-hover: #4338ca;
+  --fondo-opcion: #1e293b;
+  --opcion-hover: #334155;
+  --texto-principal: #f8fafc;
+  --texto-mutado: #94a3b8;
+  --texto-dorado: #facc15;
+  --texto-cian: #38bdf8;
+  --color-exito: #10b981;
+  --color-error: #ef4444;
+  --fuente-titulos: 'Righteous', cursive, sans-serif;
+  --fuente-cuerpo: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0f172a;
+  color: var(--texto-principal);
+  font-family: var(--fuente-cuerpo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.5rem 1rem 2.5rem;
+  overflow-x: hidden;
+}
+
+/* Flat App Container */
+.aplicacion-trivia {
+  position: relative;
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Header & Flat Pop Title */
+.encabezado-app {
+  text-align: center;
+  padding: 0.25rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.insignia-marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  background-color: #312e81;
+  border: 1.5px solid #4338ca;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e0e7ff;
+  margin-bottom: 0.65rem;
+}
+
+.insignia-marca svg {
+  width: 16px;
+  height: 16px;
+  fill: #a5b4fc;
+  flex-shrink: 0;
+}
+
+.titulo-app {
+  font-family: var(--fuente-titulos);
+  font-size: 2.35rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+  line-height: 1.18;
+}
+
+.titulo-app .acento-titulo {
+  color: #facc15;
+}
+
+.subtitulo-app {
+  font-size: 1rem;
+  color: #94a3b8;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  max-width: 600px;
+}
+
+/* Error de Carga Alert
+   (Angular: ya no se oculta con .visible; el componente solo existe cuando hay error) */
+#errorCarga {
+  display: flex;
+  background-color: #7f1d1d;
+  border: 1.5px solid #ef4444;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #fecaca;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Configuration Panel (Flat Solid) */
+.panel-configuracion, .panel-controles {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 1.25rem 1.6rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.grupo-configuracion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  justify-content: center;
+}
+
+.etiqueta-configuracion {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #facc15;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Selector Franquicia */
+.contenedor-selector {
+  position: relative;
+  width: 100%;
+}
+
+#selectorFranquicia {
+  width: 100%;
+  height: 48px;
+  background-color: #0f172a;
+  border: 1.5px solid #334155;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0 2.75rem 0 1.1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+#selectorFranquicia:hover, #selectorFranquicia:focus {
+  border-color: #6366f1;
+  background-color: #131d35;
+}
+
+.contenedor-selector::after {
+  content: '';
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid #facc15;
+  pointer-events: none;
+}
+
+/* Dificultad Buttons */
+.cuadricula-niveles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  height: 48px;
+}
+
+.btn-nivel {
+  background-color: #0f172a;
+  border: 1.5px solid #334155;
+  border-radius: 10px;
+  color: #cbd5e1;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0 0.5rem;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.btn-nivel:hover {
+  border-color: #475569;
+  color: #ffffff;
+  background-color: #1e293b;
+}
+
+.btn-nivel.activo, .btn-nivel:focus {
+  border-color: #6366f1;
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+/* Status Bar Scoreboard */
+.barra-estado, .barra-hud {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  padding: 0.95rem 1.6rem;
+}
+
+.elemento-estado {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.elemento-estado:nth-child(2) {
+  align-items: center;
+  text-align: center;
+}
+
+.elemento-estado:nth-child(3) {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.etiqueta-estado {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #94a3b8;
+}
+
+.valor-estado {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+#nivelActual {
+  color: #facc15;
+  text-transform: capitalize;
+  font-weight: 800;
+}
+
+#numeroPregunta {
+  color: #38bdf8;
+  font-weight: 800;
+}
+
+#puntaje {
+  color: #10b981;
+  font-weight: 900;
+}
+
+/* Trivia Card & Two-Column Split */
+.tarjeta-trivia, .arena-cuestionario {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 18px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Column Left: Visual showcase */
+.col-visual-trivia {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Tag de categoría (Flat) */
+.insignia-categoria {
+  align-self: flex-start;
+  padding: 0.42rem 1.15rem;
+  background-color: #7c3aed;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Screen Image Frame */
+.marco-imagen {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  flex: 1 1 auto;
+  min-height: 230px;
+}
+
+#imagenPregunta {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Column Right: Interactive Quiz Content */
+.col-contenido-trivia {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+/* Question Text */
+#pregunta {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #ffffff;
+  min-height: 3.2rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Options List */
+#opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#opciones button, .opcion-btn {
+  width: 100%;
+  background-color: #0f172a;
+  border: 1.5px solid #334155;
+  border-radius: 10px;
+  color: #f1f5f9;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  position: relative;
+}
+
+#opciones button:hover:not(:disabled), .opcion-btn:hover:not(:disabled) {
+  background-color: #334155;
+  border-color: #475569;
+  color: #ffffff;
+}
+
+/* Feedback states (Solid Flat) */
+#opciones button.correcta, #opciones button[data-correct="true"], .opcion-btn.correcta {
+  background-color: #065f46 !important;
+  border-color: #10b981 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+#opciones button.incorrecta, #opciones button[data-correct="false"], .opcion-btn.incorrecta {
+  background-color: #991b1b !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+#opciones button:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+/* Result status */
+#resultado {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  min-height: 1.4rem;
+  padding: 0.3rem;
+  border-radius: 8px;
+}
+
+/* Siguiente Button: Flat solid vivid color */
+#siguiente {
+  width: 100%;
+  height: 54px;
+  background-color: #ea580c;
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+#siguiente span {
+  display: inline-block;
+  line-height: 1;
+}
+
+#siguiente svg {
+  flex-shrink: 0;
+  display: block;
+}
+
+#siguiente:hover:not(:disabled) {
+  background-color: #f97316;
+}
+
+#siguiente:active:not(:disabled) {
+  background-color: #c2410c;
+}
+
+#siguiente:disabled {
+  background-color: #475569;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Footer Styles */
+.pie-app {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem 1rem 0;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+}
+
+.pie-principal {
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.pie-secundario {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+  text-transform: uppercase;
+  margin-top: 0.35rem;
+}
+
+/* Tablet & Desktop Harmonious Distribution */
+@media (min-width: 768px) {
+  body {
+    padding: 2.5rem 2rem 3rem;
+  }
+  .titulo-app {
+    font-size: 3.1rem;
+    letter-spacing: 0.04em;
+  }
+  .subtitulo-app {
+    font-size: 1.08rem;
+  }
+  .panel-configuracion, .panel-controles {
+    grid-template-columns: 1fr 1fr;
+    padding: 1.4rem 1.8rem;
+    gap: 1.75rem;
+  }
+  .barra-estado, .barra-hud {
+    padding: 1.1rem 2rem;
+  }
+  .etiqueta-estado {
+    font-size: 0.75rem;
+  }
+  .valor-estado {
+    font-size: 1.3rem;
+  }
+  .tarjeta-trivia, .arena-cuestionario {
+    grid-template-columns: 1fr 1.15fr;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  .marco-imagen {
+    height: 100%;
+    min-height: 310px;
+  }
+  #pregunta {
+    font-size: 1.38rem;
+    line-height: 1.4;
+  }
+  #opciones button, .opcion-btn {
+    padding: 1.05rem 1.35rem;
+    font-size: 1.02rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tarjeta-trivia, .arena-cuestionario {
+    grid-template-columns: 440px 1fr;
+    gap: 2.25rem;
+  }
+  .marco-imagen {
+    min-height: 350px;
+  }
+}
+
+/* ============================================================
+   AÑADIDOS PARA LA VERSIÓN ANGULAR
+   (todo lo de arriba es el estilos.css original, sin cambios,
+   salvo la regla de #errorCarga)
+   ============================================================ */
+
+/* Angular envuelve cada componente en su propia etiqueta (<app-root>, <app-inicio>...).
+   Estas reglas hacen que esas etiquetas no rompan el layout original. */
+app-root {
+  display: block;
+  width: 100%;
+}
+
+app-inicio,
+app-juego,
+app-resultado {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Botones de acción (Comenzar, Jugar de nuevo, Volver): mismo estilo que #siguiente */
+.btn-accion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 54px;
+  padding: 0 1.5rem;
+  background-color: #ea580c;
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.btn-accion:hover:not(:disabled) {
+  background-color: #f97316;
+}
+
+.btn-accion:disabled {
+  background-color: #475569;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.btn-secundario {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+.btn-secundario:hover:not(:disabled) {
+  background-color: #475569;
+}
+
+/* El botón "Comenzar" ocupa todo el ancho del panel de configuración */
+.accion-formulario {
+  grid-column: 1 / -1;
+}
+
+.estado-carga {
+  text-align: center;
+  color: var(--texto-mutado);
+  font-weight: 600;
+}
+
+/* Pantalla de resultado: una sola columna centrada */
+.tarjeta-trivia.tarjeta-resultado {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.tarjeta-resultado .col-contenido-trivia {
+  width: 100%;
+  max-width: 480px;
+  align-items: center;
+}
+
+.tarjeta-resultado .insignia-categoria {
+  align-self: center;
+}
+
+.tarjeta-resultado #pregunta {
+  justify-content: center;
+}
+
+.acciones-resultado {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+}

@@ -1,0 +1,63 @@
+<!-- Se crea solo si el backend no respondió (directiva estructural *ngIf) -->
+<app-error-carga
+  *ngIf="errorConexion"
+  titulo="Error de conexión:"
+  mensaje="No se pudo contactar con el servidor de preguntas. Verifica que json-server esté encendido (npm run api) y recarga la página."
+/>
+
+<form
+  class="panel-configuracion panel-controles"
+  aria-label="Configuración de la trivia"
+  [formGroup]="formulario"
+  (ngSubmit)="comenzar()"
+>
+
+  <!-- Selector de franquicia: sus opciones vienen del backend -->
+  <div class="grupo-configuracion">
+    <label class="etiqueta-configuracion" for="selectorFranquicia">
+      <svg fill="none" height="15" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" width="15">
+        <rect height="20" rx="2.18" ry="2.18" width="20" x="2" y="2"></rect>
+        <line x1="7" x2="7" y1="2" y2="22"></line>
+        <line x1="17" x2="17" y1="2" y2="22"></line>
+        <line x1="2" x2="22" y1="12" y2="12"></line>
+        <line x1="2" x2="7" y1="7" y2="7"></line>
+        <line x1="2" x2="7" y1="17" y2="17"></line>
+        <line x1="17" x2="22" y1="17" y2="17"></line>
+        <line x1="17" x2="22" y1="7" y2="7"></line>
+      </svg>
+      Selecciona una Franquicia
+    </label>
+    <div class="contenedor-selector">
+      <select id="selectorFranquicia" formControlName="franquicia">
+        <option *ngFor="let f of franquicias" [value]="f.slug">{{ f.nombre }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Dificultad: *ngFor crea un botón por nivel; [ngClass] marca el elegido con la clase "activo" -->
+  <div class="grupo-configuracion">
+    <span class="etiqueta-configuracion">
+      <svg fill="none" height="15" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" width="15">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polygon points="12 6 12 12 16 14"></polygon>
+      </svg>
+      Dificultad
+    </span>
+    <div class="cuadricula-niveles">
+      <button
+        *ngFor="let nivel of niveles"
+        type="button"
+        class="btn-nivel"
+        [ngClass]="{ activo: formulario.controls.nivel.value === nivel }"
+        (click)="elegirNivel(nivel)"
+      >
+        {{ nivel | nivelNombre }}
+      </button>
+    </div>
+  </div>
+
+  <div class="accion-formulario">
+    <button type="submit" class="btn-accion" [disabled]="formulario.invalid">Comenzar</button>
+  </div>
+
+</form>

@@ -1,0 +1,2281 @@
+{
+  "franquicias": [
+    {
+      "id": 1,
+      "slug": "the-walking-dead",
+      "nombre": "The Walking Dead"
+    },
+    {
+      "id": 2,
+      "slug": "breaking-bad",
+      "nombre": "Breaking Bad"
+    },
+    {
+      "id": 3,
+      "slug": "game-of-thrones",
+      "nombre": "Game of Thrones"
+    },
+    {
+      "id": 4,
+      "slug": "stranger-things",
+      "nombre": "Stranger Things"
+    },
+    {
+      "id": 5,
+      "slug": "the-last-of-us",
+      "nombre": "The Last of Us"
+    }
+  ],
+  "preguntas": [
+    {
+      "id": 1,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el protagonista principal de The Walking Dead?",
+      "opciones": [
+        "Rick Grimes",
+        "Shane Walsh",
+        "Daryl Dixon",
+        "Glenn Rhee"
+      ],
+      "respuesta": "Rick Grimes",
+      "imagen": "imagenes/rick.jpg"
+    },
+    {
+      "id": 2,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cuál es el nombre del hermano mayor de Daryl Dixon?",
+      "opciones": [
+        "Merle Dixon",
+        "Hershel Greene",
+        "Dale Horvath",
+        "T-Dog"
+      ],
+      "respuesta": "Merle Dixon",
+      "imagen": "imagenes/daryl.jpg"
+    },
+    {
+      "id": 3,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la esposa de Rick Grimes?",
+      "opciones": [
+        "Lori Grimes",
+        "Carol Peletier",
+        "Maggie Greene",
+        "Andrea Harrison"
+      ],
+      "respuesta": "Lori Grimes",
+      "imagen": "imagenes/rick.jpg"
+    },
+    {
+      "id": 4,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cuál es el nombre del hijo de Rick Grimes?",
+      "opciones": [
+        "Carl Grimes",
+        "Judith Grimes",
+        "Duane Jones",
+        "Ron Anderson"
+      ],
+      "respuesta": "Carl Grimes",
+      "imagen": "imagenes/rick.jpg"
+    },
+    {
+      "id": 5,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué ciudad se encuentra el hospital donde Rick despierta al comienzo de la serie?",
+      "opciones": [
+        "Atlanta",
+        "Woodbury",
+        "Alexandria",
+        "Washington D.C."
+      ],
+      "respuesta": "Atlanta",
+      "imagen": "imagenes/atlanta.jpg"
+    },
+    {
+      "id": 6,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿Dónde se encontraba el Centro para el Control de Enfermedades que visita el grupo al final de la primera temporada?",
+      "opciones": [
+        "Atlanta",
+        "Richmond",
+        "Savannah",
+        "Woodbury"
+      ],
+      "respuesta": "Atlanta",
+      "imagen": "imagenes/cdc.jpg"
+    },
+    {
+      "id": 7,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "Antes del apocalipsis, ¿qué profesión tenía Rick Grimes?",
+      "opciones": [
+        "Sheriff",
+        "Médico",
+        "Granjero",
+        "Profesor"
+      ],
+      "respuesta": "Sheriff",
+      "imagen": "imagenes/rick.jpg"
+    },
+    {
+      "id": 8,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué profesión tenía Hershel Greene antes del apocalipsis?",
+      "opciones": [
+        "Veterinario",
+        "Médico",
+        "Abogado",
+        "Policía"
+      ],
+      "respuesta": "Veterinario",
+      "imagen": "imagenes/hershel.jpg"
+    },
+    {
+      "id": 9,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llamaba el médico que trabajaba en el CDC?",
+      "opciones": [
+        "Edwin Jenner",
+        "Hershel Greene",
+        "Dale Horvath",
+        "Milton Mamet"
+      ],
+      "respuesta": "Edwin Jenner",
+      "imagen": "imagenes/cdc.jpg"
+    },
+    {
+      "id": 10,
+      "franquicia": "the-walking-dead",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué lugar vivía la familia Greene antes de que el grupo de Rick llegara allí?",
+      "opciones": [
+        "La granja de Hershel",
+        "La prisión",
+        "Woodbury",
+        "Alexandria"
+      ],
+      "respuesta": "La granja de Hershel",
+      "imagen": "imagenes/granja.jpg"
+    },
+    {
+      "id": 11,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién fue el mejor amigo de Rick antes del apocalipsis?",
+      "opciones": [
+        "Shane Walsh",
+        "Daryl Dixon",
+        "Merle Dixon",
+        "Glenn Rhee"
+      ],
+      "respuesta": "Shane Walsh",
+      "imagen": "imagenes/shane.jpg"
+    },
+    {
+      "id": 12,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿A qué lugar quería dirigirse Shane durante la segunda temporada?",
+      "opciones": [
+        "Fort Benning",
+        "Woodbury",
+        "Alexandria",
+        "La prisión"
+      ],
+      "respuesta": "Fort Benning",
+      "imagen": "imagenes/shane.jpg"
+    },
+    {
+      "id": 13,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué lugar se refugió el grupo de Rick durante gran parte de la segunda temporada?",
+      "opciones": [
+        "La granja de Hershel",
+        "El CDC",
+        "Woodbury",
+        "Alexandria"
+      ],
+      "respuesta": "La granja de Hershel",
+      "imagen": "imagenes/granja.jpg"
+    },
+    {
+      "id": 14,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llamaba el dueño de la granja donde el grupo se refugió durante la segunda temporada?",
+      "opciones": [
+        "Hershel Greene",
+        "Otis",
+        "Shane Walsh",
+        "Dale Horvath"
+      ],
+      "respuesta": "Hershel Greene",
+      "imagen": "imagenes/hershel.jpg"
+    },
+    {
+      "id": 15,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién era conocido por utilizar principalmente una ballesta como arma?",
+      "opciones": [
+        "Daryl Dixon",
+        "Rick Grimes",
+        "Glenn Rhee",
+        "Shane Walsh"
+      ],
+      "respuesta": "Daryl Dixon",
+      "imagen": "imagenes/daryl.jpg"
+    },
+    {
+      "id": 16,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llamaba la comunidad gobernada por el personaje conocido como el Gobernador?",
+      "opciones": [
+        "Woodbury",
+        "Alexandria",
+        "Hilltop",
+        "Oceanside"
+      ],
+      "respuesta": "Woodbury",
+      "imagen": "imagenes/atlanta.jpg"
+    },
+    {
+      "id": 17,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién era la hija de Hershel Greene que posteriormente se convirtió en pareja de Glenn?",
+      "opciones": [
+        "Maggie Greene",
+        "Beth Greene",
+        "Andrea Harrison",
+        "Lori Grimes"
+      ],
+      "respuesta": "Maggie Greene",
+      "imagen": "imagenes/hershel.jpg"
+    },
+    {
+      "id": 18,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué profesión ejercía Hershel antes del apocalipsis?",
+      "opciones": [
+        "Veterinario",
+        "Sheriff",
+        "Ingeniero",
+        "Periodista"
+      ],
+      "respuesta": "Veterinario",
+      "imagen": "imagenes/hershel.jpg"
+    },
+    {
+      "id": 19,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Cuál de estos lugares fue utilizado como refugio por el grupo de Rick después de abandonar la granja de Hershel?",
+      "opciones": [
+        "La prisión",
+        "Oceanside",
+        "El Reino",
+        "Terminus"
+      ],
+      "respuesta": "La prisión",
+      "imagen": "imagenes/granja.jpg"
+    },
+    {
+      "id": 20,
+      "franquicia": "the-walking-dead",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién era conocido por su habilidad para rastrear personas y moverse por el bosque?",
+      "opciones": [
+        "Daryl Dixon",
+        "Dale Horvath",
+        "Hershel Greene",
+        "Milton Mamet"
+      ],
+      "respuesta": "Daryl Dixon",
+      "imagen": "imagenes/daryl.jpg"
+    },
+    {
+      "id": 21,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Cuál de estos lugares fue gobernado por el personaje conocido como el Gobernador?",
+      "opciones": [
+        "Woodbury",
+        "Hilltop",
+        "Alexandria",
+        "Oceanside"
+      ],
+      "respuesta": "Woodbury",
+      "imagen": "imagenes/atlanta.jpg"
+    },
+    {
+      "id": 22,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué personaje fue el líder de Woodbury y fue conocido principalmente como el Gobernador?",
+      "opciones": [
+        "Philip Blake",
+        "Negan Smith",
+        "Simon",
+        "Lance Hornsby"
+      ],
+      "respuesta": "Philip Blake",
+      "imagen": "imagenes/atlanta.jpg"
+    },
+    {
+      "id": 23,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Cuál de estos lugares fue conocido como una comunidad agrícola que posteriormente tuvo relación con el grupo de Rick?",
+      "opciones": [
+        "Hilltop",
+        "The Kingdom",
+        "Oceanside",
+        "Woodbury"
+      ],
+      "respuesta": "Hilltop",
+      "imagen": "imagenes/granja.jpg"
+    },
+    {
+      "id": 24,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Cuál de estas comunidades fue fundada como un refugio amurallado y organizado, distinto a Woodbury o la prisión?",
+      "opciones": [
+        "Alexandria",
+        "Terminus",
+        "Woodbury",
+        "Fort Benning"
+      ],
+      "respuesta": "Alexandria",
+      "imagen": "imagenes/atlanta.jpg"
+    },
+    {
+      "id": 25,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién era el encargado del CDC cuando Rick y su grupo llegaron al edificio?",
+      "opciones": [
+        "Edwin Jenner",
+        "Hershel Greene",
+        "Dale Horvath",
+        "Shane Walsh"
+      ],
+      "respuesta": "Edwin Jenner",
+      "imagen": "imagenes/cdc.jpg"
+    },
+    {
+      "id": 26,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llamaba el lugar que se presentaba como un refugio seguro para sobrevivientes, pero escondía una situación peligrosa?",
+      "opciones": [
+        "Terminus",
+        "Hilltop",
+        "Alexandria",
+        "El Reino"
+      ],
+      "respuesta": "Terminus",
+      "imagen": "imagenes/atlanta.jpg"
+    },
+    {
+      "id": 27,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué profesión decía tener Eugene Porter antes del apocalipsis?",
+      "opciones": [
+        "Científico",
+        "Sheriff",
+        "Veterinario",
+        "Abogado"
+      ],
+      "respuesta": "Científico",
+      "imagen": "imagenes/cdc.jpg"
+    },
+    {
+      "id": 28,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué personaje se convirtió en el líder de los Salvadores?",
+      "opciones": [
+        "Negan",
+        "Hershel",
+        "Tyreese",
+        "Dale"
+      ],
+      "respuesta": "Negan",
+      "imagen": "imagenes/rick.jpg"
+    },
+    {
+      "id": 29,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llamaba la comunidad liderada por Ezekiel, relacionada con un tigre llamado Shiva?",
+      "opciones": [
+        "El Reino",
+        "Hilltop",
+        "Woodbury",
+        "Oceanside"
+      ],
+      "respuesta": "El Reino",
+      "imagen": "imagenes/atlanta.jpg"
+    },
+    {
+      "id": 30,
+      "franquicia": "the-walking-dead",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién ayudó a Rick poco después de que saliera del hospital y lo llevó a conocer a su hijo Duane?",
+      "opciones": [
+        "Morgan Jones",
+        "Hershel Greene",
+        "Ezekiel",
+        "Gabriel Stokes"
+      ],
+      "respuesta": "Morgan Jones",
+      "imagen": "imagenes/rick.jpg"
+    },
+    {
+      "id": 31,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué alias adopta Walter White en el mundo del narcotráfico?",
+      "opciones": [
+        "Heisenberg",
+        "Einstein",
+        "Capitán Blue",
+        "Doctor Cristal"
+      ],
+      "respuesta": "Heisenberg",
+      "imagen": "imagenes/franquicias/bb-bryan-cranston.jpg"
+    },
+    {
+      "id": 32,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el exalumno de Walter que se convierte en su socio?",
+      "opciones": [
+        "Jesse Pinkman",
+        "Todd Alquist",
+        "Badger",
+        "Skinny Pete"
+      ],
+      "respuesta": "Jesse Pinkman",
+      "imagen": "imagenes/franquicias/bb-aaron-paul.jpg"
+    },
+    {
+      "id": 33,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿A qué se dedica Walter White al comienzo de la serie?",
+      "opciones": [
+        "Profesor de química",
+        "Médico",
+        "Abogado",
+        "Mecánico"
+      ],
+      "respuesta": "Profesor de química",
+      "imagen": "imagenes/franquicias/bb-chemistry-class.jpg"
+    },
+    {
+      "id": 34,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué ciudad de Estados Unidos transcurre la mayor parte de la serie?",
+      "opciones": [
+        "Albuquerque",
+        "Phoenix",
+        "Las Vegas",
+        "Denver"
+      ],
+      "respuesta": "Albuquerque",
+      "imagen": "imagenes/franquicias/bb-albuquerque.jpg"
+    },
+    {
+      "id": 35,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la esposa de Walter?",
+      "opciones": [
+        "Skyler White",
+        "Marie Schrader",
+        "Lydia Rodarte-Quayle",
+        "Andrea Cantillo"
+      ],
+      "respuesta": "Skyler White",
+      "imagen": "imagenes/franquicias/bb-anna-gunn.jpg"
+    },
+    {
+      "id": 36,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el hijo adolescente de Walter y Skyler?",
+      "opciones": [
+        "Walter Jr.",
+        "Badger",
+        "Combo",
+        "Skinny Pete"
+      ],
+      "respuesta": "Walter Jr.",
+      "imagen": "imagenes/franquicias/bb-rj-mitte.jpg"
+    },
+    {
+      "id": 37,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué profesión tiene Saul Goodman?",
+      "opciones": [
+        "Abogado",
+        "Contador",
+        "Médico",
+        "Policía"
+      ],
+      "respuesta": "Abogado",
+      "imagen": "imagenes/franquicias/bb-bob-odenkirk.jpg"
+    },
+    {
+      "id": 38,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿Para qué agencia trabaja Hank Schrader, el cuñado de Walter?",
+      "opciones": [
+        "La DEA",
+        "El FBI",
+        "La CIA",
+        "La Policía Estatal"
+      ],
+      "respuesta": "La DEA",
+      "imagen": "imagenes/franquicias/bb-dea.jpg"
+    },
+    {
+      "id": 39,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿Dónde cocinan Walter y Jesse sus primeras tandas de metanfetamina?",
+      "opciones": [
+        "En una casa rodante",
+        "En el sótano de una casa",
+        "En el laboratorio de la escuela",
+        "En un almacén"
+      ],
+      "respuesta": "En una casa rodante",
+      "imagen": "imagenes/franquicias/bb-rv.jpg"
+    },
+    {
+      "id": 40,
+      "franquicia": "breaking-bad",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿Qué negocio de pollo frito usa Gustavo Fring como fachada?",
+      "opciones": [
+        "Los Pollos Hermanos",
+        "Pollo Dorado",
+        "Burger Mesa",
+        "Taquería del Sol"
+      ],
+      "respuesta": "Los Pollos Hermanos",
+      "imagen": "imagenes/franquicias/bb-pollos.jpg"
+    },
+    {
+      "id": 41,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es el jefe de seguridad de Gus Fring?",
+      "opciones": [
+        "Mike Ehrmantraut",
+        "Todd Alquist",
+        "Tuco Salamanca",
+        "Jack Welker"
+      ],
+      "respuesta": "Mike Ehrmantraut",
+      "imagen": "imagenes/franquicias/bb-jonathan-banks.jpg"
+    },
+    {
+      "id": 42,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué traficante de la familia Salamanca ve explotar su oficina por culpa de Walter y el fulminato de mercurio?",
+      "opciones": [
+        "Tuco Salamanca",
+        "Héctor Salamanca",
+        "Lalo Salamanca",
+        "Krazy-8"
+      ],
+      "respuesta": "Tuco Salamanca",
+      "imagen": "imagenes/franquicias/bb-raymond-cruz.jpg"
+    },
+    {
+      "id": 43,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es el anciano de la familia Salamanca que se comunica con una campana?",
+      "opciones": [
+        "Héctor Salamanca",
+        "Gustavo Fring",
+        "Mike Ehrmantraut",
+        "Hank Schrader"
+      ],
+      "respuesta": "Héctor Salamanca",
+      "imagen": "imagenes/franquicias/bb-bell.jpg"
+    },
+    {
+      "id": 44,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué trabajo tiene Todd Alquist antes de unirse al grupo de Jack?",
+      "opciones": [
+        "Exterminador de plagas",
+        "Mecánico",
+        "Cartero",
+        "Guardia de seguridad"
+      ],
+      "respuesta": "Exterminador de plagas",
+      "imagen": "imagenes/franquicias/bb-jesse-plemons.jpg"
+    },
+    {
+      "id": 45,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Profesión",
+      "pregunta": "¿Cuál es la profesión original de Gale Boetticher, el asistente de laboratorio de Walter en el superlaboratorio?",
+      "opciones": [
+        "Químico",
+        "Abogado",
+        "Contador",
+        "Cocinero"
+      ],
+      "respuesta": "Químico",
+      "imagen": "imagenes/franquicias/bb-david-costabile.jpg"
+    },
+    {
+      "id": 46,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Qué negocio compra Walter para lavar el dinero de la metanfetamina?",
+      "opciones": [
+        "Un autolavado",
+        "Un restaurante",
+        "Una lavandería",
+        "Una gasolinera"
+      ],
+      "respuesta": "Un autolavado",
+      "imagen": "imagenes/franquicias/bb-carwash.jpg"
+    },
+    {
+      "id": 47,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿A qué estado de Estados Unidos es enviado Walter para esconderse con una identidad falsa en la última temporada?",
+      "opciones": [
+        "New Hampshire",
+        "Alaska",
+        "Montana",
+        "Texas"
+      ],
+      "respuesta": "New Hampshire",
+      "imagen": "imagenes/franquicias/bb-new-hampshire.jpg"
+    },
+    {
+      "id": 48,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la casera y novia de Jesse que muere en la segunda temporada?",
+      "opciones": [
+        "Jane Margolis",
+        "Andrea Cantillo",
+        "Wendy",
+        "Skyler White"
+      ],
+      "respuesta": "Jane Margolis",
+      "imagen": "imagenes/franquicias/bb-krysten-ritter.jpg"
+    },
+    {
+      "id": 49,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la ejecutiva de Madrigal que suministra metilamina a la operación?",
+      "opciones": [
+        "Lydia Rodarte-Quayle",
+        "Marie Schrader",
+        "Skyler White",
+        "Gretchen Schwartz"
+      ],
+      "respuesta": "Lydia Rodarte-Quayle",
+      "imagen": "imagenes/franquicias/bb-office.jpg"
+    },
+    {
+      "id": 50,
+      "franquicia": "breaking-bad",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el hombre que hace desaparecer a personas dándoles una nueva identidad y trabaja disfrazado de reparador de aspiradoras?",
+      "opciones": [
+        "Ed Galbraith",
+        "Huell Babineaux",
+        "Kuby",
+        "Badger"
+      ],
+      "respuesta": "Ed Galbraith",
+      "imagen": "imagenes/franquicias/bb-robert-forster.jpg"
+    },
+    {
+      "id": 51,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cuál es el verdadero nombre de Saul Goodman?",
+      "opciones": [
+        "James «Jimmy» McGill",
+        "Charles McGill",
+        "Howard Hamlin",
+        "Gene Takavic"
+      ],
+      "respuesta": "James «Jimmy» McGill",
+      "imagen": "imagenes/franquicias/bb-bob-odenkirk.jpg"
+    },
+    {
+      "id": 52,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la bebé de Walter y Skyler?",
+      "opciones": [
+        "Holly White",
+        "Hannah White",
+        "Hope White",
+        "Heidi White"
+      ],
+      "respuesta": "Holly White",
+      "imagen": "imagenes/franquicias/bb-baby.jpg"
+    },
+    {
+      "id": 53,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Bajo qué tipo de negocio se oculta el superlaboratorio de Gus Fring?",
+      "opciones": [
+        "Una lavandería industrial",
+        "Un restaurante",
+        "Un almacén de frutas",
+        "Una fábrica de pollos"
+      ],
+      "respuesta": "Una lavandería industrial",
+      "imagen": "imagenes/franquicias/bb-laundry.jpg"
+    },
+    {
+      "id": 54,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Dónde muere Walter White en el último episodio?",
+      "opciones": [
+        "En un laboratorio de metanfetamina",
+        "En su casa de Albuquerque",
+        "En un hospital",
+        "En el desierto"
+      ],
+      "respuesta": "En un laboratorio de metanfetamina",
+      "imagen": "imagenes/franquicias/bb-meth-lab.jpg"
+    },
+    {
+      "id": 55,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿A qué personaje mata Gus Fring con un cúter para dar una lección a Walter y Jesse?",
+      "opciones": [
+        "Víctor",
+        "Gale Boetticher",
+        "Mike Ehrmantraut",
+        "Tyrus Kitt"
+      ],
+      "respuesta": "Víctor",
+      "imagen": "imagenes/franquicias/bb-giancarlo-esposito.jpg"
+    },
+    {
+      "id": 56,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién activa la bomba que mata a Gus Fring en la residencia de ancianos?",
+      "opciones": [
+        "Héctor Salamanca",
+        "Walter White",
+        "Mike Ehrmantraut",
+        "Jesse Pinkman"
+      ],
+      "respuesta": "Héctor Salamanca",
+      "imagen": "imagenes/franquicias/bb-nursing-home.jpg"
+    },
+    {
+      "id": 57,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es el jefe del cártel al que Gus Fring envenena en una villa de México?",
+      "opciones": [
+        "Don Eladio",
+        "Héctor Salamanca",
+        "Tuco Salamanca",
+        "Max Arciniega"
+      ],
+      "respuesta": "Don Eladio",
+      "imagen": "imagenes/franquicias/bb-steven-bauer.jpg"
+    },
+    {
+      "id": 58,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué trabajo hace Skyler White para la empresa de Ted Beneke?",
+      "opciones": [
+        "Contable",
+        "Secretaria",
+        "Recepcionista",
+        "Vendedora"
+      ],
+      "respuesta": "Contable",
+      "imagen": "imagenes/franquicias/bb-accountant.jpg"
+    },
+    {
+      "id": 59,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué profesión tenía Mike Ehrmantraut en Filadelfia antes de trabajar para criminales?",
+      "opciones": [
+        "Policía",
+        "Médico",
+        "Soldado",
+        "Guardia de prisión"
+      ],
+      "respuesta": "Policía",
+      "imagen": "imagenes/franquicias/bb-jonathan-banks.jpg"
+    },
+    {
+      "id": 60,
+      "franquicia": "breaking-bad",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es el socio con quien Walter fundó la empresa Gray Matter?",
+      "opciones": [
+        "Elliott Schwartz",
+        "Ted Beneke",
+        "Gale Boetticher",
+        "Hank Schrader"
+      ],
+      "respuesta": "Elliott Schwartz",
+      "imagen": "imagenes/franquicias/bb-adam-godley.jpg"
+    },
+    {
+      "id": 61,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿A qué casa noble pertenece Ned, el señor de Invernalia?",
+      "opciones": [
+        "Casa Stark",
+        "Casa Lannister",
+        "Casa Targaryen",
+        "Casa Baratheon"
+      ],
+      "respuesta": "Casa Stark",
+      "imagen": "imagenes/franquicias/got-castle-ward.jpg"
+    },
+    {
+      "id": 62,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el hijo bastardo de Ned Stark, criado en Invernalia?",
+      "opciones": [
+        "Jon Snow",
+        "Theon Greyjoy",
+        "Gendry",
+        "Ramsay Bolton"
+      ],
+      "respuesta": "Jon Snow",
+      "imagen": "imagenes/franquicias/got-kit-harington.jpg"
+    },
+    {
+      "id": 63,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es conocida como la Madre de Dragones?",
+      "opciones": [
+        "Daenerys Targaryen",
+        "Cersei Lannister",
+        "Sansa Stark",
+        "Arya Stark"
+      ],
+      "respuesta": "Daenerys Targaryen",
+      "imagen": "imagenes/franquicias/got-emilia-clarke.jpg"
+    },
+    {
+      "id": 64,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el hermano gemelo de Cersei Lannister?",
+      "opciones": [
+        "Jaime Lannister",
+        "Tyrion Lannister",
+        "Joffrey Baratheon",
+        "Tywin Lannister"
+      ],
+      "respuesta": "Jaime Lannister",
+      "imagen": "imagenes/franquicias/got-coster-waldau.jpg"
+    },
+    {
+      "id": 65,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué personaje es conocido como «La Montaña» por su enorme tamaño?",
+      "opciones": [
+        "Gregor Clegane",
+        "Sandor Clegane",
+        "Brienne de Tarth",
+        "Jorah Mormont"
+      ],
+      "respuesta": "Gregor Clegane",
+      "imagen": "imagenes/franquicias/got-hafthor.jpg"
+    },
+    {
+      "id": 66,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama la gigantesca muralla de hielo que protege el norte de Poniente?",
+      "opciones": [
+        "El Muro",
+        "Roca Casterly",
+        "Rocadragón",
+        "Harrenhal"
+      ],
+      "respuesta": "El Muro",
+      "imagen": "imagenes/franquicias/got-wall.jpg"
+    },
+    {
+      "id": 67,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama la capital de los Siete Reinos?",
+      "opciones": [
+        "Desembarco del Rey",
+        "Invernalia",
+        "Altojardín",
+        "Dorne"
+      ],
+      "respuesta": "Desembarco del Rey",
+      "imagen": "imagenes/franquicias/got-dubrovnik.jpg"
+    },
+    {
+      "id": 68,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿A qué orden se une Jon Snow al comienzo de la serie?",
+      "opciones": [
+        "La Guardia de la Noche",
+        "La Guardia Real",
+        "Los Inmaculados",
+        "Los Hermanos sin Estandartes"
+      ],
+      "respuesta": "La Guardia de la Noche",
+      "imagen": "imagenes/franquicias/got-iceland.jpg"
+    },
+    {
+      "id": 69,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué cargo ocupa Ned Stark cuando viaja a Desembarco del Rey a pedido del rey Robert?",
+      "opciones": [
+        "Mano del Rey",
+        "Maestre",
+        "Gran Septón",
+        "Senescal"
+      ],
+      "respuesta": "Mano del Rey",
+      "imagen": "imagenes/franquicias/got-sean-bean.jpg"
+    },
+    {
+      "id": 70,
+      "franquicia": "game-of-thrones",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué estudia Samwell Tarly en la Ciudadela?",
+      "opciones": [
+        "Para ser maestre",
+        "Para ser septón",
+        "Para ser caballero",
+        "Para ser herrero"
+      ],
+      "respuesta": "Para ser maestre",
+      "imagen": "imagenes/franquicias/got-john-bradley.jpg"
+    },
+    {
+      "id": 71,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es la hermana menor de los Stark que entrena para ser una Sin Rostro?",
+      "opciones": [
+        "Arya Stark",
+        "Sansa Stark",
+        "Brienne de Tarth",
+        "Yara Greyjoy"
+      ],
+      "respuesta": "Arya Stark",
+      "imagen": "imagenes/franquicias/got-maisie-williams.jpg"
+    },
+    {
+      "id": 72,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué joven rey cruel muere envenenado durante su banquete de bodas?",
+      "opciones": [
+        "Joffrey Baratheon",
+        "Tommen Baratheon",
+        "Robert Baratheon",
+        "Stannis Baratheon"
+      ],
+      "respuesta": "Joffrey Baratheon",
+      "imagen": "imagenes/franquicias/got-jack-gleeson.jpg"
+    },
+    {
+      "id": 73,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es conocida como «La Moza de Tarth» y jura proteger a Catelyn y luego a Sansa?",
+      "opciones": [
+        "Brienne de Tarth",
+        "Arya Stark",
+        "Yara Greyjoy",
+        "Ygritte"
+      ],
+      "respuesta": "Brienne de Tarth",
+      "imagen": "imagenes/franquicias/got-gwendoline-christie.jpg"
+    },
+    {
+      "id": 74,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llaman los tres dragones de Daenerys?",
+      "opciones": [
+        "Drogon, Rhaegal y Viserion",
+        "Balerion, Vhagar y Meraxes",
+        "Drogon, Syrax y Caraxes",
+        "Rhaegal, Vermithor y Viserion"
+      ],
+      "respuesta": "Drogon, Rhaegal y Viserion",
+      "imagen": "imagenes/franquicias/got-dragon.jpg"
+    },
+    {
+      "id": 75,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Cuál es la sede ancestral de la Casa Lannister?",
+      "opciones": [
+        "Roca Casterly",
+        "Rocadragón",
+        "Aguasdulces",
+        "Los Gemelos"
+      ],
+      "respuesta": "Roca Casterly",
+      "imagen": "imagenes/franquicias/got-gibraltar.jpg"
+    },
+    {
+      "id": 76,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama la isla fortaleza que fue sede de los Targaryen antes de la Rebelión de Robert?",
+      "opciones": [
+        "Rocadragón",
+        "Pyke",
+        "Roca Casterly",
+        "Isla del Oso"
+      ],
+      "respuesta": "Rocadragón",
+      "imagen": "imagenes/franquicias/got-gaztelugatxe.jpg"
+    },
+    {
+      "id": 77,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Dónde se celebra la boda que termina en la matanza conocida como la Boda Roja?",
+      "opciones": [
+        "Los Gemelos",
+        "Invernalia",
+        "Aguasdulces",
+        "Harrenhal"
+      ],
+      "respuesta": "Los Gemelos",
+      "imagen": "imagenes/franquicias/got-doune.jpg"
+    },
+    {
+      "id": 78,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Profesión",
+      "pregunta": "¿A qué se dedicaba Davos Seaworth antes de servir a Stannis Baratheon?",
+      "opciones": [
+        "Contrabandista",
+        "Herrero",
+        "Pescador",
+        "Soldado"
+      ],
+      "respuesta": "Contrabandista",
+      "imagen": "imagenes/franquicias/got-liam-cunningham.jpg"
+    },
+    {
+      "id": 79,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Profesión",
+      "pregunta": "¿A qué oficio se dedica Gendry cuando conoce a Arya?",
+      "opciones": [
+        "Herrero",
+        "Soldado",
+        "Mercader",
+        "Panadero"
+      ],
+      "respuesta": "Herrero",
+      "imagen": "imagenes/franquicias/got-joe-dempsie.jpg"
+    },
+    {
+      "id": 80,
+      "franquicia": "game-of-thrones",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el lobo huargo de Jon Snow?",
+      "opciones": [
+        "Fantasma",
+        "Viento Gris",
+        "Verano",
+        "Nymeria"
+      ],
+      "respuesta": "Fantasma",
+      "imagen": "imagenes/franquicias/got-wolf.jpg"
+    },
+    {
+      "id": 81,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se conoce al rey Aerys II Targaryen, padre de Viserys y Daenerys?",
+      "opciones": [
+        "El Rey Loco",
+        "El Rey Mendigo",
+        "El Rey Cuervo",
+        "El Rey Niño"
+      ],
+      "respuesta": "El Rey Loco",
+      "imagen": "imagenes/franquicias/got-iron-throne.jpg"
+    },
+    {
+      "id": 82,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién derrota al Rey de la Noche en la Batalla de Invernalia?",
+      "opciones": [
+        "Arya Stark",
+        "Jon Snow",
+        "Bran Stark",
+        "Daenerys Targaryen"
+      ],
+      "respuesta": "Arya Stark",
+      "imagen": "imagenes/franquicias/got-castle-ward.jpg"
+    },
+    {
+      "id": 83,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es en realidad el padre de Jon Snow?",
+      "opciones": [
+        "Rhaegar Targaryen",
+        "Eddard Stark",
+        "Robert Baratheon",
+        "Benjen Stark"
+      ],
+      "respuesta": "Rhaegar Targaryen",
+      "imagen": "imagenes/franquicias/got-kit-harington.jpg"
+    },
+    {
+      "id": 84,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la espada de acero valyrio de la Casa Stark?",
+      "opciones": [
+        "Hielo",
+        "Garra",
+        "Aguja",
+        "Lamento de Viudas"
+      ],
+      "respuesta": "Hielo",
+      "imagen": "imagenes/franquicias/got-sword.jpg"
+    },
+    {
+      "id": 85,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Dónde se encuentra la Ciudadela, la sede de los maestres?",
+      "opciones": [
+        "Antigua",
+        "Lannisport",
+        "Braavos",
+        "Pentos"
+      ],
+      "respuesta": "Antigua",
+      "imagen": "imagenes/franquicias/got-library.jpg"
+    },
+    {
+      "id": 86,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué ciudad libre se encuentra la Casa del Blanco y el Negro?",
+      "opciones": [
+        "Braavos",
+        "Pentos",
+        "Volantis",
+        "Qarth"
+      ],
+      "respuesta": "Braavos",
+      "imagen": "imagenes/franquicias/got-venice.jpg"
+    },
+    {
+      "id": 87,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama la capital de Dorne?",
+      "opciones": [
+        "Lanza del Sol",
+        "Antigua",
+        "Altojardín",
+        "Harrenhal"
+      ],
+      "respuesta": "Lanza del Sol",
+      "imagen": "imagenes/franquicias/got-alcazar.jpg"
+    },
+    {
+      "id": 88,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la sacerdotisa roja que sirve al Señor de la Luz y acompaña a Stannis?",
+      "opciones": [
+        "Melisandre",
+        "Mirri Maz Duur",
+        "Ygritte",
+        "Shae"
+      ],
+      "respuesta": "Melisandre",
+      "imagen": "imagenes/franquicias/got-carice.jpg"
+    },
+    {
+      "id": 89,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué cargo ocupa Barristan Selmy antes de aconsejar a Daenerys?",
+      "opciones": [
+        "Lord Comandante de la Guardia Real",
+        "Mano del Rey",
+        "Maestre",
+        "Guardián del Norte"
+      ],
+      "respuesta": "Lord Comandante de la Guardia Real",
+      "imagen": "imagenes/franquicias/got-mcelhinney.jpg"
+    },
+    {
+      "id": 90,
+      "franquicia": "game-of-thrones",
+      "nivel": "experto",
+      "tipo": "Profesión",
+      "pregunta": "¿A qué se dedica Hodor en Invernalia?",
+      "opciones": [
+        "Mozo de cuadra",
+        "Herrero",
+        "Soldado",
+        "Cocinero"
+      ],
+      "respuesta": "Mozo de cuadra",
+      "imagen": "imagenes/franquicias/got-kristian-nairn.jpg"
+    },
+    {
+      "id": 91,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama el pueblo donde transcurre la serie?",
+      "opciones": [
+        "Hawkins",
+        "Derry",
+        "Haddonfield",
+        "Twin Peaks"
+      ],
+      "respuesta": "Hawkins",
+      "imagen": "imagenes/franquicias/st-small-town.jpg"
+    },
+    {
+      "id": 92,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la niña con poderes telequinéticos, conocida también como Once?",
+      "opciones": [
+        "Eleven",
+        "Max",
+        "Nancy",
+        "Robin"
+      ],
+      "respuesta": "Eleven",
+      "imagen": "imagenes/franquicias/st-millie.jpg"
+    },
+    {
+      "id": 93,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué niño desaparece al comienzo de la primera temporada?",
+      "opciones": [
+        "Will Byers",
+        "Mike Wheeler",
+        "Dustin Henderson",
+        "Lucas Sinclair"
+      ],
+      "respuesta": "Will Byers",
+      "imagen": "imagenes/franquicias/st-noah-schnapp.jpg"
+    },
+    {
+      "id": 94,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la madre de Will, que intenta comunicarse con él mediante luces?",
+      "opciones": [
+        "Joyce Byers",
+        "Karen Wheeler",
+        "Susan Hargrove",
+        "Claudia Henderson"
+      ],
+      "respuesta": "Joyce Byers",
+      "imagen": "imagenes/franquicias/st-winona.jpg"
+    },
+    {
+      "id": 95,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el jefe de policía de Hawkins?",
+      "opciones": [
+        "Jim Hopper",
+        "Steve Harrington",
+        "Billy Hargrove",
+        "Bob Newby"
+      ],
+      "respuesta": "Jim Hopper",
+      "imagen": "imagenes/franquicias/st-david-harbour.jpg"
+    },
+    {
+      "id": 96,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué trabajo tiene Joyce Byers al inicio de la serie?",
+      "opciones": [
+        "Cajera en una tienda",
+        "Enfermera",
+        "Maestra",
+        "Policía"
+      ],
+      "respuesta": "Cajera en una tienda",
+      "imagen": "imagenes/franquicias/st-cashier.jpg"
+    },
+    {
+      "id": 97,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el monstruo que aparece en la primera temporada?",
+      "opciones": [
+        "Demogorgon",
+        "Mind Flayer",
+        "Vecna",
+        "Demodog"
+      ],
+      "respuesta": "Demogorgon",
+      "imagen": "imagenes/franquicias/st-demogorgon.jpg"
+    },
+    {
+      "id": 98,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama la dimensión oscura paralela a Hawkins?",
+      "opciones": [
+        "El Mundo del Revés",
+        "La Dimensión Espejo",
+        "El Limbo",
+        "La Zona Gris"
+      ],
+      "respuesta": "El Mundo del Revés",
+      "imagen": "imagenes/franquicias/st-upside-down.jpg"
+    },
+    {
+      "id": 99,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama el laboratorio del gobierno donde experimentan con Eleven?",
+      "opciones": [
+        "Laboratorio Nacional de Hawkins",
+        "Área 51",
+        "Los Álamos",
+        "Fort Knox"
+      ],
+      "respuesta": "Laboratorio Nacional de Hawkins",
+      "imagen": "imagenes/franquicias/st-lab.jpg"
+    },
+    {
+      "id": 100,
+      "franquicia": "stranger-things",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el doctor que dirige los experimentos con Eleven y a quien ella llama «Papá»?",
+      "opciones": [
+        "Dr. Martin Brenner",
+        "Dr. Sam Owens",
+        "Jim Hopper",
+        "Victor Creel"
+      ],
+      "respuesta": "Dr. Martin Brenner",
+      "imagen": "imagenes/franquicias/st-matthew-modine.jpg"
+    },
+    {
+      "id": 101,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es el amigo del grupo que siempre usa una gorra y se une a Mike en sus partidas de Calabozos y Dragones?",
+      "opciones": [
+        "Dustin Henderson",
+        "Lucas Sinclair",
+        "Will Byers",
+        "Eddie Munson"
+      ],
+      "respuesta": "Dustin Henderson",
+      "imagen": "imagenes/franquicias/st-gaten.jpg"
+    },
+    {
+      "id": 102,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la chica pelirroja que se une al grupo en la segunda temporada y anda en patineta?",
+      "opciones": [
+        "Max Mayfield",
+        "Nancy Wheeler",
+        "Robin Buckley",
+        "Erica Sinclair"
+      ],
+      "respuesta": "Max Mayfield",
+      "imagen": "imagenes/franquicias/st-sadie-sink.jpg"
+    },
+    {
+      "id": 103,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el agresivo hermanastro de Max?",
+      "opciones": [
+        "Billy Hargrove",
+        "Steve Harrington",
+        "Jonathan Byers",
+        "Mike Wheeler"
+      ],
+      "respuesta": "Billy Hargrove",
+      "imagen": "imagenes/franquicias/st-dacre.jpg"
+    },
+    {
+      "id": 104,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el hermano mayor de Will, aficionado a la fotografía?",
+      "opciones": [
+        "Jonathan Byers",
+        "Steve Harrington",
+        "Billy Hargrove",
+        "Mike Wheeler"
+      ],
+      "respuesta": "Jonathan Byers",
+      "imagen": "imagenes/franquicias/st-charlie-heaton.jpg"
+    },
+    {
+      "id": 105,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Dónde trabajan Steve y Robin durante el verano de la tercera temporada, en el centro comercial?",
+      "opciones": [
+        "En la heladería Scoops Ahoy",
+        "En un cine",
+        "En una tienda de ropa",
+        "En una juguetería"
+      ],
+      "respuesta": "En la heladería Scoops Ahoy",
+      "imagen": "imagenes/franquicias/st-icecream.jpg"
+    },
+    {
+      "id": 106,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama el centro comercial inaugurado en Hawkins durante la tercera temporada?",
+      "opciones": [
+        "Starcourt Mall",
+        "Hawkins Plaza",
+        "Galleria Hawkins",
+        "Westgate Mall"
+      ],
+      "respuesta": "Starcourt Mall",
+      "imagen": "imagenes/franquicias/st-mall.jpg"
+    },
+    {
+      "id": 107,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el periodista conspiranoico que ayuda a Hopper y Joyce?",
+      "opciones": [
+        "Murray Bauman",
+        "Dr. Owens",
+        "Yuri Ismaylov",
+        "Victor Creel"
+      ],
+      "respuesta": "Murray Bauman",
+      "imagen": "imagenes/franquicias/st-brett-gelman.jpg"
+    },
+    {
+      "id": 108,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la mejor amiga de Nancy que desaparece en la primera temporada?",
+      "opciones": [
+        "Barb Holland",
+        "Robin Buckley",
+        "Max Mayfield",
+        "Vickie"
+      ],
+      "respuesta": "Barb Holland",
+      "imagen": "imagenes/franquicias/st-shannon-purser.jpg"
+    },
+    {
+      "id": 109,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Profesión",
+      "pregunta": "¿Dónde trabaja Bob Newby, el novio de Joyce, en la segunda temporada?",
+      "opciones": [
+        "En RadioShack",
+        "En la comisaría",
+        "En una escuela",
+        "En el hospital"
+      ],
+      "respuesta": "En RadioShack",
+      "imagen": "imagenes/franquicias/st-radioshack.jpg"
+    },
+    {
+      "id": 110,
+      "franquicia": "stranger-things",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama el videoclub donde trabajan Steve y Robin en la cuarta temporada?",
+      "opciones": [
+        "Family Video",
+        "Blockbuster",
+        "Hollywood Video",
+        "Movie Gallery"
+      ],
+      "respuesta": "Family Video",
+      "imagen": "imagenes/franquicias/st-family-video.jpg"
+    },
+    {
+      "id": 111,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el villano principal de la cuarta temporada?",
+      "opciones": [
+        "Vecna",
+        "Demogorgon",
+        "Mind Flayer",
+        "Dr. Brenner"
+      ],
+      "respuesta": "Vecna",
+      "imagen": "imagenes/franquicias/st-jamie-bower.jpg"
+    },
+    {
+      "id": 112,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cuál es el verdadero nombre de Vecna?",
+      "opciones": [
+        "Henry Creel",
+        "Victor Creel",
+        "Martin Brenner",
+        "Edward Munson"
+      ],
+      "respuesta": "Henry Creel",
+      "imagen": "imagenes/franquicias/st-jamie-bower.jpg"
+    },
+    {
+      "id": 113,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué nombre de pila recibe Eleven al nacer, según la serie?",
+      "opciones": [
+        "Jane Ives",
+        "Jane Hopper",
+        "Jane Byers",
+        "Jane Creel"
+      ],
+      "respuesta": "Jane Ives",
+      "imagen": "imagenes/franquicias/st-millie-2.jpg"
+    },
+    {
+      "id": 114,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es el líder del club Hellfire en la cuarta temporada?",
+      "opciones": [
+        "Eddie Munson",
+        "Jason Carver",
+        "Argyle",
+        "Patrick McKinney"
+      ],
+      "respuesta": "Eddie Munson",
+      "imagen": "imagenes/franquicias/st-joseph-quinn.jpg"
+    },
+    {
+      "id": 115,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es la primera víctima de Vecna en la cuarta temporada?",
+      "opciones": [
+        "Chrissy Cunningham",
+        "Fred Benson",
+        "Patrick McKinney",
+        "Max Mayfield"
+      ],
+      "respuesta": "Chrissy Cunningham",
+      "imagen": "imagenes/franquicias/st-grace-van-dien.jpg"
+    },
+    {
+      "id": 116,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué ciudad de California viven los Byers y Eleven tras mudarse al final de la tercera temporada?",
+      "opciones": [
+        "Lenora",
+        "Hawkins",
+        "Santa Mónica",
+        "San Diego"
+      ],
+      "respuesta": "Lenora",
+      "imagen": "imagenes/franquicias/st-california.jpg"
+    },
+    {
+      "id": 117,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué país mantienen prisionero a Hopper en la cuarta temporada?",
+      "opciones": [
+        "Rusia (Unión Soviética)",
+        "Alemania Oriental",
+        "Polonia",
+        "Ucrania"
+      ],
+      "respuesta": "Rusia (Unión Soviética)",
+      "imagen": "imagenes/franquicias/st-gulag.jpg"
+    },
+    {
+      "id": 118,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Profesión",
+      "pregunta": "¿Para qué departamento trabaja el Dr. Sam Owens?",
+      "opciones": [
+        "El Departamento de Energía",
+        "El FBI",
+        "La CIA",
+        "El Pentágono"
+      ],
+      "respuesta": "El Departamento de Energía",
+      "imagen": "imagenes/franquicias/st-doe.jpg"
+    },
+    {
+      "id": 119,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Profesión",
+      "pregunta": "¿Dónde hace prácticas Nancy Wheeler en la tercera temporada?",
+      "opciones": [
+        "En el periódico Hawkins Post",
+        "En la radio local",
+        "En el hospital",
+        "En la comisaría"
+      ],
+      "respuesta": "En el periódico Hawkins Post",
+      "imagen": "imagenes/franquicias/st-newspaper.jpg"
+    },
+    {
+      "id": 120,
+      "franquicia": "stranger-things",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la chica del laboratorio conocida con el número 008?",
+      "opciones": [
+        "Kali",
+        "Max",
+        "Robin",
+        "Erica"
+      ],
+      "respuesta": "Kali",
+      "imagen": "imagenes/franquicias/st-chicago.jpg"
+    },
+    {
+      "id": 121,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el protagonista adulto que debe escoltar a Ellie?",
+      "opciones": [
+        "Joel Miller",
+        "Tommy Miller",
+        "David",
+        "Bill"
+      ],
+      "respuesta": "Joel Miller",
+      "imagen": "imagenes/franquicias/tlou-pedro-pascal.jpg"
+    },
+    {
+      "id": 122,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la adolescente inmune a la infección?",
+      "opciones": [
+        "Ellie",
+        "Sarah",
+        "Tess",
+        "Marlene"
+      ],
+      "respuesta": "Ellie",
+      "imagen": "imagenes/franquicias/tlou-bella-ramsey.jpg"
+    },
+    {
+      "id": 123,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la hija de Joel que muere durante el inicio del brote?",
+      "opciones": [
+        "Sarah",
+        "Ellie",
+        "Riley",
+        "Maria"
+      ],
+      "respuesta": "Sarah",
+      "imagen": "imagenes/franquicias/tlou-nico-parker.png"
+    },
+    {
+      "id": 124,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿A qué se dedicaba Joel antes del brote?",
+      "opciones": [
+        "Trabajaba en la construcción",
+        "Era médico",
+        "Era policía",
+        "Era profesor"
+      ],
+      "respuesta": "Trabajaba en la construcción",
+      "imagen": "imagenes/franquicias/tlou-construction.jpg"
+    },
+    {
+      "id": 125,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el hermano menor de Joel?",
+      "opciones": [
+        "Tommy",
+        "Henry",
+        "Sam",
+        "David"
+      ],
+      "respuesta": "Tommy",
+      "imagen": "imagenes/franquicias/tlou-gabriel-luna.jpg"
+    },
+    {
+      "id": 126,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué ciudad de Texas vive Joel con su familia cuando comienza el brote?",
+      "opciones": [
+        "Austin",
+        "Dallas",
+        "Houston",
+        "San Antonio"
+      ],
+      "respuesta": "Austin",
+      "imagen": "imagenes/franquicias/tlou-austin.jpg"
+    },
+    {
+      "id": 127,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué ciudad se encuentra la zona de cuarentena donde empieza el viaje de Joel y Ellie?",
+      "opciones": [
+        "Boston",
+        "Chicago",
+        "Seattle",
+        "Denver"
+      ],
+      "respuesta": "Boston",
+      "imagen": "imagenes/franquicias/tlou-boston.jpg"
+    },
+    {
+      "id": 128,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Lugar",
+      "pregunta": "¿A qué ciudad viajan Joel y Ellie para encontrar al final a las Luciérnagas en un hospital?",
+      "opciones": [
+        "Salt Lake City",
+        "Los Ángeles",
+        "Denver",
+        "Nueva York"
+      ],
+      "respuesta": "Salt Lake City",
+      "imagen": "imagenes/franquicias/tlou-slc.jpg"
+    },
+    {
+      "id": 129,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la líder de las Luciérnagas que le pide a Joel que lleve a Ellie?",
+      "opciones": [
+        "Marlene",
+        "Tess",
+        "Maria",
+        "Anna"
+      ],
+      "respuesta": "Marlene",
+      "imagen": "imagenes/franquicias/tlou-firefly.jpg"
+    },
+    {
+      "id": 130,
+      "franquicia": "the-last-of-us",
+      "nivel": "facil",
+      "tipo": "Profesión",
+      "pregunta": "¿A qué se dedican Joel y Tess en la zona de cuarentena de Boston?",
+      "opciones": [
+        "Contrabandistas",
+        "Médicos",
+        "Soldados",
+        "Maestros"
+      ],
+      "respuesta": "Contrabandistas",
+      "imagen": "imagenes/franquicias/tlou-anna-torv.jpg"
+    },
+    {
+      "id": 131,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la mejor amiga de Ellie en el capítulo «Left Behind»?",
+      "opciones": [
+        "Riley",
+        "Tess",
+        "Dina",
+        "Abby"
+      ],
+      "respuesta": "Riley",
+      "imagen": "imagenes/franquicias/tlou-storm-reid.jpg"
+    },
+    {
+      "id": 132,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama el superviviente paranoico, experto en trampas, que ayuda a Joel y Ellie en un pueblo abandonado?",
+      "opciones": [
+        "Bill",
+        "Frank",
+        "Henry",
+        "David"
+      ],
+      "respuesta": "Bill",
+      "imagen": "imagenes/franquicias/tlou-nick-offerman.jpg"
+    },
+    {
+      "id": 133,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llaman los dos hermanos que Joel y Ellie conocen en una ciudad de Pensilvania?",
+      "opciones": [
+        "Henry y Sam",
+        "Bill y Frank",
+        "Tommy y Maria",
+        "Joel y Sarah"
+      ],
+      "respuesta": "Henry y Sam",
+      "imagen": "imagenes/franquicias/tlou-lamar-johnson.jpg"
+    },
+    {
+      "id": 134,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién lidera al grupo de caníbales durante el invierno?",
+      "opciones": [
+        "David",
+        "James",
+        "Marlene",
+        "Bill"
+      ],
+      "respuesta": "David",
+      "imagen": "imagenes/franquicias/tlou-scott-shepherd.png"
+    },
+    {
+      "id": 135,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿Cómo se llama la próspera comunidad de Wyoming donde vive Tommy?",
+      "opciones": [
+        "Jackson",
+        "Salt Lake City",
+        "Boston",
+        "Pittsburgh"
+      ],
+      "respuesta": "Jackson",
+      "imagen": "imagenes/franquicias/tlou-jackson-wy.jpg"
+    },
+    {
+      "id": 136,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Lugar",
+      "pregunta": "¿A qué ciudad viajan Ellie y Dina en busca de venganza en The Last of Us Part II?",
+      "opciones": [
+        "Seattle",
+        "Portland",
+        "Boston",
+        "Santa Bárbara"
+      ],
+      "respuesta": "Seattle",
+      "imagen": "imagenes/franquicias/tlou-seattle.jpg"
+    },
+    {
+      "id": 137,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué profesión tenía Jerry Anderson, el padre de Abby?",
+      "opciones": [
+        "Cirujano",
+        "Soldado",
+        "Ingeniero",
+        "Profesor"
+      ],
+      "respuesta": "Cirujano",
+      "imagen": "imagenes/franquicias/tlou-surgeon.jpg"
+    },
+    {
+      "id": 138,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la novia de Ellie en The Last of Us Part II?",
+      "opciones": [
+        "Dina",
+        "Riley",
+        "Abby",
+        "Lev"
+      ],
+      "respuesta": "Dina",
+      "imagen": "imagenes/franquicias/tlou-isabela-merced.jpg"
+    },
+    {
+      "id": 139,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Personaje",
+      "pregunta": "¿Quién es la protagonista jugable de la segunda mitad de The Last of Us Part II?",
+      "opciones": [
+        "Abby",
+        "Ellie",
+        "Dina",
+        "Yara"
+      ],
+      "respuesta": "Abby",
+      "imagen": "imagenes/franquicias/tlou-kaitlyn-dever.jpg"
+    },
+    {
+      "id": 140,
+      "franquicia": "the-last-of-us",
+      "nivel": "intermedio",
+      "tipo": "Profesión",
+      "pregunta": "¿A qué milicia pertenece Abby en Seattle?",
+      "opciones": [
+        "Frente de Liberación de Washington (WLF)",
+        "FEDRA",
+        "Las Luciérnagas",
+        "Los Serafitas"
+      ],
+      "respuesta": "Frente de Liberación de Washington (WLF)",
+      "imagen": "imagenes/franquicias/tlou-wa-flag.png"
+    },
+    {
+      "id": 141,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué joven serafita ayuda a Abby en su camino?",
+      "opciones": [
+        "Lev",
+        "Jesse",
+        "Owen",
+        "Manny"
+      ],
+      "respuesta": "Lev",
+      "imagen": "imagenes/franquicias/tlou-space-needle.jpg"
+    },
+    {
+      "id": 142,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la hermana de Lev?",
+      "opciones": [
+        "Yara",
+        "Mel",
+        "Nora",
+        "Lily"
+      ],
+      "respuesta": "Yara",
+      "imagen": "imagenes/franquicias/tlou-archery.jpg"
+    },
+    {
+      "id": 143,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la madre de Ellie?",
+      "opciones": [
+        "Anna",
+        "Marlene",
+        "Maria",
+        "Riley"
+      ],
+      "respuesta": "Anna",
+      "imagen": "imagenes/franquicias/tlou-ashley-johnson.jpg"
+    },
+    {
+      "id": 144,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Qué grupo religioso, al que los demás llaman «Cicatrices», habita en Seattle?",
+      "opciones": [
+        "Los Serafitas",
+        "Los Lobos del WLF",
+        "Las Luciérnagas",
+        "FEDRA"
+      ],
+      "respuesta": "Los Serafitas",
+      "imagen": "imagenes/franquicias/tlou-seattle-waterfront.jpg"
+    },
+    {
+      "id": 145,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué estado de Estados Unidos se encuentra Jackson, la comunidad de Tommy?",
+      "opciones": [
+        "Wyoming",
+        "Montana",
+        "Utah",
+        "Colorado"
+      ],
+      "respuesta": "Wyoming",
+      "imagen": "imagenes/franquicias/tlou-jackson-wy.jpg"
+    },
+    {
+      "id": 146,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Lugar",
+      "pregunta": "¿En qué pueblo de Massachusetts viven Bill y Frank?",
+      "opciones": [
+        "Lincoln",
+        "Pittsburgh",
+        "Jackson",
+        "Salt Lake City"
+      ],
+      "respuesta": "Lincoln",
+      "imagen": "imagenes/franquicias/tlou-lincoln-ma.jpg"
+    },
+    {
+      "id": 147,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la pareja de Bill en la serie de HBO?",
+      "opciones": [
+        "Frank",
+        "Henry",
+        "Tommy",
+        "David"
+      ],
+      "respuesta": "Frank",
+      "imagen": "imagenes/franquicias/tlou-murray-bartlett.jpg"
+    },
+    {
+      "id": 148,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Profesión",
+      "pregunta": "¿Qué profesión tiene Mel, integrante del grupo de Abby?",
+      "opciones": [
+        "Médica",
+        "Soldado",
+        "Ingeniera",
+        "Exploradora"
+      ],
+      "respuesta": "Médica",
+      "imagen": "imagenes/franquicias/tlou-doctor.jpg"
+    },
+    {
+      "id": 149,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cómo se llama la figura religiosa que fundó el culto de los Serafitas?",
+      "opciones": [
+        "La Profeta",
+        "Yara",
+        "Anna",
+        "Marlene"
+      ],
+      "respuesta": "La Profeta",
+      "imagen": "imagenes/franquicias/tlou-church-ruins.jpg"
+    },
+    {
+      "id": 150,
+      "franquicia": "the-last-of-us",
+      "nivel": "experto",
+      "tipo": "Personaje",
+      "pregunta": "¿Cuál es el nombre completo de Ellie?",
+      "opciones": [
+        "Ellie Williams",
+        "Ellie Miller",
+        "Ellie Anderson",
+        "Ellie Marlene"
+      ],
+      "respuesta": "Ellie Williams",
+      "imagen": "imagenes/franquicias/tlou-bella-ramsey.jpg"
+    }
+  ]
+}

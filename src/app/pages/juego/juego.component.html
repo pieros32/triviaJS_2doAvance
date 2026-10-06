@@ -1,0 +1,26 @@
+<p *ngIf="cargando" class="estado-carga">Cargando preguntas…</p>
+
+<ng-container *ngIf="error">
+  <app-error-carga [titulo]="error.titulo" [mensaje]="error.mensaje" />
+  <a class="btn-accion btn-secundario" routerLink="/">Volver al inicio</a>
+</ng-container>
+
+<!-- "quiz.preguntaActual as pregunta" crea una variable local solo si hay una pregunta activa -->
+<ng-container *ngIf="!cargando && !error && quiz.preguntaActual as pregunta">
+  <app-barra-estado
+    [nivel]="quiz.nivel"
+    [numero]="quiz.indice + 1"
+    [total]="quiz.total"
+    [puntaje]="quiz.puntaje"
+  />
+
+  <app-tarjeta-pregunta
+    [pregunta]="pregunta"
+    [opciones]="quiz.opcionesActuales"
+    [seleccionada]="seleccionada"
+    [respondida]="respondida"
+    [mensaje]="mensaje"
+    (elegir)="elegirOpcion($event)"
+    (siguiente)="siguientePregunta()"
+  />
+</ng-container>

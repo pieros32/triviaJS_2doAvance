@@ -1,0 +1,41 @@
+<article class="tarjeta-trivia arena-cuestionario">
+
+  <!-- Columna izquierda: categoría e imagen -->
+  <div class="col-visual-trivia">
+    <div class="insignia-categoria" id="tipoPregunta">{{ pregunta.tipo }}</div>
+    <div class="marco-imagen">
+      <img alt="Imagen representativa de la pregunta" id="imagenPregunta" [src]="pregunta.imagen" />
+    </div>
+  </div>
+
+  <!-- Columna derecha: pregunta, opciones, resultado y botón -->
+  <div class="col-contenido-trivia">
+    <h2 id="pregunta">{{ pregunta.pregunta }}</h2>
+
+    <!-- *ngFor repite un botón por cada opción.
+         [ngClass] agrega las clases "correcta" / "incorrecta" según el método de arriba. -->
+    <div id="opciones" role="group" aria-label="Opciones de respuesta">
+      <button
+        *ngFor="let opcion of opciones"
+        type="button"
+        class="opcion-btn"
+        [disabled]="respondida"
+        [ngClass]="{ correcta: esCorrecta(opcion), incorrecta: esIncorrecta(opcion) }"
+        (click)="elegir.emit(opcion)"
+      >
+        {{ opcion }}
+      </button>
+    </div>
+
+    <div aria-live="assertive" id="resultado">{{ mensaje }}</div>
+
+    <button id="siguiente" type="button" (click)="siguiente.emit()">
+      <span>Siguiente Pregunta</span>
+      <svg fill="none" height="22" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" width="22">
+        <line x1="5" x2="19" y1="12" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </button>
+  </div>
+
+</article>

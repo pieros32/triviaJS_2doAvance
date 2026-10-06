@@ -1,0 +1,14 @@
+<div aria-live="polite" class="barra-estado barra-hud">
+  <div class="elemento-estado">
+    <span class="etiqueta-estado">Nivel</span>
+    <span class="valor-estado" id="nivelActual">{{ nivel | nivelNombre }}</span>
+  </div>
+  <div class="elemento-estado">
+    <span class="etiqueta-estado">Progreso</span>
+    <span class="valor-estado" id="numeroPregunta">{{ numero }} / {{ total }}</span>
+  </div>
+  <div class="elemento-estado">
+    <span class="etiqueta-estado">Puntaje</span>
+    <span class="valor-estado" id="puntaje">{{ puntaje }} pts</span>
+  </div>
+</div>

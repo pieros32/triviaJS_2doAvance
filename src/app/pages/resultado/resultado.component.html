@@ -1,0 +1,14 @@
+<article *ngIf="quiz.terminado" class="tarjeta-trivia tarjeta-resultado">
+  <div class="col-contenido-trivia">
+    <div class="insignia-categoria" id="tipoPregunta">RESULTADO</div>
+    <h2 id="pregunta">Terminaste el nivel {{ quiz.nivel | nivelNombre }}</h2>
+    <div aria-live="polite" id="resultado">
+      Obtuviste {{ quiz.puntaje }} de {{ quiz.total }} puntos ({{ porcentaje | percent }})
+    </div>
+
+    <div class="acciones-resultado">
+      <a class="btn-accion" [routerLink]="['/jugar', quiz.franquicia, quiz.nivel]">Jugar de nuevo</a>
+      <a class="btn-accion btn-secundario" routerLink="/">Elegir otro nivel</a>
+    </div>
+  </div>
+</article>
