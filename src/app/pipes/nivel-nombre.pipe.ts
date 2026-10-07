@@ -16,7 +16,10 @@ const NOMBRES: Record<Nivel, string> = {
   experto: 'Experto'
 };
 
-@Pipe({ name: 'nivelNombre' })
+@Pipe({ 
+  name: 'nivelNombre',
+  standalone: true // <--- AGREGAR ESTA LÍNEA OBLIGATORIA
+})
 export class NivelNombrePipe implements PipeTransform {
   transform(nivel: Nivel | null | undefined): string {
     return nivel ? NOMBRES[nivel] : '—';
