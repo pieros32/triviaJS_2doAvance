@@ -46,7 +46,7 @@
 .panel-ranking .form-select:focus {
   background-color: var(--fondo-entrada);
   border-color: var(--neon-verde);
-  box-shadow: 0 0 0 0.2rem rgba(125, 255, 107, 0.22), var(--brillo-verde);
+  box-shadow: 0 0 0 0.2rem rgba(125, 255, 107, 0.2);
   color: var(--texto-principal);
 }
 
@@ -61,7 +61,6 @@
   --bs-alert-color: #ffd5dd;
   border-width: 1.5px;
   border-radius: 14px;
-  box-shadow: 0 0 22px rgba(255, 77, 109, 0.2);
   font-size: 0.92rem;
 }
 
@@ -75,7 +74,6 @@
 
 .barra-avance {
   background-image: linear-gradient(90deg, var(--neon-verde), var(--neon-cian));
-  box-shadow: var(--brillo-cian);
   transition: width 0.3s ease;
 }
 
@@ -92,10 +90,9 @@
 }
 
 .panel-ranking .table thead th {
-  font-family: var(--fuente-pixel);
-  font-size: 0.55rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--neon-cian);
   border-bottom: 1.5px solid rgba(45, 226, 255, 0.5);

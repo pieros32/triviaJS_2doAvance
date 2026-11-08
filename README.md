@@ -16,15 +16,25 @@ Requiere **Node.js LTS**.
 
 ```bash
 npm install   # solo la primera vez
-npm start     # levanta la API (3000) y la app (5173) a la vez
+npm start     # levanta la API (3000) y la app (Vite) a la vez
 ```
 
-Abre http://localhost:5173. También puedes levantarlos por separado con `npm run api` y `npm run dev`.
+Abre la dirección que indique Vite (normalmente http://localhost:5173). También puedes levantarlos por separado con `npm run api` y `npm run dev`.
 
 API de prueba:
 
 - `http://localhost:3000/franquicias`
 - `http://localhost:3000/preguntas?franquicia=the-walking-dead&nivel=facil`
+
+## Preguntas e imágenes
+
+`db.json` tiene 6 franquicias con 30 preguntas cada una (10 por nivel: fácil, intermedio y experto). Los campos `imagen` y `tipo` de una pregunta son **opcionales**:
+
+- Si una pregunta no tiene imagen ni tipo, la tarjeta se muestra en una sola columna, sin espacio vacío ni adornos.
+- Dragon Ball no tiene imágenes todavía (`"imagen": null`). Para agregar una más adelante:
+  1. Copia el archivo a `public/imagenes/`, por ejemplo `public/imagenes/goku.jpg`.
+  2. En `db.json`, cambia en esa pregunta `"imagen": null` por `"imagen": "imagenes/goku.jpg"`.
+  3. Opcionalmente agrega `"tipo": "Personaje"` (o `"Lugar"`, `"Profesión"`) para mostrar la insignia.
 
 ## Pantallas (React Router)
 
@@ -39,21 +49,21 @@ API de prueba:
 ## Bootstrap y estilos propios
 
 - **Bootstrap** se usa en el marcado (JSX): grilla `row`/`col`, formularios (`form-control`, `form-select`, `is-invalid`), `nav-pills`, `table`, `alert`, `badge`, `progress`, `spinner-border` y utilidades. El tema oscuro se activa con `data-bs-theme="dark"` en `index.html`.
-- **CSS propio** (`src/styles/`) solo para la identidad visual, con estética **retrofuturista**: rejilla y piso de neón en perspectiva, título con textura de cromo, neones (verde, cian, magenta), etiquetas en fuente pixel y botones estilo arcade. Está dividido en secciones:
+- **CSS propio** (`src/styles/`) solo para la identidad visual, con estética **retrofuturista sobria**: fondo oscuro con rejilla tenue, acentos neón (verde, cian, magenta) y botones tipo pill. Está dividido en secciones:
 
 | Archivo | Contenido |
 |---|---|
 | `index.css` | Índice: importa todas las secciones en orden |
-| `variables.css` | Paleta, brillos y fuentes (se cambian aquí) |
+| `variables.css` | Paleta y fuentes (se cambian aquí) |
 | `bootstrap.css` | Ajustes de colores a componentes de Bootstrap (alertas, tabla, progreso, campos) |
-| `base.css` | Fondo con rejilla, piso animado, contenedor y pie |
-| `encabezado.css` | Marca, título cromado y menú |
+| `base.css` | Fondo con rejilla y contenedor |
+| `encabezado.css` | Marca, título y menú |
 | `botones.css` | Botón de acción, secundario y selector de dificultad |
 | `formularios.css` | Panel de inicio y etiquetas |
-| `juego.css` | Marcador, tarjeta de pregunta, imagen CRT y opciones |
+| `juego.css` | Marcador, tarjeta de pregunta, imagen y opciones |
 | `resultado-ranking.css` | Pantalla de resultado, ranking y páginas informativas |
 
-Fuentes: Orbitron (títulos), Press Start 2P (etiquetas pixel) y Outfit (texto), cargadas desde Google Fonts en `index.html`.
+Fuentes: Orbitron (títulos) y Outfit (texto), cargadas desde Google Fonts en `index.html`.
 
 ## Temas del sílabo y dónde se usan
 
@@ -75,7 +85,7 @@ db.json                       ← backend (franquicias y preguntas)
 index.html                    ← página única de Vite
 public/imagenes/              ← imágenes de las preguntas (se sirven en /imagenes/...)
 src/main.tsx                  ← punto de entrada (Bootstrap, estilos, Router y contexto)
-src/App.tsx                   ← encabezado, menú, rutas y pie
+src/App.tsx                   ← encabezado, menú y rutas
 src/styles/                   ← estilos propios por secciones (ver tabla arriba)
 src/models/trivia.ts          ← tipos Nivel, Pregunta, Franquicia, RegistroRanking
 src/context/PartidaContext.tsx← estado de la partida (useReducer + Context)

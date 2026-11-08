@@ -10,7 +10,7 @@ import Resultado from './pages/Resultado';
 
 // ============================================================
 // COMPONENTE RAÍZ + NAVEGACIÓN
-// El encabezado, el menú y el pie se ven siempre; <Routes> dibuja
+// El encabezado y el menú se ven siempre; <Routes> dibuja
 // solo la pantalla que corresponde a la URL:
 //   /                           → formulario: nombre, franquicia y dificultad
 //   /jugar/:franquicia/:nivel   → la trivia (":franquicia" y ":nivel" vienen de la URL)
@@ -33,11 +33,6 @@ export default function App() {
           <Route path="*" element={<NoEncontrada />} />
         </Routes>
       </main>
-
-      <footer className="pie-app">
-        <p className="pie-principal">Cine &amp; Series Trivia • Desarrollado para JavaScript Avanzado</p>
-        <p className="pie-secundario">PROYECTO ACADÉMICO — MODO POP CULTURE QUIZ</p>
-      </footer>
     </>
   );
 }

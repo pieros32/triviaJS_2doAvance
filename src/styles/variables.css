@@ -30,16 +30,7 @@
   --color-exito: #3dffa0;
   --color-error: #ff4d6d;
 
-  /* Cromo: degradado metálico para el título */
-  --cromo: linear-gradient(180deg, #ffffff 0%, #ddd8ff 38%, #8d84c8 50%, #eae6ff 54%, #ffffff 100%);
-
-  /* Brillos (glow) */
-  --brillo-verde: 0 0 14px rgba(125, 255, 107, 0.55), 0 0 36px rgba(125, 255, 107, 0.22);
-  --brillo-cian: 0 0 14px rgba(45, 226, 255, 0.5), 0 0 34px rgba(45, 226, 255, 0.2);
-  --brillo-magenta: 0 0 14px rgba(255, 63, 164, 0.5), 0 0 34px rgba(255, 63, 164, 0.2);
-
-  /* Fuentes: títulos futuristas, texto pixel para etiquetas, cuerpo legible */
+  /* Fuentes: títulos futuristas y cuerpo legible */
   --fuente-titulos: 'Orbitron', 'Segoe UI', sans-serif;
-  --fuente-pixel: 'Press Start 2P', 'Courier New', monospace;
   --fuente-cuerpo: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 }

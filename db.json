@@ -24,6 +24,11 @@
       "id": 5,
       "slug": "the-last-of-us",
       "nombre": "The Last of Us"
+    },
+    {
+      "id": 6,
+      "slug": "dragon-ball",
+      "nombre": "Dragon Ball"
     }
   ],
   "preguntas": [
@@ -2276,6 +2281,426 @@
       ],
       "respuesta": "Ellie Williams",
       "imagen": "imagenes/franquicias/tlou-bella-ramsey.jpg"
+    },
+    {
+      "id": 151,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Cuál es el origen de Goku?",
+      "opciones": [
+        "Namekiano",
+        "Saiyajin",
+        "Humano",
+        "Androide"
+      ],
+      "respuesta": "Saiyajin",
+      "imagen": null
+    },
+    {
+      "id": 152,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Cuál es el ataque característico de Goku?",
+      "opciones": [
+        "Final Flash",
+        "Makankosappo",
+        "Kamehameha",
+        "Genkidama"
+      ],
+      "respuesta": "Kamehameha",
+      "imagen": null
+    },
+    {
+      "id": 153,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Quién es la primera amiga que conoce Goku?",
+      "opciones": [
+        "Milk",
+        "Bulma",
+        "Chi-Chi",
+        "Launch"
+      ],
+      "respuesta": "Bulma",
+      "imagen": null
+    },
+    {
+      "id": 154,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Cuántas esferas del dragón existen en la Tierra?",
+      "opciones": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "respuesta": "7",
+      "imagen": null
+    },
+    {
+      "id": 155,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Cómo se llama el dragón de las esferas terrestres?",
+      "opciones": [
+        "Porunga",
+        "Shenlong",
+        "Super Shenlong",
+        "Toronbo"
+      ],
+      "respuesta": "Shenlong",
+      "imagen": null
+    },
+    {
+      "id": 156,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Quién es el mejor amigo de Goku?",
+      "opciones": [
+        "Yamcha",
+        "Ten Shin Han",
+        "Piccolo",
+        "Krilin"
+      ],
+      "respuesta": "Krilin",
+      "imagen": null
+    },
+    {
+      "id": 157,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Quién es el príncipe de los Saiyajin?",
+      "opciones": [
+        "Gohan",
+        "Vegeta",
+        "Bardock",
+        "Raditz"
+      ],
+      "respuesta": "Vegeta",
+      "imagen": null
+    },
+    {
+      "id": 158,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Quién es el hijo mayor de Goku?",
+      "opciones": [
+        "Goten",
+        "Trunks",
+        "Gohan",
+        "Pan"
+      ],
+      "respuesta": "Gohan",
+      "imagen": null
+    },
+    {
+      "id": 159,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿De qué planeta proviene Piccolo?",
+      "opciones": [
+        "Vegeta",
+        "Namek",
+        "Tierra",
+        "Yardrat"
+      ],
+      "respuesta": "Namek",
+      "imagen": null
+    },
+    {
+      "id": 160,
+      "franquicia": "dragon-ball",
+      "nivel": "facil",
+      "pregunta": "¿Quién es el villano principal de la saga de Namek?",
+      "opciones": [
+        "Cell",
+        "Majin Buu",
+        "Freezer",
+        "Raditz"
+      ],
+      "respuesta": "Freezer",
+      "imagen": null
+    },
+    {
+      "id": 161,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Cómo se llama el hermano mayor de Goku?",
+      "opciones": [
+        "Nappa",
+        "Raditz",
+        "Turles",
+        "Bardock"
+      ],
+      "respuesta": "Raditz",
+      "imagen": null
+    },
+    {
+      "id": 162,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿En qué planeta se encuentran las esferas de Namek?",
+      "opciones": [
+        "Tierra",
+        "Vegeta",
+        "Namek",
+        "Yardrat"
+      ],
+      "respuesta": "Namek",
+      "imagen": null
+    },
+    {
+      "id": 163,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Qué androides absorbe Cell para alcanzar su forma perfecta?",
+      "opciones": [
+        "16 y 17",
+        "17 y 18",
+        "18 y 19",
+        "16 y 18"
+      ],
+      "respuesta": "17 y 18",
+      "imagen": null
+    },
+    {
+      "id": 164,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Quién derrota finalmente a Cell?",
+      "opciones": [
+        "Goku",
+        "Vegeta",
+        "Gohan",
+        "Trunks"
+      ],
+      "respuesta": "Gohan",
+      "imagen": null
+    },
+    {
+      "id": 165,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Qué resulta de la fusión de Goten y Trunks?",
+      "opciones": [
+        "Vegetto",
+        "Gogeta",
+        "Gotenks",
+        "Gokhan"
+      ],
+      "respuesta": "Gotenks",
+      "imagen": null
+    },
+    {
+      "id": 166,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Quién enseña el Kaio-ken a Goku?",
+      "opciones": [
+        "Kaioshin",
+        "Señor Kaio",
+        "Maestro Roshi",
+        "Whis"
+      ],
+      "respuesta": "Señor Kaio",
+      "imagen": null
+    },
+    {
+      "id": 167,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Quiénes son los padres de Trunks?",
+      "opciones": [
+        "Goku y Bulma",
+        "Vegeta y Bulma",
+        "Vegeta y Milk",
+        "Yamcha y Bulma"
+      ],
+      "respuesta": "Vegeta y Bulma",
+      "imagen": null
+    },
+    {
+      "id": 168,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Quién absorbe a Gotenks?",
+      "opciones": [
+        "Kid Buu",
+        "Super Buu",
+        "Majin Vegeta",
+        "Dabura"
+      ],
+      "respuesta": "Super Buu",
+      "imagen": null
+    },
+    {
+      "id": 169,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Qué técnica derrota a Kid Buu?",
+      "opciones": [
+        "Kamehameha instantáneo",
+        "Final Flash",
+        "Genkidama",
+        "Kaioken x20"
+      ],
+      "respuesta": "Genkidama",
+      "imagen": null
+    },
+    {
+      "id": 170,
+      "franquicia": "dragon-ball",
+      "nivel": "intermedio",
+      "pregunta": "¿Qué universo gana el Torneo del Poder?",
+      "opciones": [
+        "Universo 6",
+        "Universo 11",
+        "Universo 2",
+        "Universo 7"
+      ],
+      "respuesta": "Universo 7",
+      "imagen": null
+    },
+    {
+      "id": 171,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Cómo se llama el padre de Goku?",
+      "opciones": [
+        "King Vegeta",
+        "Bardock",
+        "Paragus",
+        "Nappa"
+      ],
+      "respuesta": "Bardock",
+      "imagen": null
+    },
+    {
+      "id": 172,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Qué pendientes permiten la fusión de Goku y Vegeta en Vegetto?",
+      "opciones": [
+        "Namekianos",
+        "Potara",
+        "Ángeles",
+        "Saiyajin"
+      ],
+      "respuesta": "Potara",
+      "imagen": null
+    },
+    {
+      "id": 173,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Quién desbloquea el potencial de Gohan y Krilin en Namek?",
+      "opciones": [
+        "Dende",
+        "Nail",
+        "Gran Patriarca Guru",
+        "Kami-sama"
+      ],
+      "respuesta": "Gran Patriarca Guru",
+      "imagen": null
+    },
+    {
+      "id": 174,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿A qué planeta lleva Goku a Cell antes de su autodestrucción?",
+      "opciones": [
+        "Beerus",
+        "Kaioshin",
+        "Señor Kaio",
+        "Yardrat"
+      ],
+      "respuesta": "Señor Kaio",
+      "imagen": null
+    },
+    {
+      "id": 175,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Con quién se fusiona Zamasu del futuro?",
+      "opciones": [
+        "Goku Black",
+        "Vegeta",
+        "Trunks",
+        "Hit"
+      ],
+      "respuesta": "Goku Black",
+      "imagen": null
+    },
+    {
+      "id": 176,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Quién es el Dios de la Destrucción del Universo 7?",
+      "opciones": [
+        "Whis",
+        "Champa",
+        "Beerus",
+        "Zeno"
+      ],
+      "respuesta": "Beerus",
+      "imagen": null
+    },
+    {
+      "id": 177,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Quién es el ángel de Beerus?",
+      "opciones": [
+        "Vados",
+        "Whis",
+        "Merus",
+        "Marcarita"
+      ],
+      "respuesta": "Whis",
+      "imagen": null
+    },
+    {
+      "id": 178,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Cuántos Saiyajin de corazón puro transfieren su energía a Goku para el ritual del Super Saiyajin Dios?",
+      "opciones": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "respuesta": "5",
+      "imagen": null
+    },
+    {
+      "id": 179,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Cuánto tiempo entrenó Freezer para alcanzar Golden Freezer?",
+      "opciones": [
+        "1 año",
+        "6 meses",
+        "4 meses",
+        "10 años"
+      ],
+      "respuesta": "4 meses",
+      "imagen": null
+    },
+    {
+      "id": 180,
+      "franquicia": "dragon-ball",
+      "nivel": "experto",
+      "pregunta": "¿Quién es el ganador del Torneo del Poder?",
+      "opciones": [
+        "Goku",
+        "Vegeta",
+        "Freezer",
+        "Androide 17"
+      ],
+      "respuesta": "Androide 17",
+      "imagen": null
     }
   ]
 }

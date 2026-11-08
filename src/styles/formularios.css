@@ -3,27 +3,23 @@
    (Los campos .form-control / .form-select están en bootstrap.css)
    ============================================================ */
 
-/* Panel genérico: tarjeta oscura con borde y resplandor neón */
+/* Panel genérico: tarjeta oscura con borde verde tenue */
 .panel-configuracion,
 .panel-ranking {
   background-color: var(--fondo-tarjeta);
   border: 1.5px solid var(--borde-neon);
   border-radius: 18px;
   padding: 1.25rem 1.4rem;
-  box-shadow: 0 0 0 1px rgba(125, 255, 107, 0.05), 0 0 30px rgba(125, 255, 107, 0.08), inset 0 0 40px rgba(167, 139, 250, 0.07);
-  backdrop-filter: blur(4px);
 }
 
-/* Etiquetas en texto pixel (arcade) */
+/* Etiquetas de campo */
 .etiqueta-configuracion {
   display: block;
-  font-family: var(--fuente-pixel);
-  font-size: 0.6rem;
-  line-height: 1.6;
-  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--neon-amarillo);
-  text-shadow: 0 0 8px rgba(255, 225, 77, 0.45);
 }
 
 @media (min-width: 768px) {

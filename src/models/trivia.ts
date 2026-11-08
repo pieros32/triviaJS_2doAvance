@@ -27,11 +27,11 @@ export interface Pregunta {
   id: number;
   franquicia: string; // slug, ej. "the-walking-dead"
   nivel: Nivel;
-  tipo: TipoPregunta;
+  tipo?: TipoPregunta; // opcional: si falta, no se muestra la insignia
   pregunta: string;
   opciones: string[];
   respuesta: string;
-  imagen: string; // ruta relativa a public/, ej. "imagenes/rick.jpg"
+  imagen: string | null; // ruta relativa a public/, ej. "imagenes/rick.jpg"; null = sin imagen
 }
 
 /** Una partida terminada, tal como se guarda en el ranking (localStorage). */

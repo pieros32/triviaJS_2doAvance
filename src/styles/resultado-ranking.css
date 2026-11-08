@@ -29,7 +29,6 @@
 
 .tarjeta-resultado #resultado {
   color: var(--neon-verde);
-  text-shadow: 0 0 12px rgba(125, 255, 107, 0.5);
 }
 
 .acciones-resultado {
@@ -42,12 +41,11 @@
 /* ---------- Ranking y páginas informativas ---------- */
 .titulo-seccion {
   font-family: var(--fuente-titulos);
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.4rem;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--neon-verde);
-  text-shadow: 0 0 16px rgba(125, 255, 107, 0.55);
   margin-bottom: 1rem;
 }
 
@@ -60,7 +58,6 @@
 /* Podio: los tres primeros puestos con color */
 .panel-ranking tbody tr:nth-child(1) th {
   color: var(--neon-amarillo);
-  text-shadow: 0 0 10px rgba(255, 225, 77, 0.6);
 }
 
 .panel-ranking tbody tr:nth-child(2) th {

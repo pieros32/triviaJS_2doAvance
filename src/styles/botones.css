@@ -1,6 +1,6 @@
 /* ============================================================
    BOTONES
-   - .btn-accion / #siguiente : botón principal estilo arcade (verde neón, "sombra dura")
+   - .btn-accion / #siguiente : botón principal (verde)
    - .btn-secundario          : solo contorno neón (como el botón de la referencia)
    - .btn-nivel               : selector de dificultad (cian)
    ============================================================ */
@@ -17,16 +17,15 @@
   color: var(--texto-oscuro);
   font-family: var(--fuente-titulos);
   font-size: 0.95rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   line-height: 1.1;
   border: 2px solid var(--neon-verde);
   border-radius: 9999px;
-  box-shadow: 0 5px 0 var(--neon-verde-oscuro), var(--brillo-verde);
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.15s ease;
+  transition: filter 0.15s ease, background-color 0.15s ease;
 }
 
 #siguiente svg {
@@ -37,14 +36,6 @@
 #siguiente:hover:not(:disabled) {
   color: var(--texto-oscuro);
   filter: brightness(1.1);
-  transform: translateY(-1px);
-}
-
-/* Al presionar, el botón "se hunde" como una tecla de arcade */
-.btn-accion:active:not(:disabled),
-#siguiente:active:not(:disabled) {
-  transform: translateY(4px);
-  box-shadow: 0 1px 0 var(--neon-verde-oscuro), var(--brillo-verde);
 }
 
 .btn-accion:focus-visible,
@@ -59,7 +50,6 @@
   background-color: transparent;
   color: var(--texto-mutado);
   border-color: var(--borde-suave);
-  box-shadow: none;
   cursor: not-allowed;
 }
 
@@ -67,7 +57,6 @@
 .btn-secundario {
   background-color: transparent;
   color: var(--neon-verde);
-  box-shadow: none;
 }
 
 .btn-secundario:hover:not(:disabled) {
@@ -79,7 +68,6 @@
 
 .btn-secundario:active:not(:disabled) {
   transform: scale(0.98);
-  box-shadow: none;
 }
 
 /* Dificultad (la grilla es row/col de Bootstrap) */
@@ -98,7 +86,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .btn-nivel:hover {
@@ -111,7 +99,6 @@
   background-color: var(--neon-cian);
   border-color: var(--neon-cian);
   color: var(--texto-oscuro);
-  box-shadow: var(--brillo-cian);
 }
 
 @media (min-width: 480px) {

@@ -1,12 +1,12 @@
 /* ============================================================
-   ÍNDICE DE ESTILOS — tema retrofuturista (neón, cromo, rejilla)
+   ÍNDICE DE ESTILOS — tema retrofuturista sobrio (neón y rejilla)
    Bootstrap se carga antes (en main.tsx); estas secciones lo
    complementan. El orden importa: las últimas ganan en empates.
    ============================================================ */
-@import './variables.css';          /* colores, fuentes, brillos */
+@import './variables.css';          /* colores y fuentes */
 @import './bootstrap.css';          /* ajustes a componentes de Bootstrap */
-@import './base.css';               /* fondo con rejilla, piso, pie */
-@import './encabezado.css';         /* marca, título cromado, menú */
+@import './base.css';               /* fondo con rejilla y contenedor */
+@import './encabezado.css';         /* marca, título, menú */
 @import './botones.css';            /* acción, secundario, dificultad */
 @import './formularios.css';        /* panel de inicio y etiquetas */
 @import './juego.css';              /* marcador, tarjeta, opciones */

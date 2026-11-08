@@ -8,15 +8,12 @@
   border: 1.5px solid var(--borde-suave);
   border-radius: 16px;
   padding: 1rem 1.4rem;
-  box-shadow: inset 0 0 30px rgba(167, 139, 250, 0.07);
-  backdrop-filter: blur(4px);
 }
 
 .etiqueta-estado {
-  font-family: var(--fuente-pixel);
-  font-size: 0.5rem;
-  line-height: 1.6;
-  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--texto-mutado);
 }
@@ -34,22 +31,18 @@
 
 #nivelActual {
   color: var(--neon-amarillo);
-  text-shadow: 0 0 10px rgba(255, 225, 77, 0.5);
 }
 
 #numeroPregunta {
   color: var(--neon-cian);
-  text-shadow: 0 0 10px rgba(45, 226, 255, 0.5);
 }
 
 #puntaje {
   color: var(--color-exito);
-  text-shadow: 0 0 10px rgba(61, 255, 160, 0.5);
 }
 
 .valor-tiempo {
   color: var(--neon-magenta);
-  text-shadow: 0 0 10px rgba(255, 63, 164, 0.55);
   font-variant-numeric: tabular-nums;
 }
 
@@ -63,8 +56,6 @@
   grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: stretch;
-  box-shadow: 0 0 0 1px rgba(125, 255, 107, 0.05), 0 0 34px rgba(125, 255, 107, 0.1), inset 0 0 50px rgba(167, 139, 250, 0.07);
-  backdrop-filter: blur(4px);
 }
 
 .col-visual-trivia {
@@ -80,7 +71,15 @@
   justify-content: space-between;
 }
 
-/* Categoría: pill magenta con texto pixel */
+/* Pregunta sin imagen ni categoría: una sola columna centrada, sin espacio vacío */
+.tarjeta-trivia.sin-visual {
+  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+/* Categoría: pill magenta */
 .insignia-categoria {
   align-self: flex-start;
   display: inline-flex;
@@ -88,15 +87,14 @@
   padding: 0.55rem 1.1rem;
   background-color: var(--neon-magenta);
   border-radius: 9999px;
-  font-family: var(--fuente-pixel);
-  font-size: 0.55rem;
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--texto-oscuro);
-  box-shadow: var(--brillo-magenta);
 }
 
-/* Marco de imagen: monitor CRT con líneas de escaneo y atardecer */
+/* Marco de imagen */
 .marco-imagen {
   position: relative;
   width: 100%;
@@ -106,18 +104,7 @@
   border-radius: 14px;
   overflow: hidden;
   background-color: var(--fondo-entrada);
-  border: 2px solid var(--neon-cian);
-  box-shadow: var(--brillo-cian), inset 0 0 24px rgba(0, 0, 0, 0.6);
-}
-
-.marco-imagen::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, transparent 55%, rgba(255, 63, 164, 0.28) 100%),
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0 1px, transparent 1px 3px);
+  border: 1.5px solid var(--borde-suave);
 }
 
 #imagenPregunta {
@@ -126,7 +113,6 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  filter: saturate(1.15) contrast(1.05);
 }
 
 /* ---------- Pregunta y opciones ---------- */
@@ -147,7 +133,7 @@
   gap: 0.75rem;
 }
 
-/* Cada opción es un renglón de menú de arcade: "▸ Respuesta" */
+/* Cada opción es un botón ancho con una flecha */
 .opcion-btn {
   width: 100%;
   display: flex;
@@ -164,7 +150,7 @@
   padding: 0.9rem 1.25rem;
   text-align: left;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .opcion-btn::before {
@@ -178,8 +164,6 @@
 .opcion-btn:hover:not(:disabled) {
   background-color: rgba(125, 255, 107, 0.08);
   border-color: var(--neon-verde);
-  box-shadow: var(--brillo-verde);
-  transform: translateX(4px);
 }
 
 .opcion-btn:hover:not(:disabled)::before {
@@ -193,7 +177,6 @@
 .opcion-btn.correcta {
   background-color: rgba(61, 255, 160, 0.16);
   border-color: var(--color-exito);
-  box-shadow: 0 0 20px rgba(61, 255, 160, 0.35);
   color: #ffffff;
   font-weight: 800;
 }
@@ -207,7 +190,6 @@
 .opcion-btn.incorrecta {
   background-color: rgba(255, 77, 109, 0.16);
   border-color: var(--color-error);
-  box-shadow: 0 0 20px rgba(255, 77, 109, 0.35);
   color: #ffffff;
 }
 
@@ -269,10 +251,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .opcion-btn,
-  .opcion-btn:hover:not(:disabled) {
-    transform: none;
-    transition: none;
-  }
-}

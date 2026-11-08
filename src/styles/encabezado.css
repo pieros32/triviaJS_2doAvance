@@ -18,11 +18,11 @@
   background-color: rgba(125, 255, 107, 0.08);
   border: 1.5px solid var(--neon-verde);
   border-radius: 9999px;
-  font-family: var(--fuente-pixel);
-  font-size: 0.55rem;
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--neon-verde);
-  box-shadow: var(--brillo-verde);
   margin-bottom: 1rem;
 }
 
@@ -33,28 +33,21 @@
   flex-shrink: 0;
 }
 
-/* Título con textura de cromo; la segunda línea va en verde neón */
+/* Título; la segunda línea va en verde neón */
 .titulo-app {
   font-family: var(--fuente-titulos);
-  font-size: clamp(1.7rem, 6.4vw, 3.1rem);
+  font-size: clamp(1.6rem, 6vw, 2.7rem);
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   line-height: 1.15;
-  background: var(--cromo);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  filter: drop-shadow(0 0 16px rgba(167, 139, 250, 0.55));
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .titulo-app .acento-titulo {
   display: block;
-  -webkit-text-fill-color: var(--neon-verde);
   color: var(--neon-verde);
-  text-shadow: 0 0 18px rgba(125, 255, 107, 0.7);
 }
 
 /* Menú principal: pills con contorno neón; la activa va rellena */
@@ -83,5 +76,4 @@
 .menu-principal .nav-link.active {
   background-color: var(--neon-verde);
   color: var(--texto-oscuro);
-  box-shadow: var(--brillo-verde);
 }

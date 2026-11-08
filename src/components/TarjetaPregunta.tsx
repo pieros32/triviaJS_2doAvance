@@ -30,15 +30,23 @@ export default function TarjetaPregunta({
     colorMensaje = seleccionada === pregunta.respuesta ? 'text-success' : 'text-danger';
   }
 
+  // La columna visual solo existe si la pregunta trae imagen o tipo.
+  // Sin ninguno de los dos no se dibuja nada y la tarjeta queda en una columna.
+  const tieneVisual = Boolean(pregunta.imagen || pregunta.tipo);
+
   return (
-    <article className="tarjeta-trivia arena-cuestionario">
-      {/* Columna izquierda: categoría e imagen */}
-      <div className="col-visual-trivia">
-        <div className="insignia-categoria" id="tipoPregunta">{pregunta.tipo}</div>
-        <div className="marco-imagen">
-          <img alt="Imagen representativa de la pregunta" id="imagenPregunta" src={`/${pregunta.imagen}`} />
+    <article className={`tarjeta-trivia arena-cuestionario ${tieneVisual ? '' : 'sin-visual'}`}>
+      {/* Columna izquierda (opcional): categoría e imagen */}
+      {tieneVisual && (
+        <div className="col-visual-trivia">
+          {pregunta.tipo && <div className="insignia-categoria" id="tipoPregunta">{pregunta.tipo}</div>}
+          {pregunta.imagen && (
+            <div className="marco-imagen">
+              <img alt="Imagen representativa de la pregunta" id="imagenPregunta" src={`/${pregunta.imagen}`} />
+            </div>
+          )}
         </div>
-      </div>
+      )}
 
       {/* Columna derecha: pregunta, opciones, mensaje y botón */}
       <div className="col-contenido-trivia">
