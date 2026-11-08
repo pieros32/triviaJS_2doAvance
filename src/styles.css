@@ -107,8 +107,7 @@ body {
   max-width: 600px;
 }
 
-/* Error de Carga Alert
-   (Angular: ya no se oculta con .visible; el componente solo existe cuando hay error) */
+/* Error de Carga Alert (el componente solo existe cuando hay error) */
 #errorCarga {
   display: flex;
   background-color: #7f1d1d;
@@ -559,21 +558,11 @@ body {
 }
 
 /* ============================================================
-   AÑADIDOS PARA LA VERSIÓN ANGULAR
-   (todo lo de arriba es el estilos.css original, sin cambios,
-   salvo la regla de #errorCarga)
+   PANTALLAS Y BOTONES DE ACCIÓN
    ============================================================ */
 
-/* Angular envuelve cada componente en su propia etiqueta (<app-root>, <app-inicio>...).
-   Estas reglas hacen que esas etiquetas no rompan el layout original. */
-app-root {
-  display: block;
-  width: 100%;
-}
-
-app-inicio,
-app-juego,
-app-resultado {
+/* Contenedor de cada pantalla (inicio, juego, resultado): apila sus bloques con separación */
+.pantalla {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
