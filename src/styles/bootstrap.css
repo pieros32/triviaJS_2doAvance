@@ -1,0 +1,102 @@
+/* ============================================================
+   AJUSTES A BOOTSTRAP
+   Bootstrap aporta la estructura (grilla, tabla, alertas...).
+   Aquí solo se le cambian los colores para el tema neón.
+   ============================================================ */
+
+/* Los colores semánticos de Bootstrap pasan a versiones neón:
+   afectan a text-success, text-danger, badges, alertas, etc. */
+:root,
+[data-bs-theme='dark'] {
+  --bs-success-rgb: 61, 255, 160;
+  --bs-danger-rgb: 255, 77, 109;
+  --bs-warning-rgb: 255, 225, 77;
+  --bs-secondary-rgb: 167, 139, 250;
+}
+
+/* Insignias: texto oscuro para que se lean sobre el neón */
+.badge.text-bg-success,
+.badge.text-bg-warning,
+.badge.text-bg-danger,
+.badge.text-bg-secondary {
+  color: var(--texto-oscuro) !important;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* Campos de formulario (.form-control y .form-select) */
+.panel-configuracion .form-control,
+.panel-configuracion .form-select,
+.panel-ranking .form-select {
+  background-color: var(--fondo-entrada);
+  border: 1.5px solid rgba(45, 226, 255, 0.5);
+  border-radius: 12px;
+  color: var(--texto-principal);
+  font-family: var(--fuente-cuerpo);
+  font-weight: 700;
+}
+
+.panel-configuracion .form-control::placeholder {
+  color: var(--texto-mutado);
+  opacity: 0.7;
+}
+
+.panel-configuracion .form-control:focus,
+.panel-configuracion .form-select:focus,
+.panel-ranking .form-select:focus {
+  background-color: var(--fondo-entrada);
+  border-color: var(--neon-verde);
+  box-shadow: 0 0 0 0.2rem rgba(125, 255, 107, 0.22), var(--brillo-verde);
+  color: var(--texto-principal);
+}
+
+.panel-configuracion .form-control.is-invalid {
+  border-color: var(--color-error);
+}
+
+/* Alerta de error */
+.alert-danger {
+  --bs-alert-bg: rgba(255, 77, 109, 0.12);
+  --bs-alert-border-color: var(--color-error);
+  --bs-alert-color: #ffd5dd;
+  border-width: 1.5px;
+  border-radius: 14px;
+  box-shadow: 0 0 22px rgba(255, 77, 109, 0.2);
+  font-size: 0.92rem;
+}
+
+/* Barra de progreso (.progress) */
+.progress {
+  --bs-progress-bg: var(--fondo-entrada);
+  --bs-progress-height: 0.6rem;
+  border: 1px solid var(--borde-suave);
+  border-radius: 9999px;
+}
+
+.barra-avance {
+  background-image: linear-gradient(90deg, var(--neon-verde), var(--neon-cian));
+  box-shadow: var(--brillo-cian);
+  transition: width 0.3s ease;
+}
+
+/* Tabla (.table) */
+.panel-ranking .table {
+  --bs-table-color: var(--texto-principal);
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: rgba(167, 139, 250, 0.08);
+  --bs-table-striped-color: var(--texto-principal);
+  --bs-table-hover-bg: rgba(125, 255, 107, 0.1);
+  --bs-table-hover-color: var(--texto-principal);
+  --bs-table-border-color: var(--borde-suave);
+  font-weight: 600;
+}
+
+.panel-ranking .table thead th {
+  font-family: var(--fuente-pixel);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--neon-cian);
+  border-bottom: 1.5px solid rgba(45, 226, 255, 0.5);
+}

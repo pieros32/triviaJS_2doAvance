@@ -1,0 +1,91 @@
+/* ============================================================
+   RESULTADO, RANKING y páginas informativas (sin resultados / 404).
+   La tarjeta de resultado reutiliza .tarjeta-trivia de juego.css.
+   ============================================================ */
+
+/* ---------- Resultado: una sola columna centrada ---------- */
+.tarjeta-trivia.tarjeta-resultado {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.tarjeta-resultado .col-contenido-trivia {
+  width: 100%;
+  max-width: 480px;
+  align-items: center;
+}
+
+.tarjeta-resultado .insignia-categoria {
+  align-self: center;
+}
+
+.tarjeta-resultado #pregunta {
+  justify-content: center;
+  font-family: var(--fuente-titulos);
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+
+.tarjeta-resultado #resultado {
+  color: var(--neon-verde);
+  text-shadow: 0 0 12px rgba(125, 255, 107, 0.5);
+}
+
+.acciones-resultado {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ---------- Ranking y páginas informativas ---------- */
+.titulo-seccion {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neon-verde);
+  text-shadow: 0 0 16px rgba(125, 255, 107, 0.55);
+  margin-bottom: 1rem;
+}
+
+.texto-ranking {
+  color: var(--texto-mutado);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Podio: los tres primeros puestos con color */
+.panel-ranking tbody tr:nth-child(1) th {
+  color: var(--neon-amarillo);
+  text-shadow: 0 0 10px rgba(255, 225, 77, 0.6);
+}
+
+.panel-ranking tbody tr:nth-child(2) th {
+  color: #e9e4ff;
+}
+
+.panel-ranking tbody tr:nth-child(3) th {
+  color: var(--neon-magenta);
+}
+
+.panel-ranking .btn-outline-danger {
+  --bs-btn-color: var(--color-error);
+  --bs-btn-border-color: var(--color-error);
+  --bs-btn-hover-bg: var(--color-error);
+  --bs-btn-hover-border-color: var(--color-error);
+  --bs-btn-hover-color: var(--texto-oscuro);
+  border-radius: 9999px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  .titulo-seccion {
+    font-size: 1.9rem;
+  }
+}

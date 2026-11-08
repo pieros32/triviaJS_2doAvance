@@ -1,0 +1,45 @@
+/* ============================================================
+   VARIABLES: la paleta y las fuentes del tema viven aquí.
+   Cambiar un color aquí lo cambia en toda la app.
+   ============================================================ */
+:root {
+  /* Fondos: violeta profundo, como una pantalla CRT apagada */
+  --fondo-principal: #14072e;
+  --fondo-profundo: #0c0420;
+  --fondo-tarjeta: rgba(30, 12, 66, 0.82);
+  --fondo-entrada: #0e0524;
+
+  /* Bordes */
+  --borde-suave: rgba(167, 139, 250, 0.35);
+  --borde-neon: rgba(125, 255, 107, 0.45);
+
+  /* Neones */
+  --neon-verde: #7dff6b;
+  --neon-verde-oscuro: #38c92b;
+  --neon-cian: #2de2ff;
+  --neon-magenta: #ff3fa4;
+  --neon-amarillo: #ffe14d;
+  --neon-violeta: #a78bfa;
+
+  /* Texto */
+  --texto-principal: #f6f1ff;
+  --texto-mutado: #b4a6e0;
+  --texto-oscuro: #12062b; /* texto sobre fondos neón */
+
+  /* Estados */
+  --color-exito: #3dffa0;
+  --color-error: #ff4d6d;
+
+  /* Cromo: degradado metálico para el título */
+  --cromo: linear-gradient(180deg, #ffffff 0%, #ddd8ff 38%, #8d84c8 50%, #eae6ff 54%, #ffffff 100%);
+
+  /* Brillos (glow) */
+  --brillo-verde: 0 0 14px rgba(125, 255, 107, 0.55), 0 0 36px rgba(125, 255, 107, 0.22);
+  --brillo-cian: 0 0 14px rgba(45, 226, 255, 0.5), 0 0 34px rgba(45, 226, 255, 0.2);
+  --brillo-magenta: 0 0 14px rgba(255, 63, 164, 0.5), 0 0 34px rgba(255, 63, 164, 0.2);
+
+  /* Fuentes: títulos futuristas, texto pixel para etiquetas, cuerpo legible */
+  --fuente-titulos: 'Orbitron', 'Segoe UI', sans-serif;
+  --fuente-pixel: 'Press Start 2P', 'Courier New', monospace;
+  --fuente-cuerpo: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+}

@@ -1,0 +1,122 @@
+/* ============================================================
+   BOTONES
+   - .btn-accion / #siguiente : botón principal estilo arcade (verde neón, "sombra dura")
+   - .btn-secundario          : solo contorno neón (como el botón de la referencia)
+   - .btn-nivel               : selector de dificultad (cian)
+   ============================================================ */
+.btn-accion,
+#siguiente {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 54px;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--neon-verde);
+  color: var(--texto-oscuro);
+  font-family: var(--fuente-titulos);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1.1;
+  border: 2px solid var(--neon-verde);
+  border-radius: 9999px;
+  box-shadow: 0 5px 0 var(--neon-verde-oscuro), var(--brillo-verde);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.15s ease;
+}
+
+#siguiente svg {
+  flex-shrink: 0;
+}
+
+.btn-accion:hover:not(:disabled),
+#siguiente:hover:not(:disabled) {
+  color: var(--texto-oscuro);
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Al presionar, el botón "se hunde" como una tecla de arcade */
+.btn-accion:active:not(:disabled),
+#siguiente:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--neon-verde-oscuro), var(--brillo-verde);
+}
+
+.btn-accion:focus-visible,
+#siguiente:focus-visible,
+.btn-nivel:focus-visible,
+.opcion-btn:focus-visible {
+  outline: 3px solid var(--neon-cian);
+  outline-offset: 3px;
+}
+
+.btn-accion:disabled {
+  background-color: transparent;
+  color: var(--texto-mutado);
+  border-color: var(--borde-suave);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Secundario: solo contorno */
+.btn-secundario {
+  background-color: transparent;
+  color: var(--neon-verde);
+  box-shadow: none;
+}
+
+.btn-secundario:hover:not(:disabled) {
+  background-color: rgba(125, 255, 107, 0.14);
+  color: var(--neon-verde);
+  filter: none;
+  transform: none;
+}
+
+.btn-secundario:active:not(:disabled) {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+/* Dificultad (la grilla es row/col de Bootstrap) */
+.btn-nivel {
+  background-color: rgba(45, 226, 255, 0.06);
+  border: 1.5px solid rgba(45, 226, 255, 0.55);
+  border-radius: 12px;
+  color: var(--neon-cian);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  height: 48px;
+  padding: 0 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.btn-nivel:hover {
+  background-color: rgba(45, 226, 255, 0.16);
+  border-color: var(--neon-cian);
+  color: #ffffff;
+}
+
+.btn-nivel.activo {
+  background-color: var(--neon-cian);
+  border-color: var(--neon-cian);
+  color: var(--texto-oscuro);
+  box-shadow: var(--brillo-cian);
+}
+
+@media (min-width: 480px) {
+  .btn-nivel {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+}

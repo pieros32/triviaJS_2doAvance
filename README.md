@@ -39,7 +39,21 @@ API de prueba:
 ## Bootstrap y estilos propios
 
 - **Bootstrap** se usa en el marcado (JSX): grilla `row`/`col`, formularios (`form-control`, `form-select`, `is-invalid`), `nav-pills`, `table`, `alert`, `badge`, `progress`, `spinner-border` y utilidades. El tema oscuro se activa con `data-bs-theme="dark"` en `index.html`.
-- **CSS propio** (`src/styles.css`) solo para la identidad visual: colores, tarjeta de pregunta, opciones y botones de acción.
+- **CSS propio** (`src/styles/`) solo para la identidad visual, con estética **retrofuturista**: rejilla y piso de neón en perspectiva, título con textura de cromo, neones (verde, cian, magenta), etiquetas en fuente pixel y botones estilo arcade. Está dividido en secciones:
+
+| Archivo | Contenido |
+|---|---|
+| `index.css` | Índice: importa todas las secciones en orden |
+| `variables.css` | Paleta, brillos y fuentes (se cambian aquí) |
+| `bootstrap.css` | Ajustes de colores a componentes de Bootstrap (alertas, tabla, progreso, campos) |
+| `base.css` | Fondo con rejilla, piso animado, contenedor y pie |
+| `encabezado.css` | Marca, título cromado y menú |
+| `botones.css` | Botón de acción, secundario y selector de dificultad |
+| `formularios.css` | Panel de inicio y etiquetas |
+| `juego.css` | Marcador, tarjeta de pregunta, imagen CRT y opciones |
+| `resultado-ranking.css` | Pantalla de resultado, ranking y páginas informativas |
+
+Fuentes: Orbitron (títulos), Press Start 2P (etiquetas pixel) y Outfit (texto), cargadas desde Google Fonts en `index.html`.
 
 ## Temas del sílabo y dónde se usan
 
@@ -62,7 +76,7 @@ index.html                    ← página única de Vite
 public/imagenes/              ← imágenes de las preguntas (se sirven en /imagenes/...)
 src/main.tsx                  ← punto de entrada (Bootstrap, estilos, Router y contexto)
 src/App.tsx                   ← encabezado, menú, rutas y pie
-src/styles.css                ← estilos propios (sobre Bootstrap)
+src/styles/                   ← estilos propios por secciones (ver tabla arriba)
 src/models/trivia.ts          ← tipos Nivel, Pregunta, Franquicia, RegistroRanking
 src/context/PartidaContext.tsx← estado de la partida (useReducer + Context)
 src/services/api.ts           ← GET al backend

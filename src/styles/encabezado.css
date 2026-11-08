@@ -1,0 +1,87 @@
+/* ============================================================
+   ENCABEZADO: insignia de la marca, título cromado y menú.
+   ============================================================ */
+.encabezado-app {
+  text-align: center;
+  padding: 0.25rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Insignia: pill con contorno neón (como el botón de la referencia) */
+.insignia-marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.15rem;
+  background-color: rgba(125, 255, 107, 0.08);
+  border: 1.5px solid var(--neon-verde);
+  border-radius: 9999px;
+  font-family: var(--fuente-pixel);
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  color: var(--neon-verde);
+  box-shadow: var(--brillo-verde);
+  margin-bottom: 1rem;
+}
+
+.insignia-marca svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--neon-verde);
+  flex-shrink: 0;
+}
+
+/* Título con textura de cromo; la segunda línea va en verde neón */
+.titulo-app {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.7rem, 6.4vw, 3.1rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  background: var(--cromo);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgba(167, 139, 250, 0.55));
+  margin-bottom: 0.5rem;
+}
+
+.titulo-app .acento-titulo {
+  display: block;
+  -webkit-text-fill-color: var(--neon-verde);
+  color: var(--neon-verde);
+  text-shadow: 0 0 18px rgba(125, 255, 107, 0.7);
+}
+
+/* Menú principal: pills con contorno neón; la activa va rellena */
+.menu-principal {
+  --bs-nav-link-color: var(--neon-verde);
+  --bs-nav-link-hover-color: var(--texto-oscuro);
+}
+
+.menu-principal .nav-link {
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.5rem;
+  border: 1.5px solid var(--neon-verde);
+  border-radius: 9999px;
+  color: var(--neon-verde);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.menu-principal .nav-link:hover {
+  background-color: rgba(125, 255, 107, 0.16);
+  color: var(--neon-verde);
+}
+
+.menu-principal .nav-link.active {
+  background-color: var(--neon-verde);
+  color: var(--texto-oscuro);
+  box-shadow: var(--brillo-verde);
+}

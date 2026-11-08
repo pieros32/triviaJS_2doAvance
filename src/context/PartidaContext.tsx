@@ -12,30 +12,21 @@ import type { Nivel, Pregunta } from '../models/trivia';
 import { mezclar } from '../utils/mezclar';
 import { guardarRegistro, nuevoId } from '../utils/ranking';
 
-// ============================================================
-// ESTADO DE LA PARTIDA
-//  - useReducer (State Hooks): todas las transiciones del juego en un solo lugar.
-//  - createContext / useContext (Context Hooks): las pantallas de Inicio, Juego,
-//    Resultado y Ranking leen la misma partida sin pasarse props de una a otra.
-// El reducer es una función PURA: lo aleatorio (mezclar opciones) se calcula
-// fuera, en las funciones del proveedor, y llega ya hecho en la acción.
-// ============================================================
+// ===== Estado de la partida =====
 
 interface EstadoPartida {
   jugador: string;
-  franquicia: string; // slug
+  franquicia: string;
   franquiciaNombre: string;
   nivel: Nivel | null;
   preguntas: Pregunta[];
   indice: number;
   puntaje: number;
-  /** Opciones de la pregunta actual, ya mezcladas (se mezclan UNA vez por pregunta). */
   opciones: string[];
   respondida: boolean;
   seleccionada: string | null;
   mensaje: string;
   terminado: boolean;
-  /** true cuando la partida ya se guardó en el ranking (evita guardarla dos veces). */
   registrado: boolean;
 }
 
@@ -55,6 +46,8 @@ const ESTADO_INICIAL: EstadoPartida = {
   registrado: false
 };
 
+// ===== Acciones =====
+
 type Accion =
   | { tipo: 'CONFIGURAR'; jugador: string; franquiciaNombre: string }
   | { tipo: 'REINICIAR' }
@@ -64,13 +57,14 @@ type Accion =
   | { tipo: 'SIGUIENTE'; opciones: string[] }
   | { tipo: 'REGISTRADO' };
 
+// ===== Reducer =====
+
 function reducir(estado: EstadoPartida, accion: Accion): EstadoPartida {
   switch (accion.tipo) {
     case 'CONFIGURAR':
       return { ...ESTADO_INICIAL, jugador: accion.jugador, franquiciaNombre: accion.franquiciaNombre };
 
     case 'REINICIAR':
-      // Deja la partida en blanco pero recuerda quién juega.
       return { ...ESTADO_INICIAL, jugador: estado.jugador, franquiciaNombre: estado.franquiciaNombre };
 
     case 'INICIAR':
@@ -128,6 +122,8 @@ function reducir(estado: EstadoPartida, accion: Accion): EstadoPartida {
   }
 }
 
+// ===== Contexto =====
+
 interface ValorContexto {
   estado: EstadoPartida;
   preguntaActual: Pregunta | null;
@@ -135,11 +131,12 @@ interface ValorContexto {
   reiniciar: () => void;
   iniciar: (franquicia: string, nivel: Nivel, preguntas: Pregunta[]) => void;
   responder: (opcion: string | null) => void;
-  /** Pasa a la siguiente pregunta. Devuelve false si la partida terminó. */
   siguiente: () => boolean;
 }
 
 const PartidaContext = createContext<ValorContexto | null>(null);
+
+// ===== Proveedor =====
 
 export function PartidaProvider({ children }: { children: ReactNode }) {
   const [estado, dispatch] = useReducer(reducir, ESTADO_INICIAL);
@@ -166,7 +163,6 @@ export function PartidaProvider({ children }: { children: ReactNode }) {
   const responder = useCallback((opcion: string | null) => dispatch({ tipo: 'RESPONDER', opcion }), []);
 
   const siguiente = useCallback((): boolean => {
-    // Obliga a responder antes de continuar
     if (!estado.respondida) {
       dispatch({ tipo: 'AVISAR', mensaje: 'Debes responder la pregunta actual para continuar.' });
       return true;
@@ -176,7 +172,6 @@ export function PartidaProvider({ children }: { children: ReactNode }) {
     return Boolean(proxima);
   }, [estado.respondida, estado.preguntas, estado.indice]);
 
-  // Cuando la partida termina, se guarda UNA vez en el ranking.
   useEffect(() => {
     if (estado.terminado && !estado.registrado && estado.nivel) {
       guardarRegistro({
@@ -201,7 +196,8 @@ export function PartidaProvider({ children }: { children: ReactNode }) {
   return <PartidaContext.Provider value={valor}>{children}</PartidaContext.Provider>;
 }
 
-/** Hook para leer la partida desde cualquier componente dentro del proveedor. */
+// ===== Hook =====
+
 export function usePartida(): ValorContexto {
   const contexto = useContext(PartidaContext);
   if (!contexto) {
