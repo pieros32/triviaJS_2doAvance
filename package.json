@@ -1,15 +1,27 @@
 {
-  "name": "trivia-pop",
+  "name": "trivia-pop-react",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "json-server --watch db.json --port 3000 --static public",
-    "api": "json-server --watch db.json --port 3000 --static public"
+    "dev": "vite",
+    "api": "json-server --watch db.json --port 3000",
+    "start": "concurrently -n api,web -c yellow,cyan \"npm:api\" \"npm:dev\"",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "json-server": "^0.17.4"
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "concurrently": "^10.0.7",
+    "json-server": "^0.17.4",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6"
   }
 }

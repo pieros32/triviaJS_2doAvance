@@ -1,8 +1,14 @@
-# Trivia Pop — HTML, CSS y JavaScript (base para el Tercer Avance)
+# Trivia Pop — React + TSX (Tercer Avance)
 
-Versión sin frameworks de la trivia: solo **HTML + CSS + JavaScript** (módulos ES) y un backend de lectura con **json-server** (`db.json`). Es el punto de partida limpio desde el cual se migrará a **React** en este mismo branch (`tercer-avance`).
+Trivia de cine y series hecha con **React, TypeScript (TSX) y Bootstrap**, construida con Vite. El backend de lectura es **json-server** (`db.json`).
 
-La versión con Angular (Segundo Avance) sigue intacta en la rama `main`.
+Historia del proyecto:
+
+- Rama `main`: versión con Angular (Segundo Avance).
+- Commit `8cada77`: base limpia en HTML, CSS y JS puro.
+- Esta rama (`tercer-avance`): migración a React.
+
+Los requerimientos de funcionalidades están en [`docs/matriz-requerimientos.md`](docs/matriz-requerimientos.md).
 
 ## Cómo ejecutarlo
 
@@ -10,34 +16,24 @@ Requiere **Node.js LTS**.
 
 ```bash
 npm install   # solo la primera vez
-npm start
+npm start     # levanta la API (3000) y la app (5173) a la vez
 ```
 
-Abre http://localhost:3000. json-server sirve a la vez la API y la carpeta `public/` (la app).
+Abre http://localhost:5173. También puedes levantarlos por separado con `npm run api` y `npm run dev`.
 
 API de prueba:
 
 - `http://localhost:3000/franquicias`
 - `http://localhost:3000/preguntas?franquicia=the-walking-dead&nivel=facil`
 
-## Pantallas (router por hash)
-
-| URL | Qué muestra |
-|---|---|
-| `#/` | Formulario: franquicia + dificultad |
-| `#/jugar/:franquicia/:nivel` | La trivia (por ejemplo `#/jugar/the-walking-dead/facil`) |
-| `#/resultado` | Puntaje final |
-
 ## Estructura
 
 ```
-db.json                  ← backend (franquicias y preguntas)
-public/index.html        ← página única
-public/css/styles.css    ← estilos propios (sobre Bootstrap en css/vendor/)
-public/js/main.js        ← router
-public/js/vistas.js      ← pantallas de inicio, juego y resultado
-public/js/quiz.js        ← estado de la partida
-public/js/api.js         ← GET al backend
-public/js/utils.js       ← niveles, mezclar (Fisher–Yates), helpers
-public/imagenes/         ← imágenes de las preguntas
+db.json                ← backend (franquicias y preguntas)
+index.html             ← página única de Vite
+public/imagenes/       ← imágenes de las preguntas (se sirven en /imagenes/...)
+src/main.tsx           ← punto de entrada (carga Bootstrap y styles.css)
+src/App.tsx            ← componente raíz
+src/styles.css         ← estilos propios (sobre Bootstrap)
+src/models/trivia.ts   ← tipos Nivel, Pregunta, Franquicia
 ```
