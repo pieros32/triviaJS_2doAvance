@@ -2,7 +2,6 @@ interface Props {
   texto?: string;
 }
 
-// Indicador de espera (spinner de Bootstrap) mientras llegan los datos del servidor.
 export default function Cargando({ texto = 'Cargando…' }: Props) {
   return (
     <div className="estado-carga d-flex justify-content-center align-items-center gap-2" role="status">

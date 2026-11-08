@@ -3,7 +3,6 @@ interface Props {
   mensaje: string;
 }
 
-// Aviso de error reutilizable (alert de Bootstrap). El padre lo muestra solo cuando hay error.
 export default function ErrorCarga({ titulo, mensaje }: Props) {
   return (
     <div className="alert alert-danger d-flex align-items-center gap-3 mb-0" role="alert">

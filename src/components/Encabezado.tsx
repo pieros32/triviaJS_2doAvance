@@ -1,4 +1,3 @@
-// Componente de presentación: solo muestra la marca y el título. No tiene lógica.
 export default function Encabezado() {
   return (
     <header className="encabezado-app">

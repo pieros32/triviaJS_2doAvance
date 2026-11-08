@@ -1,11 +1,4 @@
-/* ============================================================
-   AJUSTES A BOOTSTRAP
-   Bootstrap aporta la estructura (grilla, tabla, alertas...).
-   Aquí solo se le cambian los colores para el tema neón.
-   ============================================================ */
-
-/* Los colores semánticos de Bootstrap pasan a versiones neón:
-   afectan a text-success, text-danger, badges, alertas, etc. */
+/* Colores semánticos de Bootstrap en versión neón */
 :root,
 [data-bs-theme='dark'] {
   --bs-success-rgb: 61, 255, 160;
@@ -24,7 +17,6 @@
   letter-spacing: 0.04em;
 }
 
-/* Campos de formulario (.form-control y .form-select) */
 .panel-configuracion .form-control,
 .panel-configuracion .form-select,
 .panel-ranking .form-select {
@@ -54,7 +46,6 @@
   border-color: var(--color-error);
 }
 
-/* Alerta de error */
 .alert-danger {
   --bs-alert-bg: rgba(255, 77, 109, 0.12);
   --bs-alert-border-color: var(--color-error);
@@ -64,7 +55,6 @@
   font-size: 0.92rem;
 }
 
-/* Barra de progreso (.progress) */
 .progress {
   --bs-progress-bg: var(--fondo-entrada);
   --bs-progress-height: 0.6rem;
@@ -77,7 +67,6 @@
   transition: width 0.3s ease;
 }
 
-/* Tabla (.table) */
 .panel-ranking .table {
   --bs-table-color: var(--texto-principal);
   --bs-table-bg: transparent;

@@ -1,9 +1,3 @@
-/* ============================================================
-   RESULTADO, RANKING y páginas informativas (sin resultados / 404).
-   La tarjeta de resultado reutiliza .tarjeta-trivia de juego.css.
-   ============================================================ */
-
-/* ---------- Resultado: una sola columna centrada ---------- */
 .tarjeta-trivia.tarjeta-resultado {
   grid-template-columns: 1fr;
   justify-items: center;
@@ -38,7 +32,6 @@
   margin-top: 0.5rem;
 }
 
-/* ---------- Ranking y páginas informativas ---------- */
 .titulo-seccion {
   font-family: var(--fuente-titulos);
   font-size: 1.4rem;
@@ -55,7 +48,6 @@
   margin-bottom: 1rem;
 }
 
-/* Podio: los tres primeros puestos con color */
 .panel-ranking tbody tr:nth-child(1) th {
   color: var(--neon-amarillo);
 }

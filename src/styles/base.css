@@ -1,6 +1,3 @@
-/* ============================================================
-   BASE: reinicio, fondo con rejilla y contenedor principal.
-   ============================================================ */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,7 +18,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Rejilla violeta tenue y fija (detrás de todo) */
 body::before {
   content: '';
   position: fixed;
@@ -36,7 +32,6 @@ body::before {
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 80%);
 }
 
-/* El contenedor de React ocupa todo el ancho para centrar la app */
 #root {
   width: 100%;
   display: flex;
@@ -54,7 +49,6 @@ body::before {
   gap: 1.25rem;
 }
 
-/* Contenedor de cada pantalla: apila sus bloques con separación */
 .pantalla {
   display: flex;
   flex-direction: column;

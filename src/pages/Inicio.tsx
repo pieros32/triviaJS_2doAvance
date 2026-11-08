@@ -10,30 +10,21 @@ import { obtenerFranquicias } from '../services/api';
 const NOMBRE_MIN = 2;
 const NOMBRE_MAX = 20;
 
-// ============================================================
-// PÁGINA DE INICIO: formulario controlado.
-//  - Cada campo vive en un useState y el input muestra ese estado (value + onChange).
-//  - Las franquicias se piden al servidor con useEffect + fetch (Resource).
-//  - Validación: nombre de 2 a 20 caracteres y un nivel elegido.
-// ============================================================
 export default function Inicio() {
   const navigate = useNavigate();
   const { estado, configurar } = usePartida();
 
-  // Datos del servidor
   const [franquicias, setFranquicias] = useState<Franquicia[]>([]);
   const [cargando, setCargando] = useState(true);
   const [errorConexion, setErrorConexion] = useState(false);
 
-  // Campos del formulario
   const [nombre, setNombre] = useState(estado.jugador);
   const [franquicia, setFranquicia] = useState('');
   const [nivel, setNivel] = useState<Nivel | ''>('');
   const [intentado, setIntentado] = useState(false);
 
-  // Se ejecuta una vez al montar: GET /franquicias
   useEffect(() => {
-    let activo = true; // evita actualizar el estado si el componente ya se desmontó
+    let activo = true; // evita actualizar el estado si ya se desmontó
     obtenerFranquicias()
       .then((lista) => {
         if (!activo) return;
@@ -87,7 +78,6 @@ export default function Inicio() {
 
       <form className="panel-configuracion" aria-label="Configuración de la trivia" onSubmit={comenzar} noValidate>
         <div className="row g-4">
-          {/* Nombre del jugador */}
           <div className="col-md-6">
             <label className="etiqueta-configuracion mb-2" htmlFor="campoNombre">
               Nombre del jugador
@@ -104,7 +94,6 @@ export default function Inicio() {
             <div className="invalid-feedback">{errorNombre}</div>
           </div>
 
-          {/* Franquicia */}
           <div className="col-md-6">
             <label className="etiqueta-configuracion mb-2" htmlFor="selectorFranquicia">
               Selecciona una Franquicia
@@ -123,7 +112,6 @@ export default function Inicio() {
             </select>
           </div>
 
-          {/* Dificultad */}
           <div className="col-12">
             <span className="etiqueta-configuracion d-block mb-2">Dificultad</span>
             <div className="row g-2" role="group" aria-label="Dificultad">

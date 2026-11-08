@@ -9,7 +9,7 @@ import { usePartida } from '../context/PartidaContext';
 import { esNivel } from '../models/trivia';
 import { obtenerPreguntas } from '../services/api';
 
-/** Segundos que tiene el jugador para responder cada pregunta. */
+// Segundos por pregunta
 const TIEMPO_POR_PREGUNTA = 20;
 
 interface ErrorJuego {
@@ -17,13 +17,6 @@ interface ErrorJuego {
   mensaje: string;
 }
 
-// ============================================================
-// PÁGINA DE JUEGO (ruta /jugar/:franquicia/:nivel)
-//  - useParams lee la franquicia y el nivel de la URL.
-//  - useEffect + fetch pide las preguntas (Resource) y muestra carga / error.
-//  - useRef guarda el id del setInterval del temporizador para poder detenerlo.
-//  - La partida (puntaje, pregunta actual...) viene del contexto (usePartida).
-// ============================================================
 export default function Juego() {
   const { franquicia = '', nivel = '' } = useParams();
   const navigate = useNavigate();
@@ -34,7 +27,6 @@ export default function Juego() {
   const [segundos, setSegundos] = useState(TIEMPO_POR_PREGUNTA);
   const intervaloRef = useRef<number | null>(null);
 
-  // 1) Cargar las preguntas cada vez que cambia la franquicia o el nivel de la URL
   useEffect(() => {
     reiniciar();
     setError(null);
@@ -79,9 +71,7 @@ export default function Juego() {
 
   const hayPregunta = !cargando && !error && preguntaActual !== null;
 
-  // 2) Temporizador: un setInterval que resta 1 segundo. Su id se guarda en un ref
-  //    (no en el estado, porque cambiarlo no debe volver a dibujar la pantalla).
-  //    Se detiene al responder y se limpia al cambiar de pregunta o salir de la página.
+  // useRef guarda el id del intervalo sin volver a dibujar la pantalla
   useEffect(() => {
     if (!hayPregunta || estado.respondida) {
       return;
@@ -95,7 +85,6 @@ export default function Juego() {
     };
   }, [hayPregunta, estado.respondida, estado.indice]);
 
-  // 3) Si el tiempo llega a 0 sin responder, la pregunta cuenta como incorrecta
   useEffect(() => {
     if (hayPregunta && !estado.respondida && segundos <= 0) {
       responder(null);
@@ -113,7 +102,7 @@ export default function Juego() {
     }
   }
 
-  // Si alguien abre /jugar/... directamente (sin pasar por el formulario), vuelve al inicio
+  // Sin pasar por el formulario: vuelve al inicio
   if (!estado.jugador) {
     return <Navigate to="/" replace />;
   }

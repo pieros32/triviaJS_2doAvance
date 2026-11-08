@@ -7,12 +7,9 @@ interface Props {
   total: number;
   puntaje: number;
   segundos: number;
-  /** Preguntas ya terminadas (para la barra de avance). */
   completadas: number;
 }
 
-// Marcador de la partida. Solo muestra lo que recibe por props: no sabe nada del juego.
-// La grilla (row/col) y la barra de avance (progress) son de Bootstrap.
 export default function BarraEstado({ jugador, nivel, numero, total, puntaje, segundos, completadas }: Props) {
   const avance = total > 0 ? Math.round((completadas / total) * 100) : 0;
   const urgente = segundos <= 5;

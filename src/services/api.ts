@@ -1,10 +1,6 @@
 import type { Franquicia, Nivel, Pregunta } from '../models/trivia';
 
-// ============================================================
-// Acceso al backend (json-server, db.json). Solo lectura (GET).
-//   GET /franquicias
-//   GET /preguntas?franquicia=the-walking-dead&nivel=facil
-// ============================================================
+// json-server (solo lectura)
 const API = 'http://localhost:3000';
 
 async function pedir<T>(ruta: string, params?: Record<string, string>): Promise<T> {

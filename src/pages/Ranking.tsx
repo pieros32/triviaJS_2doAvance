@@ -10,18 +10,11 @@ const COLOR_NIVEL: Record<Nivel, string> = {
   experto: 'text-bg-danger'
 };
 
-// ============================================================
-// PÁGINA DE RANKING (ruta /ranking)
-//  - La lista sale de localStorage (cargarRanking) y vive en un useState.
-//  - Los filtros son un formulario controlado: cada <select> guarda su valor en un estado
-//    y la tabla se calcula a partir de ellos (no se guarda una segunda lista).
-// ============================================================
 export default function Ranking() {
   const [registros, setRegistros] = useState(cargarRanking);
   const [filtroFranquicia, setFiltroFranquicia] = useState('');
   const [filtroNivel, setFiltroNivel] = useState('');
 
-  // Franquicias que aparecen en el historial (sin repetir)
   const franquicias = [...new Map(registros.map((r) => [r.franquicia, r.franquiciaNombre]))];
 
   const visibles = ordenarRanking(
@@ -58,7 +51,6 @@ export default function Ranking() {
       <section className="panel-ranking">
         <h2 className="titulo-seccion">Ranking</h2>
 
-        {/* Filtros */}
         <form className="row g-3 mb-4" aria-label="Filtros del ranking" onSubmit={(e) => e.preventDefault()}>
           <div className="col-md-5">
             <label className="etiqueta-configuracion mb-2" htmlFor="filtroFranquicia">
@@ -103,7 +95,6 @@ export default function Ranking() {
           </div>
         </form>
 
-        {/* Tabla */}
         {visibles.length === 0 ? (
           <p className="texto-ranking text-center mb-0">No hay partidas con esos filtros.</p>
         ) : (

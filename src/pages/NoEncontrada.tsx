@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-// Se muestra cuando la URL no coincide con ninguna ruta (path="*").
 export default function NoEncontrada() {
   return (
     <div className="pantalla">

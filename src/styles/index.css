@@ -1,13 +1,9 @@
-/* ============================================================
-   ÍNDICE DE ESTILOS — tema retrofuturista sobrio (neón y rejilla)
-   Bootstrap se carga antes (en main.tsx); estas secciones lo
-   complementan. El orden importa: las últimas ganan en empates.
-   ============================================================ */
-@import './variables.css';          /* colores y fuentes */
-@import './bootstrap.css';          /* ajustes a componentes de Bootstrap */
-@import './base.css';               /* fondo con rejilla y contenedor */
-@import './encabezado.css';         /* marca, título, menú */
-@import './botones.css';            /* acción, secundario, dificultad */
-@import './formularios.css';        /* panel de inicio y etiquetas */
-@import './juego.css';              /* marcador, tarjeta, opciones */
-@import './resultado-ranking.css';  /* pantalla de resultado y ranking */
+/* Orden de carga: las últimas secciones ganan en empates */
+@import './variables.css';
+@import './bootstrap.css';
+@import './base.css';
+@import './encabezado.css';
+@import './botones.css';
+@import './formularios.css';
+@import './juego.css';
+@import './resultado-ranking.css';

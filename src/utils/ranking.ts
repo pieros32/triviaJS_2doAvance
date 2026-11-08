@@ -1,10 +1,6 @@
 import type { RegistroRanking } from '../models/trivia';
 
-// ============================================================
-// Ranking guardado en el navegador (localStorage).
-// No hay servidor de escritura: json-server solo se usa para leer.
-// Todo acceso va en try/catch porque localStorage puede estar bloqueado.
-// ============================================================
+// localStorage puede estar bloqueado: todo va en try/catch
 const CLAVE = 'trivia-pop-ranking';
 const MAXIMO = 200;
 
@@ -23,7 +19,7 @@ export function guardarRegistro(registro: RegistroRanking): void {
     const lista = [...cargarRanking(), registro].slice(-MAXIMO);
     localStorage.setItem(CLAVE, JSON.stringify(lista));
   } catch {
-    // sin almacenamiento: la partida se juega igual, solo no queda en el ranking
+    // sin almacenamiento: se ignora
   }
 }
 
@@ -31,7 +27,7 @@ export function limpiarRanking(): void {
   try {
     localStorage.removeItem(CLAVE);
   } catch {
-    // nada que limpiar
+    // se ignora
   }
 }
 
@@ -39,7 +35,7 @@ export function porcentaje(registro: Pick<RegistroRanking, 'puntaje' | 'total'>)
   return registro.total > 0 ? Math.round((registro.puntaje / registro.total) * 100) : 0;
 }
 
-/** Mejor porcentaje primero; a igualdad, la partida más reciente. */
+// Mejor porcentaje primero; a igualdad, la partida más reciente.
 export function ordenarRanking(lista: RegistroRanking[]): RegistroRanking[] {
   return [...lista].sort(
     (a, b) => porcentaje(b) - porcentaje(a) || b.puntaje - a.puntaje || b.fecha.localeCompare(a.fecha)

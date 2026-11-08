@@ -3,11 +3,10 @@ import { Link, Navigate } from 'react-router-dom';
 import { usePartida } from '../context/PartidaContext';
 import { NOMBRES_NIVEL } from '../models/trivia';
 
-// Página de resultado (ruta /resultado). Lee la partida desde el contexto.
 export default function Resultado() {
   const { estado } = usePartida();
 
-  // Si alguien abre /resultado directamente (sin haber jugado), vuelve al inicio.
+  // Sin partida terminada: vuelve al inicio
   if (!estado.terminado || !estado.nivel) {
     return <Navigate to="/" replace />;
   }

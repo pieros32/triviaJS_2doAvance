@@ -11,9 +11,6 @@ interface Props {
   onSiguiente: () => void;
 }
 
-// Tarjeta con la pregunta, la imagen y las opciones.
-// Recibe todo por props y avisa al padre con funciones (onElegir, onSiguiente):
-// NO decide si una respuesta es correcta, eso lo hace el reducer de la partida.
 export default function TarjetaPregunta({
   pregunta,
   opciones,
@@ -24,19 +21,16 @@ export default function TarjetaPregunta({
   onElegir,
   onSiguiente
 }: Props) {
-  // Color del mensaje con utilidades de Bootstrap
-  let colorMensaje = 'text-warning'; // aviso: "debes responder..."
+  let colorMensaje = 'text-warning';
   if (respondida) {
     colorMensaje = seleccionada === pregunta.respuesta ? 'text-success' : 'text-danger';
   }
 
-  // La columna visual solo existe si la pregunta trae imagen o tipo.
-  // Sin ninguno de los dos no se dibuja nada y la tarjeta queda en una columna.
+  // Sin imagen ni tipo no se dibuja la columna visual
   const tieneVisual = Boolean(pregunta.imagen || pregunta.tipo);
 
   return (
     <article className={`tarjeta-trivia arena-cuestionario ${tieneVisual ? '' : 'sin-visual'}`}>
-      {/* Columna izquierda (opcional): categoría e imagen */}
       {tieneVisual && (
         <div className="col-visual-trivia">
           {pregunta.tipo && <div className="insignia-categoria" id="tipoPregunta">{pregunta.tipo}</div>}
@@ -48,7 +42,6 @@ export default function TarjetaPregunta({
         </div>
       )}
 
-      {/* Columna derecha: pregunta, opciones, mensaje y botón */}
       <div className="col-contenido-trivia">
         <h2 id="pregunta">{pregunta.pregunta}</h2>
 

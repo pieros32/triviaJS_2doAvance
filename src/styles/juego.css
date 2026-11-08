@@ -1,8 +1,3 @@
-/* ============================================================
-   JUEGO: marcador, tarjeta de pregunta, imagen y opciones.
-   ============================================================ */
-
-/* ---------- Marcador ---------- */
 .barra-estado {
   background-color: var(--fondo-tarjeta);
   border: 1.5px solid var(--borde-suave);
@@ -46,7 +41,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Tarjeta de pregunta ---------- */
 .tarjeta-trivia {
   background-color: var(--fondo-tarjeta);
   border: 1.5px solid var(--borde-neon);
@@ -71,7 +65,7 @@
   justify-content: space-between;
 }
 
-/* Pregunta sin imagen ni categoría: una sola columna centrada, sin espacio vacío */
+/* Pregunta sin imagen ni categoría: una sola columna */
 .tarjeta-trivia.sin-visual {
   grid-template-columns: 1fr;
   width: 100%;
@@ -79,7 +73,6 @@
   margin-inline: auto;
 }
 
-/* Categoría: pill magenta */
 .insignia-categoria {
   align-self: flex-start;
   display: inline-flex;
@@ -94,7 +87,6 @@
   color: var(--texto-oscuro);
 }
 
-/* Marco de imagen */
 .marco-imagen {
   position: relative;
   width: 100%;
@@ -115,7 +107,6 @@
   display: block;
 }
 
-/* ---------- Pregunta y opciones ---------- */
 #pregunta {
   font-family: var(--fuente-cuerpo);
   font-size: 1.25rem;
@@ -133,7 +124,6 @@
   gap: 0.75rem;
 }
 
-/* Cada opción es un botón ancho con una flecha */
 .opcion-btn {
   width: 100%;
   display: flex;
@@ -199,7 +189,7 @@
   opacity: 1;
 }
 
-/* Mensaje de la respuesta (el color lo ponen las utilidades text-* de Bootstrap) */
+/* El color del mensaje lo ponen las utilidades text-* de Bootstrap */
 #resultado {
   font-size: 1rem;
   font-weight: 700;
@@ -208,7 +198,6 @@
   padding: 0.3rem;
 }
 
-/* ---------- Tablet y escritorio ---------- */
 @media (min-width: 768px) {
   .barra-estado {
     padding: 1.1rem 2rem;

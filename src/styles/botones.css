@@ -1,9 +1,3 @@
-/* ============================================================
-   BOTONES
-   - .btn-accion / #siguiente : botón principal (verde)
-   - .btn-secundario          : solo contorno neón (como el botón de la referencia)
-   - .btn-nivel               : selector de dificultad (cian)
-   ============================================================ */
 .btn-accion,
 #siguiente {
   display: inline-flex;
@@ -53,7 +47,6 @@
   cursor: not-allowed;
 }
 
-/* Secundario: solo contorno */
 .btn-secundario {
   background-color: transparent;
   color: var(--neon-verde);
@@ -70,7 +63,6 @@
   transform: scale(0.98);
 }
 
-/* Dificultad (la grilla es row/col de Bootstrap) */
 .btn-nivel {
   background-color: rgba(45, 226, 255, 0.06);
   border: 1.5px solid rgba(45, 226, 255, 0.55);

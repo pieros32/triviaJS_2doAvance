@@ -1,19 +1,12 @@
-/* ============================================================
-   VARIABLES: la paleta y las fuentes del tema viven aquí.
-   Cambiar un color aquí lo cambia en toda la app.
-   ============================================================ */
 :root {
-  /* Fondos: violeta profundo, como una pantalla CRT apagada */
   --fondo-principal: #14072e;
   --fondo-profundo: #0c0420;
   --fondo-tarjeta: rgba(30, 12, 66, 0.82);
   --fondo-entrada: #0e0524;
 
-  /* Bordes */
   --borde-suave: rgba(167, 139, 250, 0.35);
   --borde-neon: rgba(125, 255, 107, 0.45);
 
-  /* Neones */
   --neon-verde: #7dff6b;
   --neon-verde-oscuro: #38c92b;
   --neon-cian: #2de2ff;
@@ -21,16 +14,13 @@
   --neon-amarillo: #ffe14d;
   --neon-violeta: #a78bfa;
 
-  /* Texto */
   --texto-principal: #f6f1ff;
   --texto-mutado: #b4a6e0;
   --texto-oscuro: #12062b; /* texto sobre fondos neón */
 
-  /* Estados */
   --color-exito: #3dffa0;
   --color-error: #ff4d6d;
 
-  /* Fuentes: títulos futuristas y cuerpo legible */
   --fuente-titulos: 'Orbitron', 'Segoe UI', sans-serif;
   --fuente-cuerpo: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 }
