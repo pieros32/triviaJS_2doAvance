@@ -1,21 +1,37 @@
-import { NIVELES, NOMBRES_NIVEL } from './models/trivia';
+import { Route, Routes } from 'react-router-dom';
 
-// Componente raíz. Por ahora solo comprueba que React + TSX + Bootstrap funcionan;
-// aquí se irán montando el encabezado, la navegación y las pantallas.
+import BarraNavegacion from './components/BarraNavegacion';
+import Encabezado from './components/Encabezado';
+import Inicio from './pages/Inicio';
+import Juego from './pages/Juego';
+import NoEncontrada from './pages/NoEncontrada';
+import Ranking from './pages/Ranking';
+import Resultado from './pages/Resultado';
+
+// ============================================================
+// COMPONENTE RAÍZ + NAVEGACIÓN
+// El encabezado, el menú y el pie se ven siempre; <Routes> dibuja
+// solo la pantalla que corresponde a la URL:
+//   /                           → formulario: nombre, franquicia y dificultad
+//   /jugar/:franquicia/:nivel   → la trivia (":franquicia" y ":nivel" vienen de la URL)
+//   /resultado                  → puntaje final
+//   /ranking                    → historial de partidas con filtros
+//   cualquier otra              → página no encontrada
+// ============================================================
 export default function App() {
   return (
     <>
       <main className="aplicacion-trivia">
-        <header className="encabezado-app">
-          <div className="insignia-marca">POP CULTURE QUIZ ARENA</div>
-          <h1 className="titulo-app">
-            ¡TRIVIA POP! <span className="acento-titulo">CINE &amp; SERIES</span>
-          </h1>
-        </header>
+        <Encabezado />
+        <BarraNavegacion />
 
-        <p className="estado-carga">
-          React listo. Niveles: {NIVELES.map((n) => NOMBRES_NIVEL[n]).join(', ')}
-        </p>
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/jugar/:franquicia/:nivel" element={<Juego />} />
+          <Route path="/resultado" element={<Resultado />} />
+          <Route path="/ranking" element={<Ranking />} />
+          <Route path="*" element={<NoEncontrada />} />
+        </Routes>
       </main>
 
       <footer className="pie-app">

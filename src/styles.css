@@ -107,36 +107,112 @@ body {
   max-width: 600px;
 }
 
-/* Error de Carga Alert (el componente solo existe cuando hay error) */
-#errorCarga {
+/* El contenedor de React ocupa todo el ancho para que .aplicacion-trivia se centre */
+#root {
+  width: 100%;
   display: flex;
-  background-color: #7f1d1d;
-  border: 1.5px solid #ef4444;
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  color: #fecaca;
-  font-size: 0.92rem;
-  line-height: 1.4;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
 }
 
-/* Configuration Panel (Flat Solid) */
-.panel-configuracion, .panel-controles {
+/* Alerta de error: es el .alert-danger de Bootstrap; aquí solo se le da el tono de la marca */
+.alert-danger {
+  --bs-alert-bg: #7f1d1d;
+  --bs-alert-border-color: #ef4444;
+  --bs-alert-color: #fecaca;
+  border-width: 1.5px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+}
+
+/* Panel (Flat Solid): formulario de inicio y ranking */
+.panel-configuracion, .panel-controles, .panel-ranking {
   background-color: #1e293b;
   border: 1px solid #334155;
   border-radius: 16px;
   padding: 1.25rem 1.6rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
 }
 
-.grupo-configuracion {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  justify-content: center;
+.titulo-seccion {
+  font-family: var(--fuente-titulos);
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.texto-ranking {
+  color: var(--texto-mutado);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Menú principal (nav-pills de Bootstrap con los colores de la marca) */
+.menu-principal {
+  --bs-nav-pills-link-active-bg: var(--boton-activo);
+  --bs-nav-link-color: var(--texto-mutado);
+  --bs-nav-link-hover-color: #ffffff;
+}
+
+.menu-principal .nav-link {
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border-radius: 9999px;
+  padding: 0.5rem 1.4rem;
+}
+
+/* Campos de formulario: .form-control y .form-select de Bootstrap con el tema oscuro de la marca */
+.panel-configuracion .form-control,
+.panel-configuracion .form-select,
+.panel-ranking .form-select {
+  background-color: var(--fondo-entrada);
+  border: 1.5px solid var(--color-borde);
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: var(--fuente-cuerpo);
+  font-weight: 700;
+}
+
+.panel-configuracion .form-control:focus,
+.panel-configuracion .form-select:focus,
+.panel-ranking .form-select:focus {
+  background-color: #131d35;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+  color: #ffffff;
+}
+
+.panel-configuracion .form-control.is-invalid {
+  border-color: var(--color-error);
+}
+
+/* Tabla del ranking (la base es .table de Bootstrap) */
+.panel-ranking .table {
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.03);
+  --bs-table-border-color: var(--color-borde);
+  font-weight: 600;
+}
+
+.panel-ranking .table thead th {
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--texto-mutado);
+}
+
+/* Barra de avance (.progress de Bootstrap) */
+.progress {
+  --bs-progress-bg: #0f172a;
+  --bs-progress-height: 0.5rem;
+}
+
+.barra-avance {
+  background-color: var(--texto-cian);
+  transition: width 0.3s ease;
 }
 
 .etiqueta-configuracion {
@@ -150,59 +226,7 @@ body {
   gap: 0.5rem;
 }
 
-/* Selector Franquicia */
-.contenedor-selector {
-  position: relative;
-  width: 100%;
-}
-
-#selectorFranquicia {
-  width: 100%;
-  height: 48px;
-  background-color: #0f172a;
-  border: 1.5px solid #334155;
-  border-radius: 10px;
-  color: #ffffff;
-  font-family: var(--fuente-cuerpo);
-  font-size: 0.95rem;
-  font-weight: 700;
-  padding: 0 2.75rem 0 1.1rem;
-  appearance: none;
-  -webkit-appearance: none;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-  outline: none;
-  display: flex;
-  align-items: center;
-}
-
-#selectorFranquicia:hover, #selectorFranquicia:focus {
-  border-color: #6366f1;
-  background-color: #131d35;
-}
-
-.contenedor-selector::after {
-  content: '';
-  position: absolute;
-  right: 1.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 7px solid #facc15;
-  pointer-events: none;
-}
-
-/* Dificultad Buttons */
-.cuadricula-niveles {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.65rem;
-  height: 48px;
-}
-
+/* Dificultad Buttons (la grilla es row/col de Bootstrap) */
 .btn-nivel {
   background-color: #0f172a;
   border: 1.5px solid #334155;
@@ -212,7 +236,7 @@ body {
   font-size: 0.88rem;
   font-weight: 700;
   padding: 0 0.5rem;
-  height: 100%;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -236,29 +260,21 @@ body {
 
 /* Status Bar Scoreboard */
 .barra-estado, .barra-hud {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
   background-color: #1e293b;
   border: 1px solid #334155;
   border-radius: 14px;
   padding: 0.95rem 1.6rem;
 }
 
-.elemento-estado {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+.valor-jugador {
+  color: #ffffff;
+  word-break: break-word;
 }
 
-.elemento-estado:nth-child(2) {
-  align-items: center;
-  text-align: center;
-}
-
-.elemento-estado:nth-child(3) {
-  align-items: flex-end;
-  text-align: right;
+.valor-tiempo {
+  color: #f472b6;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
 }
 
 .etiqueta-estado {
@@ -514,10 +530,8 @@ body {
   .subtitulo-app {
     font-size: 1.08rem;
   }
-  .panel-configuracion, .panel-controles {
-    grid-template-columns: 1fr 1fr;
+  .panel-configuracion, .panel-controles, .panel-ranking {
     padding: 1.4rem 1.8rem;
-    gap: 1.75rem;
   }
   .barra-estado, .barra-hud {
     padding: 1.1rem 2rem;
@@ -608,11 +622,6 @@ body {
 
 .btn-secundario:hover:not(:disabled) {
   background-color: #475569;
-}
-
-/* El botón "Comenzar" ocupa todo el ancho del panel de configuración */
-.accion-formulario {
-  grid-column: 1 / -1;
 }
 
 .estado-carga {

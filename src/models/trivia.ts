@@ -34,6 +34,18 @@ export interface Pregunta {
   imagen: string; // ruta relativa a public/, ej. "imagenes/rick.jpg"
 }
 
+/** Una partida terminada, tal como se guarda en el ranking (localStorage). */
+export interface RegistroRanking {
+  id: string;
+  jugador: string;
+  franquicia: string; // slug
+  franquiciaNombre: string;
+  nivel: Nivel;
+  puntaje: number;
+  total: number;
+  fecha: string; // ISO
+}
+
 /** Una franquicia del catálogo. */
 export interface Franquicia {
   id: number;

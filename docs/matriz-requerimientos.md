@@ -21,6 +21,21 @@ Base de partida: trivia con elección de franquicia y nivel, preguntas con opcio
 | RF-09 | Ranking de partidas | Historial con nombre, franquicia, nivel y puntaje, guardado en el navegador | Navegación, Context, State | Pantalla Ranking | Deseable |
 | RF-10 | Filtros del ranking | Filtrar por franquicia y nivel | Formularios | Ranking | Deseable |
 
+## Dónde está implementado
+
+| ID | Archivos |
+|---|---|
+| RF-01 | `package.json`, `vite.config.ts`, `tsconfig.json`, `src/main.tsx`, `src/models/trivia.ts` |
+| RF-02 | `src/components/` |
+| RF-03 | `src/App.tsx`, `src/components/BarraNavegacion.tsx`, `src/pages/` |
+| RF-04 | `src/pages/Inicio.tsx` |
+| RF-05 | `src/context/PartidaContext.tsx` (`useReducer`), `useState` en `src/pages/` |
+| RF-06 | `src/context/PartidaContext.tsx` (`createContext`, `usePartida`) |
+| RF-07 | `src/pages/Juego.tsx` (`useRef` + `useEffect`), `src/components/BarraEstado.tsx` |
+| RF-08 | `src/pages/Inicio.tsx`, `src/pages/Juego.tsx`, `src/services/api.ts` |
+| RF-09 | `src/pages/Ranking.tsx`, `src/utils/ranking.ts`, guardado en `PartidaContext.tsx` |
+| RF-10 | `src/pages/Ranking.tsx` |
+
 ## Decisiones
 
 - **RF-08:** se usa `useEffect` con `fetch` y no `use`/`Suspense`, para ajustarse a la versión que trabaja el sílabo.
