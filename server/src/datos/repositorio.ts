@@ -39,6 +39,10 @@ export class Repositorio {
   preguntas(franquicia: string, nivel: Nivel): PreguntaInterna[] {
     return this.datos.preguntas.filter((p) => p.franquicia === franquicia && p.nivel === nivel);
   }
+
+  buscarPregunta(id: number): PreguntaInterna | undefined {
+    return this.datos.preguntas.find((p) => p.id === id);
+  }
 }
 
 /** Quita la respuesta y mezcla las opciones (en el JSON la correcta suele ir primera). */

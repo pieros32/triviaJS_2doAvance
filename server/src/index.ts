@@ -1,10 +1,16 @@
+import { crearApp } from './app';
 import { leerConfig } from './config';
-import { crearServidor } from './servidor';
+import { Repositorio } from './datos/repositorio';
+import { AlmacenRanking } from './ranking/almacen';
 
 const config = leerConfig();
-const { http } = crearServidor(config);
+const app = crearApp({
+  config,
+  repositorio: Repositorio.desdeArchivo(config.archivoDatos),
+  ranking: new AlmacenRanking(config.archivoRanking)
+});
 
-http.listen(config.puerto, () => {
+app.listen(config.puerto, () => {
   console.log(`Servidor de trivia en http://localhost:${config.puerto}`);
   console.log(`Orígenes permitidos: ${config.origenesPermitidos.join(', ')}`);
 });

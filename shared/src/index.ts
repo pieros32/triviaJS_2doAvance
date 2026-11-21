@@ -1,4 +1,4 @@
-// Contrato compartido entre el servidor (Express + Socket.IO) y los dos clientes (Vue y Next).
+// Contrato compartido entre el servidor Express y los dos clientes (Vue y Next).
 // Aquí solo viven tipos y constantes: ninguna lógica de interfaz.
 
 // ===== Dominio =====
@@ -34,127 +34,34 @@ export interface PreguntaPublica {
   imagen: string | null; // ruta relativa, p. ej. "imagenes/rick.jpg"
 }
 
-// ===== Reglas de la sala =====
+// ===== Reglas =====
 
-export const MIN_JUGADORES = 2;
-export const MAX_JUGADORES = 4;
-export const LONGITUD_CODIGO = 4;
 export const NOMBRE_MIN = 2;
 export const NOMBRE_MAX = 20;
+export const TIEMPO_POR_PREGUNTA_S = 20;
 
-// ===== Estado de la sala =====
+// ===== Respuestas =====
 
-export type Fase = 'espera' | 'pregunta' | 'revelado' | 'terminada';
-
-export interface JugadorSala {
-  id: string;
-  nombre: string;
-  puntaje: number;
-  conectado: boolean;
-  esAnfitrion: boolean;
-  respondio: boolean; // solo indica si ya contestó, nunca qué contestó
-}
-
-export interface ConfigSala {
-  franquicia: string;
-  franquiciaNombre: string;
-  nivel: Nivel;
-  totalPreguntas: number;
-}
-
-export interface EstadoSala {
-  codigo: string;
-  fase: Fase;
-  config: ConfigSala;
-  jugadores: JugadorSala[];
-}
-
-// ===== Eventos de la partida =====
-
-export interface PreguntaActual extends PreguntaPublica {
-  indice: number; // base 0
-  total: number;
-  duracionMs: number; // tiempo disponible, contado desde que el cliente recibe el evento
-}
-
-export interface RespuestaJugador {
-  jugadorId: string;
-  opcion: string | null; // null = no respondió a tiempo
+/** Lo que responde el servidor al verificar una opción. */
+export interface RespuestaVerificada {
   correcta: boolean;
-  puntos: number;
+  respuestaCorrecta: string;
 }
 
-export interface Revelado {
-  correcta: string;
-  respuestas: RespuestaJugador[];
-  esUltima: boolean;
+// ===== Ranking =====
+
+/** Lo que envía el cliente al terminar una partida. */
+export interface NuevoRegistro {
+  jugador: string;
+  franquicia: string;
+  nivel: Nivel;
+  puntaje: number; // aciertos
+  total: number; // preguntas de la partida
 }
 
-export interface PosicionFinal {
-  posicion: number;
-  jugadorId: string;
-  nombre: string;
-  puntaje: number;
-  aciertos: number;
-}
-
-export interface FinPartida {
-  clasificacion: PosicionFinal[];
-  totalPreguntas: number;
-}
-
-// ===== Ranking global (REST) =====
-
-export interface RegistroRanking {
+/** Lo que guarda el servidor: añade identificador, nombre de la franquicia y fecha. */
+export interface RegistroRanking extends NuevoRegistro {
   id: string;
-  jugador: string;
-  franquicia: string;
   franquiciaNombre: string;
-  nivel: Nivel;
-  puntaje: number;
-  aciertos: number;
-  totalPreguntas: number;
-  sala: string;
   fecha: string; // ISO 8601
-}
-
-// ===== Contrato de Socket.IO =====
-
-export type Respuesta<T = void> = { ok: true; data: T } | { ok: false; error: string };
-export type Ack<T = void> = (respuesta: Respuesta<T>) => void;
-
-export interface DatosCrearSala {
-  jugador: string;
-  franquicia: string;
-  nivel: Nivel;
-}
-
-export interface DatosUnirse {
-  codigo: string;
-  jugador: string;
-}
-
-/** Respuesta al crear o unirse a una sala: incluye el estado inicial para no depender del orden de los eventos. */
-export interface SesionSala {
-  codigo: string;
-  jugadorId: string;
-  estado: EstadoSala;
-}
-
-/** Eventos que envía el cliente. */
-export interface ClientToServerEvents {
-  'sala:crear': (datos: DatosCrearSala, ack: Ack<SesionSala>) => void;
-  'sala:unirse': (datos: DatosUnirse, ack: Ack<SesionSala>) => void;
-  'sala:salir': () => void;
-  'partida:iniciar': (ack: Ack) => void;
-  'partida:responder': (datos: { opcion: string }, ack: Ack) => void;
-  'partida:revancha': (ack: Ack) => void;
-}
-
-/** Eventos que emite el servidor a todos los jugadores de la sala. */
-export interface ServerToClientEvents {
-  'sala:estado': (estado: EstadoSala) => void;
-  'partida:pregunta': (pregunta: PreguntaActual) => void;
-  'partida:revelado': (revelado: Revelado) => void;
-  'partida:fin': (fin: FinPartida) => void;
 }

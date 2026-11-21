@@ -1,22 +1,23 @@
-# ¡TRIVIA POP! Multijugador
+# ¡TRIVIA POP! Versión individual
 
-Trivia de cine y series en tiempo real, hasta 4 jugadores por sala. Este repositorio sirve para **comparar dos frontends (Vue.js y Next.js) contra el mismo backend (Express + Socket.IO)**.
+Trivia de cine y series para un jugador. Este repositorio sirve para **comparar dos frontends (Vue.js y Next.js) contra el mismo backend Express**, que ofrece una API REST con CRUD completo.
 
 ## Ramas
 
 | Rama | Contenido |
 |---|---|
-| `ultimo-avance` | La trivia individual en React (proyecto anterior, intacto). |
-| `base-multijugador` | Solo el backend compartido (`server/`) y los recursos comunes (`shared/`). Sin interfaz. |
-| `implementacion-vue` | Base + cliente Vue 3 (`vue-client/`). |
-| `implementacion-next` | Base + cliente Next.js (`next-client/`). |
+| `ultimo-avance` | La trivia en React con json-server (proyecto anterior, intacto). |
+| `base-individual` | Solo el backend Express (`server/`) y los recursos comunes (`shared/`). Sin interfaz. |
+| `implementacion-vue-individual` | Base + cliente Vue 3 (`vue-client/`). |
+| `implementacion-next-individual` | Base + cliente Next.js (`next-client/`). |
+| `base-multijugador` y `implementacion-*` | Versión multijugador con Socket.IO (trabajo aparte, opcional). |
 
-Las dos implementaciones salen de `base-multijugador`, así que comparten **exactamente** el mismo servidor, el mismo contrato de eventos y el mismo CSS. Lo único que cambia entre ellas es el framework del cliente.
+Las dos implementaciones salen de `base-individual`: comparten el mismo servidor, la misma API y el mismo CSS. Lo único que cambia entre ellas es el framework del cliente.
 
 ## Estructura
 
 ```
-server/    Express (REST) + Socket.IO (tiempo real). Es la autoridad del juego.
+server/    Express: API REST, imágenes y "base de datos" en archivos JSON.
 shared/    Tipos TypeScript del contrato (src/) y estilos CSS comunes (estilos/).
 ```
 
@@ -25,56 +26,46 @@ shared/    Tipos TypeScript del contrato (src/) y estilos CSS comunes (estilos/)
 ```bash
 npm install
 npm run dev:server     # http://localhost:4000
-npm test               # 15 pruebas (unitarias y de integración)
+npm test               # 13 pruebas de la API
 ```
 
-Variables opcionales: `PORT`, `CORS_ORIGINS`, `TIEMPO_PREGUNTA_MS`, `TIEMPO_REVELACION_MS`, `PREGUNTAS_POR_PARTIDA`, `ARCHIVO_RANKING`.
-
-## Reglas del juego
-
-- Una persona crea la sala (elige franquicia y dificultad) y recibe un **código de 4 letras**; las demás entran con ese código.
-- Mínimo 2 y máximo 4 jugadores. Solo el **anfitrión** inicia la partida y pide la revancha.
-- 10 preguntas por partida, 15 segundos cada una. Todos ven la misma pregunta a la vez.
-- Acertar da 100 puntos + hasta 100 de bono por rapidez. Si todos responden, se revela sin esperar el tiempo.
-- Al terminar, los resultados se guardan en el **ranking global**.
-- No se puede entrar a una partida en curso. Si un jugador se desconecta a mitad de partida, queda marcado como desconectado; si se recarga la página, pierde su lugar (no hay reconexión).
-
-## Por qué el servidor manda
-
-El navegador **nunca recibe la respuesta correcta**: solo envía qué opción eligió y el servidor decide si acertó, controla el temporizador y calcula los puntos. Así nadie puede hacer trampa mirando la pestaña Network. Por la misma razón el ranking es de solo lectura por REST: lo escribe el servidor al terminar una partida.
+Variables opcionales: `PORT`, `CORS_ORIGINS`, `ARCHIVO_RANKING`.
 
 ## API REST (`http://localhost:4000`)
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| GET | `/api/franquicias` | Lista de franquicias. |
-| GET | `/api/preguntas?franquicia=&nivel=` | Preguntas **sin** la respuesta y con las opciones mezcladas. |
-| GET | `/api/ranking?franquicia=&nivel=&limite=` | Ranking global ordenado por puntaje. |
-| GET | `/api/salud` | Comprobación de estado. |
-| GET | `/imagenes/...` | Imágenes de las preguntas. |
+| Método | Ruta | Descripción | Código |
+|---|---|---|---|
+| GET | `/api/franquicias` | Lista de franquicias. | 200 |
+| GET | `/api/preguntas?franquicia=&nivel=` | Preguntas **sin** la respuesta y con las opciones mezcladas. | 200 / 400 |
+| POST | `/api/preguntas/:id/respuesta` | Cuerpo `{ "opcion": "..." }` (o `null` si se acabó el tiempo). Responde `{ correcta, respuestaCorrecta }`. | 200 / 400 / 404 |
+| GET | `/api/ranking?franquicia=&nivel=&limite=` | Ranking ordenado por porcentaje de aciertos. | 200 / 400 |
+| POST | `/api/ranking` | Guarda una partida: `{ jugador, franquicia, nivel, puntaje, total }`. | **201** / 400 |
+| DELETE | `/api/ranking/:id` | Borra una partida. | **204** / 404 |
+| DELETE | `/api/ranking` | Borra todo el historial. | **204** |
+| GET | `/imagenes/...` | Imágenes de las preguntas (`express.static`). | 200 |
 
-## Contrato de Socket.IO
+Probar con curl:
 
-Los tipos exactos están en `shared/src/index.ts` (`ClientToServerEvents` y `ServerToClientEvents`). Los dos clientes lo cumplen igual.
+```bash
+curl http://localhost:4000/api/franquicias
+curl -X POST http://localhost:4000/api/preguntas/1/respuesta -H "Content-Type: application/json" -d '{"opcion":"Rick Grimes"}'
+curl -X POST http://localhost:4000/api/ranking -H "Content-Type: application/json" -d '{"jugador":"Ana","franquicia":"dragon-ball","nivel":"facil","puntaje":7,"total":10}'
+curl -X DELETE http://localhost:4000/api/ranking
+```
 
-**Cliente → servidor** (todos responden con un `ack`: `{ ok: true, data }` o `{ ok: false, error }`)
+## Qué de Express se usa
 
-| Evento | Datos | Quién |
-|---|---|---|
-| `sala:crear` | `{ jugador, franquicia, nivel }` → `{ codigo, jugadorId, estado }` | cualquiera |
-| `sala:unirse` | `{ codigo, jugador }` → `{ codigo, jugadorId, estado }` | cualquiera |
-| `sala:salir` | — | jugador en sala |
-| `partida:iniciar` | — | anfitrión |
-| `partida:responder` | `{ opcion }` | jugador |
-| `partida:revancha` | — | anfitrión |
-
-**Servidor → todos los de la sala**
-
-| Evento | Cuándo |
+| Concepto | Dónde |
 |---|---|
-| `sala:estado` | Cambia algo de la sala (jugadores, fase, quién respondió). |
-| `partida:pregunta` | Empieza una pregunta (incluye `duracionMs`). |
-| `partida:revelado` | Termina una pregunta: respuesta correcta y puntos de cada jugador. |
-| `partida:fin` | Termina la partida: clasificación final. |
+| `express()` y `app.listen` | `src/app.ts`, `src/index.ts` |
+| Middleware: `express.json`, `cors`, `express.static` | `src/app.ts` |
+| Middleware propio de 404 y de errores | `src/middleware/errores.ts` |
+| Rutas modulares con `Router` | `src/rutas/*.ts` |
+| `req.query`, `req.params`, `req.body` | `rutas/preguntas.ts`, `rutas/ranking.ts` |
+| Códigos de estado 200, 201, 204, 400, 404 | `rutas/*.ts` |
+| Archivo JSON como base de datos (`fs`) | `src/ranking/almacen.ts`, `src/datos/repositorio.ts` |
 
-Fases de la sala: `espera` → `pregunta` ⇄ `revelado` → `terminada` → (revancha) → `espera`.
+## Decisiones
+
+- **La respuesta correcta no viaja al navegador.** El cliente envía la opción y el servidor responde si acertó.
+- **Validación simple del ranking:** el servidor comprueba que los datos sean coherentes y que el puntaje no supere el total posible. No impide que alguien envíe un puntaje falso dentro de ese rango; para un curso es suficiente.

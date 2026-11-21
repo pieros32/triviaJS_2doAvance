@@ -29,7 +29,7 @@ export function crearApp({ config, repositorio, ranking }: Dependencias): Expres
   });
   app.use('/api/franquicias', rutaFranquicias(repositorio));
   app.use('/api/preguntas', rutaPreguntas(repositorio));
-  app.use('/api/ranking', rutaRanking(ranking));
+  app.use('/api/ranking', rutaRanking(ranking, repositorio));
 
   app.use(noEncontrado);
   app.use(manejarErrores);

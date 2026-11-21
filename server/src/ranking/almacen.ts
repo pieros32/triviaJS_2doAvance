@@ -10,7 +10,11 @@ export interface FiltrosRanking {
   limite: number;
 }
 
-/** Guarda el ranking global en un archivo JSON (o solo en memoria si no se da archivo). */
+function porcentaje(r: Pick<RegistroRanking, 'puntaje' | 'total'>): number {
+  return r.total > 0 ? Math.round((r.puntaje / r.total) * 100) : 0;
+}
+
+/** Guarda el ranking en un archivo JSON (o solo en memoria si no se da archivo): hace de "base de datos". */
 export class AlmacenRanking {
   private registros: RegistroRanking[];
 
@@ -18,15 +22,30 @@ export class AlmacenRanking {
     this.registros = this.cargar();
   }
 
-  agregar(nuevos: RegistroRanking[]): void {
-    this.registros = [...this.registros, ...nuevos].slice(-MAXIMO_GUARDADO);
+  agregar(registro: RegistroRanking): void {
+    this.registros = [...this.registros, registro].slice(-MAXIMO_GUARDADO);
     this.guardar();
   }
 
+  /** Devuelve false si no existía ese id. */
+  eliminar(id: string): boolean {
+    const quedan = this.registros.filter((r) => r.id !== id);
+    if (quedan.length === this.registros.length) return false;
+    this.registros = quedan;
+    this.guardar();
+    return true;
+  }
+
+  vaciar(): void {
+    this.registros = [];
+    this.guardar();
+  }
+
+  // Mejor porcentaje primero; a igualdad, más aciertos y luego la partida más reciente
   listar({ franquicia, nivel, limite }: FiltrosRanking): RegistroRanking[] {
     return this.registros
       .filter((r) => (!franquicia || r.franquicia === franquicia) && (!nivel || r.nivel === nivel))
-      .sort((a, b) => b.puntaje - a.puntaje || b.fecha.localeCompare(a.fecha))
+      .sort((a, b) => porcentaje(b) - porcentaje(a) || b.puntaje - a.puntaje || b.fecha.localeCompare(a.fecha))
       .slice(0, limite);
   }
 
