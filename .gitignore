@@ -41,7 +41,7 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-# Trivia multijugador
+# Datos generados por el servidor
 .next/
 server/data/ranking.json
 *.tsbuildinfo

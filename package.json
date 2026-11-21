@@ -1,5 +1,5 @@
 {
-  "name": "trivia-pop-multijugador",
+  "name": "trivia-pop",
   "private": true,
   "type": "module",
   "workspaces": [
