@@ -40,3 +40,8 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Trivia multijugador
+.next/
+server/data/ranking.json
+*.tsbuildinfo

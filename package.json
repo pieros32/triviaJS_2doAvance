@@ -1,28 +1,14 @@
 {
-  "name": "trivia-pop-react",
-  "version": "0.0.0",
+  "name": "trivia-pop-multijugador",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "shared",
+    "server"
+  ],
   "scripts": {
-    "dev": "vite",
-    "api": "json-server --watch db.json --port 3000",
-    "start": "concurrently -n api,web -c yellow,cyan \"npm:api\" \"npm:dev\"",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "bootstrap": "^5.3.8",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "react-router-dom": "^7.18.5"
-  },
-  "devDependencies": {
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.2.1",
-    "concurrently": "^10.0.7",
-    "json-server": "^0.17.4",
-    "typescript": "^7.0.2",
-    "vite": "^8.3.6"
+    "dev:server": "npm run dev -w server",
+    "test": "npm test -w server",
+    "typecheck": "npm run typecheck -w server"
   }
 }
