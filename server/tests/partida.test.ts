@@ -108,6 +108,7 @@ describe('Sala multijugador', () => {
     const creada = await pedir<SesionSala>(a!, 'sala:crear', { jugador: 'Ana', franquicia: 'the-walking-dead', nivel: 'facil' });
     assert.ok(creada.ok);
     const codigo = creada.data.codigo;
+    assert.equal(creada.data.estado.jugadores.length, 1); // el estado inicial viaja en el ack
 
     assert.equal((await pedir(b!, 'sala:unirse', { codigo: 'ZZZZ', jugador: 'Beto' })).ok, false);
     assert.equal((await pedir(b!, 'sala:unirse', { codigo, jugador: 'ana' })).ok, false);

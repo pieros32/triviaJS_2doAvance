@@ -57,7 +57,7 @@ export function registrarSockets(io: ServidorSockets, gestor: GestorSalas): void
         const { jugador, franquicia, nivel } = validar(esquemaCrearSala, datos);
         const sala = gestor.crear(id, jugador, franquicia, nivel as Nivel);
         void socket.join(sala.codigo);
-        return { codigo: sala.codigo, jugadorId: id };
+        return { codigo: sala.codigo, jugadorId: id, estado: sala.estado() };
       })
     );
 
@@ -66,7 +66,7 @@ export function registrarSockets(io: ServidorSockets, gestor: GestorSalas): void
         const { codigo, jugador } = validar(esquemaUnirse, datos);
         const sala = gestor.unirse(id, codigo, jugador);
         void socket.join(sala.codigo);
-        return { codigo: sala.codigo, jugadorId: id };
+        return { codigo: sala.codigo, jugadorId: id, estado: sala.estado() };
       })
     );
 

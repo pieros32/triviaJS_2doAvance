@@ -134,9 +134,11 @@ export interface DatosUnirse {
   jugador: string;
 }
 
+/** Respuesta al crear o unirse a una sala: incluye el estado inicial para no depender del orden de los eventos. */
 export interface SesionSala {
   codigo: string;
   jugadorId: string;
+  estado: EstadoSala;
 }
 
 /** Eventos que envía el cliente. */

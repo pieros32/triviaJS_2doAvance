@@ -61,8 +61,8 @@ Los tipos exactos están en `shared/src/index.ts` (`ClientToServerEvents` y `Ser
 
 | Evento | Datos | Quién |
 |---|---|---|
-| `sala:crear` | `{ jugador, franquicia, nivel }` → `{ codigo, jugadorId }` | cualquiera |
-| `sala:unirse` | `{ codigo, jugador }` → `{ codigo, jugadorId }` | cualquiera |
+| `sala:crear` | `{ jugador, franquicia, nivel }` → `{ codigo, jugadorId, estado }` | cualquiera |
+| `sala:unirse` | `{ codigo, jugador }` → `{ codigo, jugadorId, estado }` | cualquiera |
 | `sala:salir` | — | jugador en sala |
 | `partida:iniciar` | — | anfitrión |
 | `partida:responder` | `{ opcion }` | jugador |
