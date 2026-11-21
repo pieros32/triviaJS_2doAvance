@@ -1,0 +1,5 @@
+/* El Pages Router envuelve la aplicación en #__next; sin esto se encoge al ancho de su contenido
+   y el CSS compartido (que espera #root directamente dentro del body) queda más angosto */
+#__next {
+  width: 100%;
+}

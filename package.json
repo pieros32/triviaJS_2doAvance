@@ -4,11 +4,14 @@
   "type": "module",
   "workspaces": [
     "shared",
-    "server"
+    "server",
+    "next-client"
   ],
   "scripts": {
     "dev:server": "npm run dev -w server",
+    "dev:next": "npm run dev -w next-client",
+    "build:next": "npm run build -w next-client",
     "test": "npm test -w server",
-    "typecheck": "npm run typecheck -w server"
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w next-client"
   }
 }
