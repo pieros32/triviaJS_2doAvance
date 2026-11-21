@@ -10,7 +10,6 @@ Trivia de cine y series para un jugador. Este repositorio sirve para **comparar 
 | `base-individual` | Solo el backend Express (`server/`) y los recursos comunes (`shared/`). Sin interfaz. |
 | `implementacion-vue-individual` | Base + cliente Vue 3 (`vue-client/`). |
 | `implementacion-next-individual` | Base + cliente Next.js (`next-client/`). |
-| `base-multijugador` y `implementacion-*` | Versión multijugador con Socket.IO (trabajo aparte, opcional). |
 
 Las dos implementaciones salen de `base-individual`: comparten el mismo servidor, la misma API y el mismo CSS. Lo único que cambia entre ellas es el framework del cliente.
 
