@@ -4,11 +4,14 @@
   "type": "module",
   "workspaces": [
     "shared",
-    "server"
+    "server",
+    "vue-client"
   ],
   "scripts": {
     "dev:server": "npm run dev -w server",
+    "dev:vue": "npm run dev -w vue-client",
+    "build:vue": "npm run build -w vue-client",
     "test": "npm test -w server",
-    "typecheck": "npm run typecheck -w server"
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w vue-client"
   }
 }
