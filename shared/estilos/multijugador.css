@@ -96,3 +96,10 @@
   font-family: var(--fuente-titulos);
   font-weight: 900;
 }
+
+/* Opción que elegiste mientras esperas a los demás jugadores */
+.opcion-btn.elegida:disabled {
+  opacity: 1;
+  border-color: var(--neon-cian);
+  box-shadow: 0 0 14px rgba(45, 226, 255, 0.35);
+}
