@@ -1,14 +1,29 @@
-<script setup lang="ts">
+<script lang="ts">
 import { NOMBRES_NIVEL } from '@trivia/shared';
-import { computed } from 'vue';
+import { defineComponent } from 'vue';
 
 import { usePartidaStore } from '../stores/partida';
 
-const partida = usePartidaStore();
-
-const total = computed(() => partida.preguntas.length);
-const porcentaje = computed(() => (total.value > 0 ? Math.round((partida.puntaje / total.value) * 100) : 0));
-const colorBarra = computed(() => (porcentaje.value >= 70 ? 'bg-success' : porcentaje.value >= 40 ? 'bg-warning' : 'bg-danger'));
+export default defineComponent({
+  name: 'ResultadoView',
+  data() {
+    return { NOMBRES_NIVEL };
+  },
+  computed: {
+    partida() {
+      return usePartidaStore();
+    },
+    total(): number {
+      return this.partida.preguntas.length;
+    },
+    porcentaje(): number {
+      return this.total > 0 ? Math.round((this.partida.puntaje / this.total) * 100) : 0;
+    },
+    colorBarra(): string {
+      return this.porcentaje >= 70 ? 'bg-success' : this.porcentaje >= 40 ? 'bg-warning' : 'bg-danger';
+    }
+  }
+});
 </script>
 
 <template>
@@ -34,11 +49,13 @@ const colorBarra = computed(() => (porcentaje.value >= 70 ? 'bg-success' : porce
           <div class="progress-bar" :class="colorBarra" :style="{ width: `${porcentaje}%` }"></div>
         </div>
 
-        <p v-if="partida.guardado === 'ok'" class="texto-ranking mb-0">Tu partida quedó guardada en el ranking.</p>
-        <p v-else-if="partida.guardado === 'guardando'" class="texto-ranking mb-0">Guardando en el ranking…</p>
-        <div v-else-if="partida.guardado === 'error'" class="alert alert-warning mb-0" role="alert">
-          No se pudo guardar en el ranking.
-          <button type="button" class="btn btn-sm btn-outline-warning ms-2" @click="partida.guardar()">Reintentar</button>
+        <div class="estado-guardado">
+          <p v-if="partida.guardado === 'ok'" class="texto-ranking mb-0">Tu partida quedó guardada en el ranking.</p>
+          <p v-else-if="partida.guardado === 'guardando'" class="texto-ranking mb-0">Guardando en el ranking…</p>
+          <div v-else-if="partida.guardado === 'error'" class="alert alert-warning mb-0" role="alert">
+            No se pudo guardar en el ranking.
+            <button type="button" class="btn btn-sm btn-outline-warning ms-2" @click="partida.guardar()">Reintentar</button>
+          </div>
         </div>
 
         <div class="acciones-resultado">
@@ -52,3 +69,12 @@ const colorBarra = computed(() => (porcentaje.value >= 70 ? 'bg-success' : porce
     </article>
   </div>
 </template>
+
+<style scoped>
+/* Reserva el alto del mensaje para que la tarjeta no salte al pasar de "Guardando…" a "Guardada" */
+.estado-guardado {
+  min-height: 2.6rem;
+  display: flex;
+  align-items: center;
+}
+</style>

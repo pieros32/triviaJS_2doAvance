@@ -6,52 +6,50 @@ import type {
   RegistroRanking,
   RespuestaVerificada
 } from '@trivia/shared';
+import axios, { isAxiosError } from 'axios';
 
 export const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:4000';
 
-interface Opciones {
-  metodo?: 'GET' | 'POST' | 'DELETE';
-  params?: Record<string, string>;
-  cuerpo?: unknown;
-}
+// Una instancia de Axios con la URL base: todas las llamadas a Express pasan por aquí
+const cliente = axios.create({ baseURL: API_URL });
 
-/** Un único punto para hablar con Express: arma la URL, envía JSON y traduce los errores. */
-async function pedir<T>(ruta: string, { metodo = 'GET', params = {}, cuerpo }: Opciones = {}): Promise<T> {
-  const url = new URL(API_URL + ruta);
-  Object.entries(params).forEach(([clave, valor]) => valor && url.searchParams.set(clave, valor));
-
-  const respuesta = await fetch(url, {
-    method: metodo,
-    headers: cuerpo === undefined ? undefined : { 'Content-Type': 'application/json' },
-    body: cuerpo === undefined ? undefined : JSON.stringify(cuerpo)
-  });
-
-  if (!respuesta.ok) {
-    // Express responde { error: "..." } en los 400 y 404
-    const detalle = (await respuesta.json().catch(() => null)) as { error?: string } | null;
-    throw new Error(detalle?.error ?? `HTTP ${respuesta.status}`);
+// Express responde { error: "..." } en los 400 y 404: se convierte en un Error con ese mensaje
+cliente.interceptors.response.use(
+  (respuesta) => respuesta,
+  (error: unknown) => {
+    if (isAxiosError<{ error?: string }>(error)) {
+      const mensaje = error.response
+        ? (error.response.data?.error ?? `HTTP ${error.response.status}`)
+        : 'No se pudo conectar con el servidor.';
+      return Promise.reject(new Error(mensaje));
+    }
+    return Promise.reject(error);
   }
-  return respuesta.status === 204 ? (undefined as T) : ((await respuesta.json()) as T);
-}
+);
 
-export const obtenerFranquicias = () => pedir<Franquicia[]>('/api/franquicias');
+export const obtenerFranquicias = async () => (await cliente.get<Franquicia[]>('/api/franquicias')).data;
 
-export const obtenerPreguntas = (franquicia: string, nivel: Nivel) =>
-  pedir<PreguntaPublica[]>('/api/preguntas', { params: { franquicia, nivel } });
+export const obtenerPreguntas = async (franquicia: string, nivel: Nivel) =>
+  (await cliente.get<PreguntaPublica[]>('/api/preguntas', { params: { franquicia, nivel } })).data;
 
 /** opcion = null significa que se acabó el tiempo. */
-export const verificarRespuesta = (id: number, opcion: string | null) =>
-  pedir<RespuestaVerificada>(`/api/preguntas/${id}/respuesta`, { metodo: 'POST', cuerpo: { opcion } });
+export const verificarRespuesta = async (id: number, opcion: string | null) =>
+  (await cliente.post<RespuestaVerificada>(`/api/preguntas/${id}/respuesta`, { opcion })).data;
 
-export const obtenerRanking = (franquicia: string, nivel: Nivel | '') =>
-  pedir<RegistroRanking[]>('/api/ranking', { params: { franquicia, nivel } });
+// Axios omite los parámetros undefined, así que un filtro vacío no se envía
+export const obtenerRanking = async (franquicia: string, nivel: Nivel | '') =>
+  (await cliente.get<RegistroRanking[]>('/api/ranking', { params: { franquicia: franquicia || undefined, nivel: nivel || undefined } })).data;
 
-export const guardarPartida = (registro: NuevoRegistro) =>
-  pedir<RegistroRanking>('/api/ranking', { metodo: 'POST', cuerpo: registro });
+export const guardarPartida = async (registro: NuevoRegistro) =>
+  (await cliente.post<RegistroRanking>('/api/ranking', registro)).data;
 
-export const eliminarPartida = (id: string) => pedir<void>(`/api/ranking/${id}`, { metodo: 'DELETE' });
+export const eliminarPartida = async (id: string): Promise<void> => {
+  await cliente.delete(`/api/ranking/${id}`);
+};
 
-export const vaciarRanking = () => pedir<void>('/api/ranking', { metodo: 'DELETE' });
+export const vaciarRanking = async (): Promise<void> => {
+  await cliente.delete('/api/ranking');
+};
 
 /** Las imágenes viven en el servidor: la ruta del JSON es relativa a él. */
 export const urlImagen = (ruta: string) => `${API_URL}/${ruta}`;

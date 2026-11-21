@@ -1,5 +1,13 @@
-<script setup lang="ts">
-defineProps<{ titulo: string; mensaje: string }>();
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'ErrorCarga',
+  props: {
+    titulo: { type: String, required: true },
+    mensaje: { type: String, required: true }
+  }
+});
 </script>
 
 <template>

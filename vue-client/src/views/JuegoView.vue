@@ -1,99 +1,127 @@
-<script setup lang="ts">
+<script lang="ts">
 import { TIEMPO_POR_PREGUNTA_S, esNivel } from '@trivia/shared';
-import { computed, onMounted, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { defineComponent } from 'vue';
 
 import BarraEstado from '../components/BarraEstado.vue';
 import Cargando from '../components/Cargando.vue';
 import ErrorCarga from '../components/ErrorCarga.vue';
 import TarjetaPregunta from '../components/TarjetaPregunta.vue';
-import { useCuentaRegresiva } from '../composables/useCuentaRegresiva';
 import { usePartidaStore } from '../stores/partida';
 
-const route = useRoute();
-const router = useRouter();
-const partida = usePartidaStore();
-
-const cargando = ref(true);
-const error = ref<{ titulo: string; mensaje: string } | null>(null);
-const aviso = ref('');
-const finPreguntaEn = ref(0);
-
-function reiniciarReloj() {
-  finPreguntaEn.value = Date.now() + TIEMPO_POR_PREGUNTA_S * 1000;
-}
-
-onMounted(async () => {
-  const franquicia = String(route.params.franquicia);
-  const nivel = String(route.params.nivel);
-
-  if (!esNivel(nivel)) {
-    error.value = { titulo: 'Nivel no válido:', mensaje: 'El nivel solicitado no existe. Elige Fácil, Intermedio o Experto.' };
-    cargando.value = false;
-    return;
-  }
-  try {
-    await partida.iniciar(franquicia, nivel);
-    if (partida.preguntas.length === 0) {
-      error.value = { titulo: 'Sin preguntas:', mensaje: 'Esta franquicia todavía no tiene preguntas cargadas. Elige otra franquicia.' };
-    } else {
-      reiniciarReloj();
-    }
-  } catch {
-    error.value = {
-      titulo: 'Error de conexión:',
-      mensaje: 'No se pudieron cargar las preguntas. Verifica que el servidor esté encendido (npm run dev:server) y vuelve a intentarlo.'
+export default defineComponent({
+  name: 'JuegoView',
+  components: { BarraEstado, Cargando, ErrorCarga, TarjetaPregunta },
+  data() {
+    return {
+      cargando: true,
+      error: null as { titulo: string; mensaje: string } | null,
+      aviso: '',
+      finPreguntaEn: 0, // marca de tiempo (ms) en la que se acaba la pregunta
+      ahora: Date.now(),
+      intervalo: 0
     };
-  } finally {
-    cargando.value = false;
+  },
+  computed: {
+    partida() {
+      return usePartidaStore();
+    },
+    // El reloj corre solo mientras la pregunta sigue abierta
+    abierta(): boolean {
+      return !this.cargando && !this.error && this.partida.preguntaActual !== null && this.partida.verificada === null;
+    },
+    segundos(): number {
+      return Math.max(Math.ceil((this.finPreguntaEn - this.ahora) / 1000), 0);
+    },
+    mensaje(): { texto: string; color: string } {
+      if (this.aviso) return { texto: this.aviso, color: 'text-warning' };
+      const verificada = this.partida.verificada;
+      if (!verificada) return { texto: '', color: 'text-warning' };
+      if (verificada.correcta) return { texto: '¡Respuesta correcta!', color: 'text-success' };
+      return {
+        texto:
+          this.partida.seleccionada === null
+            ? `Se acabó el tiempo. La respuesta era ${verificada.respuestaCorrecta}`
+            : `Respuesta incorrecta. La respuesta era ${verificada.respuestaCorrecta}`,
+        color: 'text-danger'
+      };
+    }
+  },
+  watch: {
+    // Arranca o detiene el reloj según haya una pregunta abierta
+    abierta: {
+      handler(activa: boolean) {
+        this.detenerReloj();
+        if (activa) {
+          this.ahora = Date.now();
+          this.intervalo = window.setInterval(() => (this.ahora = Date.now()), 250);
+        }
+      },
+      immediate: true
+    },
+    // Al llegar a 0 sin haber respondido, se envía opcion null y el servidor la da por fallada
+    segundos(nuevo: number) {
+      if (this.abierta && nuevo <= 0) this.elegir(null);
+    }
+  },
+  async mounted() {
+    const franquicia = String(this.$route.params.franquicia);
+    const nivel = String(this.$route.params.nivel);
+
+    if (!esNivel(nivel)) {
+      this.error = { titulo: 'Nivel no válido:', mensaje: 'El nivel solicitado no existe. Elige Fácil, Intermedio o Experto.' };
+      this.cargando = false;
+      return;
+    }
+    try {
+      await this.partida.iniciar(franquicia, nivel);
+      if (this.partida.preguntas.length === 0) {
+        this.error = { titulo: 'Sin preguntas:', mensaje: 'Esta franquicia todavía no tiene preguntas cargadas. Elige otra franquicia.' };
+      } else {
+        this.reiniciarReloj();
+      }
+    } catch {
+      this.error = {
+        titulo: 'Error de conexión:',
+        mensaje: 'No se pudieron cargar las preguntas. Verifica que el servidor esté encendido (npm run dev:server) y vuelve a intentarlo.'
+      };
+    } finally {
+      this.cargando = false;
+    }
+  },
+  beforeUnmount() {
+    this.detenerReloj(); // sin esto el intervalo seguiría vivo al salir de la pantalla
+  },
+  methods: {
+    reiniciarReloj() {
+      this.finPreguntaEn = Date.now() + TIEMPO_POR_PREGUNTA_S * 1000;
+    },
+    detenerReloj() {
+      window.clearInterval(this.intervalo);
+      this.intervalo = 0;
+    },
+    async elegir(opcion: string | null) {
+      this.aviso = '';
+      try {
+        await this.partida.responder(opcion);
+      } catch (e) {
+        this.aviso = (e as Error).message;
+      }
+    },
+    async alSiguiente() {
+      if (!this.partida.verificada) {
+        this.aviso = 'Debes responder la pregunta actual para continuar.';
+        return;
+      }
+      this.aviso = '';
+      if (this.partida.esUltima) {
+        await this.partida.terminar();
+        this.$router.push({ name: 'resultado' });
+        return;
+      }
+      this.reiniciarReloj(); // antes de pasar de pregunta, para que el reloj nunca arranque en 0
+      this.partida.siguiente();
+    }
   }
-});
-
-// El reloj corre solo mientras la pregunta sigue abierta
-const abierta = computed(() => !cargando.value && !error.value && partida.preguntaActual !== null && partida.verificada === null);
-const { segundos } = useCuentaRegresiva(finPreguntaEn, abierta);
-
-// Al llegar a 0 sin haber respondido, se envía opcion null y el servidor la da por fallada
-watch(segundos, (s) => {
-  if (abierta.value && s <= 0) elegir(null);
-});
-
-async function elegir(opcion: string | null) {
-  aviso.value = '';
-  try {
-    await partida.responder(opcion);
-  } catch (e) {
-    aviso.value = (e as Error).message;
-  }
-}
-
-async function alSiguiente() {
-  if (!partida.verificada) {
-    aviso.value = 'Debes responder la pregunta actual para continuar.';
-    return;
-  }
-  aviso.value = '';
-  if (partida.esUltima) {
-    await partida.terminar();
-    router.push({ name: 'resultado' });
-    return;
-  }
-  reiniciarReloj(); // antes de pasar de pregunta, para que el reloj nunca arranque en 0
-  partida.siguiente();
-}
-
-const mensaje = computed(() => {
-  if (aviso.value) return { texto: aviso.value, color: 'text-warning' };
-  const verificada = partida.verificada;
-  if (!verificada) return { texto: '', color: 'text-warning' };
-  if (verificada.correcta) return { texto: '¡Respuesta correcta!', color: 'text-success' };
-  return {
-    texto:
-      partida.seleccionada === null
-        ? `Se acabó el tiempo. La respuesta era ${verificada.respuestaCorrecta}`
-        : `Respuesta incorrecta. La respuesta era ${verificada.respuestaCorrecta}`,
-    color: 'text-danger'
-  };
 });
 </script>
 

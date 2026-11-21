@@ -1,53 +1,66 @@
-<script setup lang="ts">
+<script lang="ts">
 import { NIVELES, NOMBRE_MAX, NOMBRE_MIN, NOMBRES_NIVEL, type Franquicia, type Nivel } from '@trivia/shared';
-import { computed, onMounted, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { defineComponent } from 'vue';
 
 import Cargando from '../components/Cargando.vue';
 import ErrorCarga from '../components/ErrorCarga.vue';
 import { obtenerFranquicias } from '../services/api';
 import { usePartidaStore } from '../stores/partida';
 
-const router = useRouter();
-const partida = usePartidaStore();
+export default defineComponent({
+  name: 'InicioView',
+  components: { Cargando, ErrorCarga },
+  data() {
+    return {
+      NIVELES,
+      NOMBRES_NIVEL,
+      franquicias: [] as Franquicia[],
+      cargando: true,
+      errorConexion: false,
+      nombre: usePartidaStore().jugador,
+      franquicia: '',
+      nivel: '' as Nivel | '',
+      intentado: false
+    };
+  },
+  computed: {
+    partida() {
+      return usePartidaStore();
+    },
+    errorNombre(): string {
+      const largo = this.nombre.trim().length;
+      if (largo < NOMBRE_MIN) return `Escribe al menos ${NOMBRE_MIN} caracteres.`;
+      if (largo > NOMBRE_MAX) return `Máximo ${NOMBRE_MAX} caracteres.`;
+      return '';
+    },
+    errorNivel(): string {
+      return this.nivel === '' ? 'Elige una dificultad.' : '';
+    },
+    hayErrores(): boolean {
+      return Boolean(this.errorNombre || this.errorNivel || !this.franquicia);
+    }
+  },
+  async mounted() {
+    try {
+      this.franquicias = await obtenerFranquicias();
+      this.franquicia = this.franquicias[0]?.slug ?? '';
+    } catch {
+      this.errorConexion = true;
+    } finally {
+      this.cargando = false;
+    }
+  },
+  methods: {
+    comenzar() {
+      this.intentado = true;
+      if (this.hayErrores || this.nivel === '') return;
 
-const franquicias = ref<Franquicia[]>([]);
-const cargando = ref(true);
-const errorConexion = ref(false);
-
-const nombre = ref(partida.jugador);
-const franquicia = ref('');
-const nivel = ref<Nivel | ''>('');
-const intentado = ref(false);
-
-onMounted(async () => {
-  try {
-    franquicias.value = await obtenerFranquicias();
-    franquicia.value = franquicias.value[0]?.slug ?? '';
-  } catch {
-    errorConexion.value = true;
-  } finally {
-    cargando.value = false;
+      const elegida = this.franquicias.find((f) => f.slug === this.franquicia);
+      this.partida.configurar(this.nombre.trim(), elegida?.nombre ?? this.franquicia);
+      this.$router.push({ name: 'juego', params: { franquicia: this.franquicia, nivel: this.nivel } });
+    }
   }
 });
-
-const errorNombre = computed(() => {
-  const largo = nombre.value.trim().length;
-  if (largo < NOMBRE_MIN) return `Escribe al menos ${NOMBRE_MIN} caracteres.`;
-  if (largo > NOMBRE_MAX) return `Máximo ${NOMBRE_MAX} caracteres.`;
-  return '';
-});
-const errorNivel = computed(() => (nivel.value === '' ? 'Elige una dificultad.' : ''));
-const hayErrores = computed(() => Boolean(errorNombre.value || errorNivel.value || !franquicia.value));
-
-function comenzar() {
-  intentado.value = true;
-  if (hayErrores.value || nivel.value === '') return;
-
-  const elegida = franquicias.value.find((f) => f.slug === franquicia.value);
-  partida.configurar(nombre.value.trim(), elegida?.nombre ?? franquicia.value);
-  router.push({ name: 'juego', params: { franquicia: franquicia.value, nivel: nivel.value } });
-}
 </script>
 
 <template>

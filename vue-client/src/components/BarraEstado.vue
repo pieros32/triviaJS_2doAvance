@@ -1,19 +1,30 @@
-<script setup lang="ts">
+<script lang="ts">
 import { NOMBRES_NIVEL, type Nivel } from '@trivia/shared';
-import { computed } from 'vue';
+import { defineComponent, type PropType } from 'vue';
 
-const props = defineProps<{
-  jugador: string;
-  nivel: Nivel;
-  numero: number;
-  total: number;
-  puntaje: number;
-  segundos: number;
-  completadas: number;
-}>();
-
-const avance = computed(() => (props.total > 0 ? Math.round((props.completadas / props.total) * 100) : 0));
-const urgente = computed(() => props.segundos <= 5);
+export default defineComponent({
+  name: 'BarraEstado',
+  props: {
+    jugador: { type: String, required: true },
+    nivel: { type: String as PropType<Nivel>, required: true },
+    numero: { type: Number, required: true },
+    total: { type: Number, required: true },
+    puntaje: { type: Number, required: true },
+    segundos: { type: Number, required: true },
+    completadas: { type: Number, required: true }
+  },
+  data() {
+    return { NOMBRES_NIVEL };
+  },
+  computed: {
+    avance(): number {
+      return this.total > 0 ? Math.round((this.completadas / this.total) * 100) : 0;
+    },
+    urgente(): boolean {
+      return this.segundos <= 5;
+    }
+  }
+});
 </script>
 
 <template>

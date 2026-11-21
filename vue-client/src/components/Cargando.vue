@@ -1,5 +1,10 @@
-<script setup lang="ts">
-withDefaults(defineProps<{ texto?: string }>(), { texto: 'Cargando…' });
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'Cargando',
+  props: { texto: { type: String, default: 'Cargando…' } }
+});
 </script>
 
 <template>

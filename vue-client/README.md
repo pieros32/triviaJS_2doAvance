@@ -21,26 +21,29 @@ src/
   main.ts                 Arranque: Pinia + Router + estilos
   App.vue                 Marco común y <RouterView>
   router/index.ts         Rutas y guardias
-  stores/partida.ts       Estado de la partida (Pinia)
-  services/api.ts         Todas las llamadas a Express (fetch)
-  composables/            useCuentaRegresiva
+  stores/partida.ts       Estado de la partida (Pinia: state, getters, actions)
+  services/api.ts         Todas las llamadas a Express (Axios)
   views/                  Inicio, Juego, Resultado, Ranking, NoEncontrada
   components/             Encabezado, BarraNavegacion, BarraEstado, TarjetaPregunta, Cargando, ErrorCarga
 ```
 
-## Conceptos de Vue y dónde aparecen
+## Cómo se relaciona con el PowerPoint de la semana 16
 
-| Concepto | Dónde |
+| En el PowerPoint | En este proyecto |
 |---|---|
-| Componentes de un solo archivo (`.vue`) con `<script setup>` | Todos los `.vue` |
-| Reactividad: `ref`, `computed`, `watch` | `JuegoView.vue`, `RankingView.vue` |
-| Directivas `v-if`, `v-else`, `v-for`, `v-model`, `:class`, `:key`, `@click`, `@submit.prevent` | `InicioView.vue`, `RankingView.vue`, `TarjetaPregunta.vue` |
-| Props tipadas y eventos (`defineProps`, `defineEmits`) | `TarjetaPregunta.vue`, `BarraEstado.vue` |
-| Pinia (estado compartido) | `stores/partida.ts` |
-| Vue Router: rutas con parámetros, guardias `beforeEnter`, carga diferida | `router/index.ts` |
-| Composable propio | `composables/useCuentaRegresiva.ts` |
-| Consumo de la API REST (GET, POST, DELETE) | `services/api.ts` |
+| Framework reactivo: la vista se actualiza al cambiar los datos | `data()`, `computed` y `watch` en todos los componentes |
+| Componentes reutilizables en archivos `.vue` | `components/` y `views/` |
+| Directivas `v-if`, `v-for`, `v-bind` | `v-if`/`v-else` (carga y errores), `v-for` (opciones, filas), `:class`, `:key`, `:src` |
+| `v-model` (ejemplo de la lista de tareas) | Nombre y filtros en `InicioView.vue` y `RankingView.vue` |
+| API de opciones: `data()` y `methods` | Todos los componentes con lógica usan `defineComponent({ data, computed, methods, watch })` |
+| `<template>`, `<script>` y `<style scoped>` | `ResultadoView.vue` y `RankingView.vue` tienen su `<style scoped>` |
+| Vuex para el estado | Pinia, su reemplazo oficial, con la misma estructura (`state`, `getters`, `actions`) |
+| Vue Router para el enrutamiento | `router/index.ts` (parámetros, guardias, carga diferida) |
+| Servicio REST consumido con Axios (diapositiva 14) | `services/api.ts` |
 
-## Equivalencias con los ejemplos del curso
+**Hooks de ciclo de vida usados:** `mounted` (pedir los datos) y `beforeUnmount` (detener el reloj del juego).
 
-El curso muestra la **API de opciones** (`data()`, `methods`) con Vue CLI y Vuex. Aquí se usa la **API de composición**, que es la recomendada hoy: `data()` equivale a `ref`, `methods` a funciones normales y Vuex a Pinia. El proyecto está creado con Vite (Vue CLI está en mantenimiento).
+### Diferencias respecto al PowerPoint
+
+- **Instalación:** el curso usa `vue create` (Vue CLI), que hoy está en mantenimiento. Este proyecto se creó con Vite, la herramienta que recomienda Vue ahora.
+- **Tareas:** el ejemplo del curso es una lista de tareas local. Aquí el mismo patrón (formulario, `v-for`, `v-model`) sirve para una trivia que consume una API.

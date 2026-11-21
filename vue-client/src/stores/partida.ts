@@ -1,111 +1,109 @@
 import type { Nivel, PreguntaPublica, RespuestaVerificada } from '@trivia/shared';
 import { defineStore } from 'pinia';
-import { computed, ref } from 'vue';
 
 import { guardarPartida, obtenerPreguntas, verificarRespuesta } from '../services/api';
 
 type Guardado = 'pendiente' | 'guardando' | 'ok' | 'error';
 
 /**
- * Estado de la partida en curso. Es la única fuente de verdad que comparten el formulario,
- * el juego y el resultado.
+ * Estado de la partida en curso, con la misma estructura que un módulo de Vuex:
+ * `state` (los datos), `getters` (valores derivados) y `actions` (lo que cambia el estado).
  */
-export const usePartidaStore = defineStore('partida', () => {
-  const jugador = ref('');
-  const franquicia = ref('');
-  const franquiciaNombre = ref('');
-  const nivel = ref<Nivel | null>(null);
-  const preguntas = ref<PreguntaPublica[]>([]);
-  const indice = ref(0);
-  const puntaje = ref(0);
-  const seleccionada = ref<string | null>(null);
-  const verificada = ref<RespuestaVerificada | null>(null); // respuesta del servidor a la pregunta actual
-  const respondiendo = ref(false);
-  const terminada = ref(false);
-  const guardado = ref<Guardado>('pendiente');
+export const usePartidaStore = defineStore('partida', {
+  state: () => ({
+    jugador: '',
+    franquicia: '',
+    franquiciaNombre: '',
+    nivel: null as Nivel | null,
+    preguntas: [] as PreguntaPublica[],
+    indice: 0,
+    puntaje: 0,
+    seleccionada: null as string | null,
+    verificada: null as RespuestaVerificada | null, // respuesta del servidor a la pregunta actual
+    respondiendo: false,
+    terminada: false,
+    guardado: 'pendiente' as Guardado
+  }),
 
-  const preguntaActual = computed(() => preguntas.value[indice.value] ?? null);
-  const esUltima = computed(() => indice.value === preguntas.value.length - 1);
+  getters: {
+    preguntaActual: (estado): PreguntaPublica | null => estado.preguntas[estado.indice] ?? null,
+    esUltima: (estado): boolean => estado.indice === estado.preguntas.length - 1
+  },
 
-  /** Datos del formulario de inicio. Empieza de cero cualquier partida anterior. */
-  function configurar(nombre: string, nombreFranquicia: string) {
-    reiniciar();
-    jugador.value = nombre;
-    franquiciaNombre.value = nombreFranquicia;
-  }
+  actions: {
+    /** Datos del formulario de inicio. Empieza de cero cualquier partida anterior. */
+    configurar(nombre: string, nombreFranquicia: string) {
+      this.reiniciar();
+      this.jugador = nombre;
+      this.franquiciaNombre = nombreFranquicia;
+    },
 
-  function reiniciar() {
-    franquicia.value = '';
-    nivel.value = null;
-    preguntas.value = [];
-    indice.value = 0;
-    puntaje.value = 0;
-    seleccionada.value = null;
-    verificada.value = null;
-    respondiendo.value = false;
-    terminada.value = false;
-    guardado.value = 'pendiente';
-  }
+    reiniciar() {
+      this.franquicia = '';
+      this.nivel = null;
+      this.preguntas = [];
+      this.indice = 0;
+      this.puntaje = 0;
+      this.seleccionada = null;
+      this.verificada = null;
+      this.respondiendo = false;
+      this.terminada = false;
+      this.guardado = 'pendiente';
+    },
 
-  async function iniciar(slug: string, nivelElegido: Nivel) {
-    reiniciar();
-    preguntas.value = await obtenerPreguntas(slug, nivelElegido);
-    franquicia.value = slug;
-    nivel.value = nivelElegido;
-  }
+    async iniciar(slug: string, nivel: Nivel) {
+      this.reiniciar();
+      this.preguntas = await obtenerPreguntas(slug, nivel);
+      this.franquicia = slug;
+      this.nivel = nivel;
+    },
 
-  /** opcion = null cuando se acaba el tiempo. El servidor decide si es correcta. */
-  async function responder(opcion: string | null) {
-    const pregunta = preguntaActual.value;
-    if (!pregunta || verificada.value || respondiendo.value) return;
+    /** opcion = null cuando se acaba el tiempo. El servidor decide si es correcta. */
+    async responder(opcion: string | null) {
+      const pregunta = this.preguntaActual;
+      if (!pregunta || this.verificada || this.respondiendo) return;
 
-    respondiendo.value = true;
-    seleccionada.value = opcion;
-    try {
-      const resultado = await verificarRespuesta(pregunta.id, opcion);
-      verificada.value = resultado;
-      if (resultado.correcta) puntaje.value++;
-    } catch (error) {
-      seleccionada.value = null; // se podrá volver a intentar
-      throw error;
-    } finally {
-      respondiendo.value = false;
+      this.respondiendo = true;
+      this.seleccionada = opcion;
+      try {
+        const resultado = await verificarRespuesta(pregunta.id, opcion);
+        this.verificada = resultado;
+        if (resultado.correcta) this.puntaje++;
+      } catch (error) {
+        this.seleccionada = null; // se podrá volver a intentar
+        throw error;
+      } finally {
+        this.respondiendo = false;
+      }
+    },
+
+    siguiente() {
+      this.indice++;
+      this.seleccionada = null;
+      this.verificada = null;
+    },
+
+    /** Cierra la partida y la guarda en el ranking de Express (POST /api/ranking). */
+    async terminar() {
+      this.terminada = true;
+      await this.guardar();
+    },
+
+    async guardar() {
+      if (!this.nivel) return;
+      this.guardado = 'guardando';
+      try {
+        await guardarPartida({
+          jugador: this.jugador,
+          franquicia: this.franquicia,
+          nivel: this.nivel,
+          puntaje: this.puntaje,
+          total: this.preguntas.length
+        });
+        this.guardado = 'ok';
+      } catch {
+        this.guardado = 'error';
+      }
     }
   }
-
-  function siguiente() {
-    indice.value++;
-    seleccionada.value = null;
-    verificada.value = null;
-  }
-
-  /** Cierra la partida y la guarda en el ranking de Express (POST /api/ranking). */
-  async function terminar() {
-    terminada.value = true;
-    await guardar();
-  }
-
-  async function guardar() {
-    if (!nivel.value) return;
-    guardado.value = 'guardando';
-    try {
-      await guardarPartida({
-        jugador: jugador.value,
-        franquicia: franquicia.value,
-        nivel: nivel.value,
-        puntaje: puntaje.value,
-        total: preguntas.value.length
-      });
-      guardado.value = 'ok';
-    } catch {
-      guardado.value = 'error';
-    }
-  }
-
-  return {
-    jugador, franquicia, franquiciaNombre, nivel, preguntas, indice, puntaje,
-    seleccionada, verificada, respondiendo, terminada, guardado,
-    preguntaActual, esUltima,
-    configurar, reiniciar, iniciar, responder, siguiente, terminar, guardar
-  };
 });

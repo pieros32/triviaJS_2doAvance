@@ -1,32 +1,39 @@
-<script setup lang="ts">
+<script lang="ts">
 import type { PreguntaPublica } from '@trivia/shared';
-import { computed } from 'vue';
+import { defineComponent, type PropType } from 'vue';
 
 import { urlImagen } from '../services/api';
 
-const props = defineProps<{
-  pregunta: PreguntaPublica;
-  seleccionada: string | null;
-  /** Respuesta correcta; es null mientras la pregunta sigue abierta. */
-  correcta: string | null;
-  bloqueada: boolean;
-  mensaje: string;
-  colorMensaje: string;
-  esUltima: boolean;
-}>();
-
-defineEmits<{ elegir: [opcion: string]; siguiente: [] }>();
-
-// Sin imagen ni tipo no se dibuja la columna visual
-const tieneVisual = computed(() => Boolean(props.pregunta.imagen || props.pregunta.tipo));
-
-function clasesOpcion(opcion: string) {
-  const revelada = props.correcta !== null;
-  return {
-    correcta: revelada && opcion === props.correcta,
-    incorrecta: revelada && opcion === props.seleccionada && opcion !== props.correcta
-  };
-}
+export default defineComponent({
+  name: 'TarjetaPregunta',
+  props: {
+    pregunta: { type: Object as PropType<PreguntaPublica>, required: true },
+    seleccionada: { type: String as PropType<string | null>, default: null },
+    /** Respuesta correcta; es null mientras la pregunta sigue abierta. */
+    correcta: { type: String as PropType<string | null>, default: null },
+    bloqueada: { type: Boolean, required: true },
+    mensaje: { type: String, required: true },
+    colorMensaje: { type: String, required: true },
+    esUltima: { type: Boolean, required: true }
+  },
+  emits: ['elegir', 'siguiente'],
+  computed: {
+    // Sin imagen ni tipo no se dibuja la columna visual
+    tieneVisual(): boolean {
+      return Boolean(this.pregunta.imagen || this.pregunta.tipo);
+    }
+  },
+  methods: {
+    urlImagen,
+    clasesOpcion(opcion: string) {
+      const revelada = this.correcta !== null;
+      return {
+        correcta: revelada && opcion === this.correcta,
+        incorrecta: revelada && opcion === this.seleccionada && opcion !== this.correcta
+      };
+    }
+  }
+});
 </script>
 
 <template>

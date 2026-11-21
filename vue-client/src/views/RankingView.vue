@@ -1,71 +1,83 @@
-<script setup lang="ts">
+<script lang="ts">
 import { NIVELES, NOMBRES_NIVEL, type Franquicia, type Nivel, type RegistroRanking } from '@trivia/shared';
-import { onMounted, ref, watch } from 'vue';
+import { defineComponent } from 'vue';
 
 import Cargando from '../components/Cargando.vue';
 import ErrorCarga from '../components/ErrorCarga.vue';
 import { eliminarPartida, obtenerFranquicias, obtenerRanking, vaciarRanking } from '../services/api';
 
-const COLOR_NIVEL: Record<Nivel, string> = {
-  facil: 'text-bg-success',
-  intermedio: 'text-bg-warning',
-  experto: 'text-bg-danger'
-};
-
-const registros = ref<RegistroRanking[]>([]);
-const franquicias = ref<Franquicia[]>([]);
-const filtroFranquicia = ref('');
-const filtroNivel = ref<Nivel | ''>('');
-const cargando = ref(true);
-const error = ref('');
-
-let ultimaPeticion = 0;
-
-async function cargar() {
-  const numero = ++ultimaPeticion;
-  cargando.value = true;
-  error.value = '';
-  try {
-    const datos = await obtenerRanking(filtroFranquicia.value, filtroNivel.value);
-    if (numero === ultimaPeticion) registros.value = datos; // descarta respuestas viejas
-  } catch (e) {
-    if (numero === ultimaPeticion) error.value = (e as Error).message;
-  } finally {
-    if (numero === ultimaPeticion) cargando.value = false;
-  }
-}
-
-watch([filtroFranquicia, filtroNivel], cargar);
-
-onMounted(async () => {
-  await cargar();
-  try {
-    franquicias.value = await obtenerFranquicias();
-  } catch {
-    // sin lista de franquicias el filtro queda solo con "Todas"
+export default defineComponent({
+  name: 'RankingView',
+  components: { Cargando, ErrorCarga },
+  data() {
+    return {
+      NIVELES,
+      NOMBRES_NIVEL,
+      COLOR_NIVEL: { facil: 'text-bg-success', intermedio: 'text-bg-warning', experto: 'text-bg-danger' } as Record<Nivel, string>,
+      registros: [] as RegistroRanking[],
+      franquicias: [] as Franquicia[],
+      filtroFranquicia: '',
+      filtroNivel: '' as Nivel | '',
+      cargando: true,
+      error: '',
+      ultimaPeticion: 0
+    };
+  },
+  watch: {
+    // Cada vez que cambia un filtro se vuelve a pedir el ranking a Express
+    filtroFranquicia() {
+      this.cargar();
+    },
+    filtroNivel() {
+      this.cargar();
+    }
+  },
+  async mounted() {
+    await this.cargar();
+    try {
+      this.franquicias = await obtenerFranquicias();
+    } catch {
+      // sin lista de franquicias el filtro queda solo con "Todas"
+    }
+  },
+  methods: {
+    porcentaje(r: RegistroRanking): number {
+      return Math.round((r.puntaje / r.total) * 100);
+    },
+    async cargar() {
+      const numero = ++this.ultimaPeticion;
+      this.cargando = true;
+      this.error = '';
+      try {
+        const datos = await obtenerRanking(this.filtroFranquicia, this.filtroNivel);
+        if (numero === this.ultimaPeticion) this.registros = datos; // descarta respuestas viejas
+      } catch (e) {
+        if (numero === this.ultimaPeticion) this.error = (e as Error).message;
+      } finally {
+        if (numero === this.ultimaPeticion) this.cargando = false;
+      }
+    },
+    async borrar(id: string) {
+      try {
+        await eliminarPartida(id); // DELETE /api/ranking/:id
+        await this.cargar();
+      } catch (e) {
+        this.error = (e as Error).message;
+      }
+    },
+    async borrarHistorial() {
+      if (!window.confirm('¿Borrar todo el historial del ranking? Esta acción no se puede deshacer.')) return;
+      try {
+        await vaciarRanking(); // DELETE /api/ranking
+        this.filtroFranquicia = '';
+        this.filtroNivel = '';
+        await this.cargar();
+      } catch (e) {
+        this.error = (e as Error).message;
+      }
+    }
   }
 });
-
-async function borrar(id: string) {
-  try {
-    await eliminarPartida(id); // DELETE /api/ranking/:id
-    await cargar();
-  } catch (e) {
-    error.value = (e as Error).message;
-  }
-}
-
-async function borrarHistorial() {
-  if (!window.confirm('¿Borrar todo el historial del ranking? Esta acción no se puede deshacer.')) return;
-  try {
-    await vaciarRanking(); // DELETE /api/ranking
-    filtroFranquicia.value = '';
-    filtroNivel.value = '';
-    await cargar();
-  } catch (e) {
-    error.value = (e as Error).message;
-  }
-}
 </script>
 
 <template>
@@ -108,7 +120,7 @@ async function borrarHistorial() {
               <th scope="col">Nivel</th>
               <th scope="col" class="text-end">Puntaje</th>
               <th scope="col" class="text-end d-none d-md-table-cell">Fecha</th>
-              <th scope="col"><span class="visually-hidden">Acciones</span></th>
+              <th scope="col" class="columna-acciones"><span class="visually-hidden">Acciones</span></th>
             </tr>
           </thead>
           <tbody>
@@ -121,10 +133,10 @@ async function borrarHistorial() {
               </td>
               <td class="text-end">
                 {{ r.puntaje }}/{{ r.total }}
-                <span class="text-secondary">({{ Math.round((r.puntaje / r.total) * 100) }}%)</span>
+                <span class="text-secondary">({{ porcentaje(r) }}%)</span>
               </td>
               <td class="text-end d-none d-md-table-cell">{{ new Date(r.fecha).toLocaleDateString('es-PE') }}</td>
-              <td class="text-end">
+              <td class="columna-acciones text-end">
                 <button type="button" class="btn btn-sm btn-outline-danger" :aria-label="`Borrar la partida de ${r.jugador}`" @click="borrar(r.id)">
                   Borrar
                 </button>
@@ -136,3 +148,11 @@ async function borrarHistorial() {
     </section>
   </div>
 </template>
+
+<style scoped>
+/* La columna del botón solo ocupa lo que necesita y no se parte en dos líneas */
+.columna-acciones {
+  width: 1%;
+  white-space: nowrap;
+}
+</style>
