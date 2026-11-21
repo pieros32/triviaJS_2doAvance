@@ -1,0 +1,98 @@
+/* Piezas propias del modo multijugador: código de sala, lista de jugadores y podio */
+
+.codigo-sala {
+  display: inline-block;
+  padding: 0.5rem 1.2rem 0.5rem 1.55rem;
+  border: 2px dashed var(--borde-suave);
+  border-radius: 14px;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  color: var(--neon-cian);
+  text-shadow: 0 0 18px rgba(45, 226, 255, 0.55);
+  user-select: all;
+}
+
+.lista-jugadores {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jugador-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--borde-suave);
+  border-radius: 12px;
+  background: var(--fondo-entrada);
+}
+
+.jugador-item.yo {
+  border-color: var(--borde-neon);
+}
+
+.jugador-item.desconectado {
+  opacity: 0.45;
+}
+
+.jugador-nombre {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jugador-puntos {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  color: var(--neon-amarillo);
+}
+
+.jugador-estado {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--texto-mutado);
+}
+
+.jugador-estado.listo {
+  color: var(--neon-verde);
+}
+
+.puntos-ronda {
+  font-weight: 800;
+  color: var(--neon-verde);
+}
+
+.puntos-ronda.cero {
+  color: var(--color-error);
+}
+
+.puesto {
+  width: 2.2rem;
+  font-family: var(--fuente-titulos);
+  font-weight: 900;
+  text-align: center;
+  color: var(--neon-amarillo);
+}
+
+.jugador-item.puesto-1 {
+  border-color: var(--neon-amarillo);
+  box-shadow: 0 0 18px rgba(255, 225, 77, 0.25);
+}
+
+.aviso-sala {
+  color: var(--texto-mutado);
+  text-align: center;
+}
+
+.cuenta-regresiva {
+  font-family: var(--fuente-titulos);
+  font-weight: 900;
+}
